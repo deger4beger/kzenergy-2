@@ -1,0 +1,16 @@
+::-webkit-input-placeholder { /* Chrome */
+  color: var(--additional);
+  opacity: 0.92;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: var(--additional);
+  opacity: 0.92;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--additional);
+  opacity: 0.92;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: var(--additional);
+  opacity: 0.92;
+}

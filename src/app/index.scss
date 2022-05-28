@@ -1,9 +1,16 @@
 @import "../lib/styles/reset.scss";
 @import "../lib/styles/fonts.scss";
+@import "../lib/styles/elements.scss";
 @import "../lib/styles/variables.scss";
 
 body {
   font-family: 'Jost', sans-serif;
   min-width: 1280px;
-  min-height: 100vh;
+  background-color: var(--bg1);
+  color: var(--color1);
+}
+
+.root {
+	min-height: calc(100vh - 30px);
+	padding-top: 50px;
 }
