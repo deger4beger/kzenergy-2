@@ -1,0 +1,9 @@
+@import "../lib/styles/reset.scss";
+@import "../lib/styles/fonts.scss";
+@import "../lib/styles/variables.scss";
+
+body {
+  font-family: 'Jost', sans-serif;
+  min-width: 1280px;
+  min-height: 100vh;
+}
