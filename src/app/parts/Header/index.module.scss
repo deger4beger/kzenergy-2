@@ -6,5 +6,41 @@
 	width: 100vw;
 	height: 50px;
 	background-color: var(--bg2);
-	border-bottom: 2px solid var(--additional);
+	border-bottom: 2px solid var(--color2);
+	.container {
+		width: 60%;
+		margin: 0 auto;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		.logo {
+			padding: 0 8px 2px;
+			font-size: 22px;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			position: relative;
+			user-select: none;
+			.logoIcon {
+				position: relative;
+				top: 2px;
+			}
+			// .tickX {
+			// 	width: 100px;
+			// 	height: 2px;
+			// 	background-color: black;
+			// 	position: absolute;
+			// 	left: -10px;
+			// 	bottom: 2px;
+			// }
+			// .tickY {
+			// 	width: 2px;
+			// 	height: 4px;
+			// 	background-color: black;
+			// 	position: absolute;
+			// 	top: 24px;
+			// 	right: 47px;
+			// }
+		}
+	}
 }
