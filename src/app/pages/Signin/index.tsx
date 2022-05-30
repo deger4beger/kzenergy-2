@@ -1,11 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
 import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
 
 const Signin = () => {
 
+	const [formData, setFormData] = useState({
+		fullname: "",
+		email: "",
+		phone: "",
+		password: "",
+		repeatPassword: ""
+	})
 
+	const setFormFieldValue = (
+		e: React.ChangeEvent<any>,
+		fieldName: keyof typeof formData
+	) => {
+		setFormData(prev => ({
+			...prev,
+			[fieldName]: e.target.value
+		}))
+	}
+
+	const onFormConfirm = () => {
+		console.log(formData)
+	}
 
 	return (
 		<AuthTemplate
@@ -14,45 +34,45 @@ const Signin = () => {
 					content="Signin"
 					disabled={false}
 					loading={false}
-					onClick={() => console.log(1)}
+					onClick={onFormConfirm}
 				/>
 			}
 			title="Signin form"
 		>
 			<Input
 				name="Fullname"
-				onChange={() => console.log(1)}
+				onChange={(e) => setFormFieldValue(e, "fullname")}
 				placeholder="Full name"
 				type="text"
-				value={""}
+				value={formData.fullname}
 			/>
 			<Input
 				name="Email"
-				onChange={() => console.log(1)}
+				onChange={(e) => setFormFieldValue(e, "email")}
 				placeholder="Email"
 				type="text"
-				value={""}
+				value={formData.email}
 			/>
 			<Input
 				name="Phone number"
-				onChange={() => console.log(1)}
+				onChange={(e) => setFormFieldValue(e, "phone")}
 				placeholder="Phone number"
 				type="tel"
-				value={""}
+				value={formData.phone}
 			/>
 			<Input
 				name="Password"
-				onChange={() => console.log(1)}
+				onChange={(e) => setFormFieldValue(e, "password")}
 				placeholder="Password"
 				type="password"
-				value={""}
+				value={formData.password}
 			/>
 			<Input
 				name="Repeat password"
-				onChange={() => console.log(1)}
+				onChange={(e) => setFormFieldValue(e, "repeatPassword")}
 				placeholder="Repeat password"
 				type="password"
-				value={""}
+				value={formData.repeatPassword}
 			/>
 		</AuthTemplate>
 	)
