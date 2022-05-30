@@ -9,11 +9,19 @@
 		align-items: flex-start;
 	}
 	.title {
-		margin-bottom: 30px;
 		font-weight: 500;
 		font-size: var(--fsz28);
 		border-bottom: 2px solid var(--color1);
 		padding: 1px 24px 1px 1px;
+	}
+	.subtitle {
+		margin-bottom: 30px;
+		padding: 4px 1px;
+		.link {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 	.inputs {
 		width: 500px;

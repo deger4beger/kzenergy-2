@@ -1,27 +1,31 @@
 import "./index.scss"
+import { Suspense, useEffect } from "react"
+import { initializeUser } from "../lib/redux/auth/slice"
+import { useAppDispatch, useAppSelector } from "./hooks/redux"
 import Header from "./parts/Header"
 import Footer from "./parts/Footer"
 import AppRouter from "./components/AppRouter"
-import { useAppDispatch } from "./hooks/redux"
-import { useEffect } from "react"
-import { initializeUser } from "../lib/redux/auth/slice"
+import Preloader from "./components/Preloader"
 
 function App() {
 
-	const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
+  const isInitialized = useAppSelector(state => state.userReducer.isInitialized)
 
-	useEffect(() => {
-		dispatch(initializeUser())
-	}, [])
+  useEffect(() => {
+    dispatch(initializeUser())
+  }, [])
+
+  if (!isInitialized) return <Preloader />
 
   return (
-    <>
-    	<Header />
-    	<div className="root">
-    		<AppRouter />
-    	</div>
+    <Suspense fallback={<Preloader />}>
+      <Header />
+      <div className="root">
+        <AppRouter />
+      </div>
       <Footer />
-    </>
+    </Suspense>
   )
 }
 

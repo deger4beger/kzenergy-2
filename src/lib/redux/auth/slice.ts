@@ -5,6 +5,7 @@ import { isTokenValid } from "../../../app/validators/token"
 
 interface IUserState {
   userData: Nullable<UserData>
+  isInitialized: boolean
   isAuth: boolean
   isLoading: boolean
   error: string | null
@@ -19,6 +20,7 @@ export const initialState: IUserState = {
     token: null,
     role: null
   },
+  isInitialized: false,
   isAuth: false,
   isLoading: false,
   error: null
@@ -34,6 +36,7 @@ export const userSlice = createSlice({
         state.isAuth = true
         state.userData = userData
       }
+      state.isInitialized = true
     },
     logout(state) {
       state = initialState
