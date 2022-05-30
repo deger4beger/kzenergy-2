@@ -25,6 +25,9 @@
 				font-size: 26px;
 				transform: rotate(90deg);
 				user-select: none;
+				&.active {
+					transform: rotate(-90deg);
+				}
 			}
 		}
 		.lower {
