@@ -11,18 +11,20 @@ interface IAuthTemplateProps {
 const AuthTemplate: React.FC<IAuthTemplateProps> = ({title, error, children, button}) => {
 	return (
 		<div className={s.wrapper}>
-			<div className={s.title}>
-				{title}
+			<div className={s.container}>
+				<div className={s.title}>
+					{title}
+				</div>
+				<div className={s.inputs}>
+					{children}
+					{error && (
+						<div className={s.error}>
+							{error}
+						</div>
+					)}
+				</div>
+				{button}
 			</div>
-			<div className={s.inputs}>
-				{children}
-				{error && (
-					<div className={s.error}>
-						{error}
-					</div>
-				)}
-			</div>
-			{button}
 		</div>
 	)
 }

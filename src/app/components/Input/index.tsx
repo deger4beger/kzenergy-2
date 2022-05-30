@@ -10,7 +10,12 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = (props) => {
-	return <input {...props} className={s.input} />
+	return <div className={s.wrapper}>
+		<div className={s.title}>
+			{ props.name }
+		</div>
+		<input {...props} className={s.input} />
+	</div>
 }
 
 export default Input

@@ -1,14 +1,19 @@
-.input {
-	width: 450px;
-	padding: 8px 12px;
-	background-color: var(--bg1);
-	border: 2px solid var(--additional);
-	margin-bottom: 30px;
-	color: var(--color1);
-	&:last-child {
-		margin-bottom: 0px;
+.wrapper {
+	margin-bottom: 16px;
+	.input {
+		width: 450px;
+		padding: 8px 12px;
+		background-color: var(--bg1);
+		border: 2px solid var(--additional);
+		color: var(--color1);
+		&:last-child {
+			margin-bottom: 0px;
+		}
+		&:hover, &:focus {
+			border-color: var(--color2);
+		}
 	}
-	&:hover, &:focus {
-		border-color: var(--color2);
+	.title {
+		padding-bottom: 2px;
 	}
 }
