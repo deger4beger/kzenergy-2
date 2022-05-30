@@ -1,0 +1,49 @@
+.wrapper {
+	margin-bottom: 16px;
+	.title {
+		padding-bottom: 2px;
+	}
+	.dropdown {
+		position: relative;
+		.upper {
+			border: 2px solid var(--additional);
+			padding: 6px 12px;
+			cursor: pointer;
+			color: var(--additional);
+			position: relative;
+			&.selected {
+				color: var(--color1);
+			}
+			&:hover {
+				color: var(--color1);
+				border-color: var(--color2)
+			}
+			.arrow {
+				position: absolute;
+				top: 0px;
+				right: 10px;
+				font-size: 26px;
+				transform: rotate(90deg);
+				user-select: none;
+			}
+		}
+		.lower {
+			position: absolute;
+			top: 48px;
+			left: 0;
+			border: 2px solid var(--additional);
+			background-color: var(--bg1);
+			z-index: 10;
+			width: 100%;
+			.option {
+				padding: 6px 12px;
+				color: var(--forText);
+				&:hover {
+					cursor: pointer;
+					background-color: var(--bg2);
+					color: var(--color1);
+				}
+			}
+		}
+	}
+}

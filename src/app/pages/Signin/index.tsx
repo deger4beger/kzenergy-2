@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
+import Dropdown from "../../components/Dropdown"
+import { UserRoles } from "../../../types/user"
 
 const Signin = () => {
 
@@ -9,6 +11,7 @@ const Signin = () => {
 		fullname: "",
 		email: "",
 		phone: "",
+		role: "" as UserRoles,
 		password: "",
 		repeatPassword: ""
 	})
@@ -20,6 +23,12 @@ const Signin = () => {
 		setFormData(prev => ({
 			...prev,
 			[fieldName]: e.target.value
+		}))
+	}
+	const setRole = (role: string) => {
+		setFormData(prev => ({
+			...prev,
+			role: role as UserRoles
 		}))
 	}
 
@@ -59,6 +68,12 @@ const Signin = () => {
 				placeholder="Phone number"
 				type="tel"
 				value={formData.phone}
+			/>
+			<Dropdown
+				title="Your role in company"
+				selected={formData.role}
+				setSelected={setRole}
+				options={Object.values(UserRoles)}
 			/>
 			<Input
 				name="Password"
