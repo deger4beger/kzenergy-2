@@ -35,10 +35,17 @@ const Dropdown: React.FC<DropdownProps> = ({
 			</div>
 			{ isActive && <div className={s.lower}>
 				{ options.map(option => {
-					return <div className={s.option} key={option} onClick={() => {
-						setSelected(option)
-						setIsActive(false)
-					}}>
+					return <div
+						className={cn(
+							s.option,
+							{[s.active]: option === selected}
+						)}
+						key={option}
+						onClick={() => {
+							setSelected(option)
+							setIsActive(false)
+						}
+					}>
 						{ option }
 					</div>
 				}) }
