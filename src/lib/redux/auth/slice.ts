@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { UserData, UserRoles } from "../../../types/user"
 import { Nullable } from "../../../types/infered"
 import { isTokenValid } from "../../../app/validators/token"
+import { signinThunk, signupThunk } from "./thunks"
 
 interface IUserState {
   userData: Nullable<UserData>
@@ -26,6 +27,18 @@ export const initialState: IUserState = {
   error: null
 }
 
+function expand(obj) {
+    var keys = Object.keys(obj);
+    for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i],
+            subkeys = key.split(/,\s?/),
+            target = obj[key];
+        delete obj[key];
+        subkeys.forEach(function(key) { obj[key] = target; })
+    }
+    return obj;
+}
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -42,6 +55,31 @@ export const userSlice = createSlice({
       state = initialState
       localStorage.removeItem("user")
     }
+  },
+  extraReducers: {
+    ...[signinThunk, signupThunk].reduce((acc, key) => ({
+      ...acc,
+      [key.pending.type]: (state) => {
+        state.isLoading = true
+      }
+    }), {}),
+    ...[signinThunk, signupThunk].reduce((acc, key) => ({
+      ...acc,
+      [key.fulfilled.type]: (state, action: PayloadAction<UserData>) => {
+        state.isLoading = false
+        state.error = ""
+        state.isAuth = true
+        state.userData = action.payload
+        localStorage.setItem("user", JSON.stringify(action.payload))
+      }
+    }), {}),
+    ...[signinThunk, signupThunk].reduce((acc, key) => ({
+      ...acc,
+      [key.rejected.type]: (state,  action: PayloadAction<string>) => {
+        state.isLoading = false
+        state.error = action.payload
+      },
+    }), {})
   }
 })
 
