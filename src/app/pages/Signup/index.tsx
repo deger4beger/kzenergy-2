@@ -40,7 +40,7 @@ const Signup = () => {
 		<AuthTemplate
 			button={
 				<Button
-					content="Signup"
+					content="Signup 🗝"
 					disabled={false}
 					loading={false}
 					onClick={onFormConfirm}

@@ -22,8 +22,15 @@
 			position: relative;
 			user-select: none;
 			.logoIcon {
+				font-weight: 600;
+				color: var(--main2);
 				position: relative;
 				top: 2px;
+				margin: 0px 2px;
+				text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
+					1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+				// position: relative;
+				// top: 2px;
 			}
 			// .tickX {
 			// 	width: 100px;

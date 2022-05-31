@@ -28,7 +28,7 @@ const Signin = () => {
 		<AuthTemplate
 			button={
 				<Button
-					content="Signin"
+					content="Signin 🗝"
 					disabled={false}
 					loading={false}
 					onClick={onFormConfirm}
