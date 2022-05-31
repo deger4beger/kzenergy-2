@@ -4,6 +4,8 @@ import Button from "../../components/Button"
 import Input from "../../components/Input"
 import Dropdown from "../../components/Dropdown"
 import { UserRoles } from "../../../types/user"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
+import { signupThunk } from "../../../lib/redux/auth/thunks"
 
 const Signup = () => {
 
@@ -15,6 +17,12 @@ const Signup = () => {
 		password: "",
 		repeatPassword: ""
 	})
+	const [localError, setLocalError] = useState("")
+
+	const dispatch = useAppDispatch()
+	const { isLoading, error } = useAppSelector(state => state.userReducer)
+
+	const isBtnDisabled = Object.values(formData).some(el => !el)
 
 	const setFormFieldValue = (
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -33,7 +41,13 @@ const Signup = () => {
 	}
 
 	const onFormConfirm = () => {
-		console.log(formData)
+		const { repeatPassword, ...payload } = formData
+		if (formData.password !== repeatPassword) {
+			setLocalError("Passwords are not the same")
+			return
+		}
+		setLocalError("")
+		dispatch(signupThunk(payload))
 	}
 
 	return (
@@ -41,13 +55,14 @@ const Signup = () => {
 			button={
 				<Button
 					content="Signup 🗝"
-					disabled={false}
-					loading={false}
+					disabled={isBtnDisabled}
+					loading={isLoading}
 					onClick={onFormConfirm}
 				/>
 			}
 			title="Signup form"
 			isSigninForm={false}
+			error={localError || error}
 		>
 			<Input
 				name="Fullname"

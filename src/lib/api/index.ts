@@ -1,6 +1,6 @@
 import Axios from "axios"
 
-const baseURL = "https://dew-chat.herokuapp.com"
+const baseURL = "http://localhost:8000"
 
 export const mainInstance = Axios.create({
     baseURL

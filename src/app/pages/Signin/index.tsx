@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
+import { signinThunk } from "../../../lib/redux/auth/thunks"
 
 const Signin = () => {
 
@@ -9,6 +11,11 @@ const Signin = () => {
 		email: "",
 		password: "",
 	})
+
+	const dispatch = useAppDispatch()
+	const { isLoading, error } = useAppSelector(state => state.userReducer)
+
+	const isBtnDisabled = Object.values(formData).some(el => !el)
 
 	const setFormFieldValue = (
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -21,7 +28,7 @@ const Signin = () => {
 	}
 
 	const onFormConfirm = () => {
-		console.log(formData)
+		dispatch(signinThunk(formData))
 	}
 
 	return (
@@ -29,12 +36,13 @@ const Signin = () => {
 			button={
 				<Button
 					content="Signin 🗝"
-					disabled={false}
-					loading={false}
+					disabled={isBtnDisabled}
+					loading={isLoading}
 					onClick={onFormConfirm}
 				/>
 			}
 			title="Signin form"
+			error={error}
 			isSigninForm
 		>
 			<Input

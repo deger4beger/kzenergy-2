@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 interface IAuthTemplateProps {
 	title: string
-	error?: string
+	error?: string | null
 	children: React.ReactNode[] | React.ReactNode
 	button: React.ReactNode
 	isSigninForm: boolean

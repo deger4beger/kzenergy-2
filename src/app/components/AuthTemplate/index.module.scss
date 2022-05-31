@@ -31,13 +31,9 @@
 		position: relative;
 		.error {
 			position: absolute;
-			bottom: -18px;
-			text-align: center;
-			width: 100%;
+			bottom: -10px;
 			left: 0;
-			color: var(--main);
-			border-bottom: 1px solid var(--main);
-			padding: 5px;
+			color: var(--error);
 		}
 	}
 }
