@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { signinThunk } from "../../../lib/redux/auth/thunks"
+import { resetError } from "../../../lib/redux/auth/slice"
 
 const Signin = () => {
 
@@ -14,6 +15,10 @@ const Signin = () => {
 
 	const dispatch = useAppDispatch()
 	const { isLoading, error } = useAppSelector(state => state.userReducer)
+
+	useEffect(() => {
+		dispatch(resetError())
+	})
 
 	const isBtnDisabled = Object.values(formData).some(el => !el)
 

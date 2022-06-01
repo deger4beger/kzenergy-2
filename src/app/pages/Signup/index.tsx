@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
@@ -6,6 +6,7 @@ import Dropdown from "../../components/Dropdown"
 import { UserRoles } from "../../../types/user"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { signupThunk } from "../../../lib/redux/auth/thunks"
+import { resetError } from "../../../lib/redux/auth/slice"
 
 const Signup = () => {
 
@@ -21,6 +22,10 @@ const Signup = () => {
 
 	const dispatch = useAppDispatch()
 	const { isLoading, error } = useAppSelector(state => state.userReducer)
+
+	useEffect(() => {
+		dispatch(resetError())
+	})
 
 	const isBtnDisabled = Object.values(formData).some(el => !el)
 

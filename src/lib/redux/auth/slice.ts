@@ -39,6 +39,9 @@ export const userSlice = createSlice({
       }
       state.isInitialized = true
     },
+    resetError(state) {
+      state.error = null
+    },
     logout(state) {
       state = initialState
       localStorage.removeItem("user")
@@ -71,6 +74,6 @@ export const userSlice = createSlice({
   }
 })
 
-export const { initializeUser, logout } = userSlice.actions
+export const { initializeUser, logout, resetError } = userSlice.actions
 
 export default userSlice.reducer
