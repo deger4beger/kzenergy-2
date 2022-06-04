@@ -1,11 +1,14 @@
 import { setupServer } from "msw/node"
+import { rest } from "msw"
+import axios from "axios"
+import Signin from "."
 import userEvent from "@testing-library/user-event"
 import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
-import { render, screen } from "../../../lib/utils/test/redux"
-import Signin from "."
-import axios from "axios"
+import { render, screen, waitFor } from "../../../lib/utils/test/redux"
+import { server } from "../../../lib/mocks/server"
+import { baseURL } from "../../../lib/api"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
@@ -50,7 +53,6 @@ describe("Signin component", () => {
 				error: null,
 			}),
 			expect.anything()
-
 		)
 	})
 	it("Correct props passed to  Button", () => {
@@ -66,7 +68,7 @@ describe("Signin component", () => {
 		)
 
 	})
-	it("Signin is happening", async () => {
+	it("Signin is happening without error", async () => {
 
 		render(<Signin />)
 
@@ -78,10 +80,43 @@ describe("Signin component", () => {
 			}),
 			expect.anything()
 		)
-		// expect(screen.queryByText(/Bruce/i)).not.toBeInTheDocument()
-		// expect(await screen.findByText(/error/i)).toBeInTheDocument()
-		// expect(await screen.findByText(/Bruce/i)).toBeInTheDocument()
-		// expect(await screen.findByTestId("AuthTemplate")).not.toBeInTheDocument()
+		await waitFor(() => expect(AuthTemplate).not.toHaveBeenCalledWith(
+			expect.objectContaining({
+				error: expect.any(String),
+			}),
+			expect.anything())
+		)
+
+	})
+
+	it("Signin is happening with error", async () => {
+
+		server.use(
+			rest.post(`${baseURL}/user/login/`, (req, res, ctx) => {
+    		return res.once(
+    			ctx.status(402),
+    			ctx.json({ detail: "Signin error" }),
+    			ctx.delay(150)
+    		)
+  		})
+		)
+
+		render(<Signin />)
+
+		userEvent.click(screen.getByTestId("Button"))
+
+		expect(await Button).toHaveBeenCalledWith(
+			expect.objectContaining({
+				loading: true
+			}),
+			expect.anything()
+		)
+		await waitFor(() => expect(AuthTemplate).toHaveBeenCalledWith(
+			expect.objectContaining({
+				error: "Signin error",
+			}),
+			expect.anything())
+		)
 
 	})
 })
