@@ -26,5 +26,11 @@
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "mocks",
+    "src/**/*.test.ts"
   ]
 }
