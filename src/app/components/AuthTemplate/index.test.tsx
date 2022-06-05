@@ -7,10 +7,10 @@ import userEvent from "@testing-library/user-event"
 
 describe("AuthTemplate component", () => {
 
-	it("Rendered with props", () => {
+	const history = createMemoryHistory()
+	jest.spyOn(history, "push")
 
-		const history = createMemoryHistory()
-		history.push = jest.fn()
+	it("Rendered with props", () => {
 
 		render(
 		  <Router history={history as any}>
@@ -32,9 +32,6 @@ describe("AuthTemplate component", () => {
 
 	it("Error is shown", () => {
 
-		const history = createMemoryHistory()
-		history.push = jest.fn()
-
 		render(
 		  <Router history={history as any}>
 		    <AuthTemplate
@@ -53,9 +50,6 @@ describe("AuthTemplate component", () => {
 	})
 
 	it("First link is shown and works well", () => {
-
-		const history = createMemoryHistory()
-		history.push = jest.fn()
 
 		render(
 		  <Router history={history as any}>
@@ -79,9 +73,6 @@ describe("AuthTemplate component", () => {
 	})
 
 	it("Seconds link is shown and works well", () => {
-
-		const history = createMemoryHistory()
-		history.push = jest.fn()
 
 		render(
 		  <Router history={history as any}>
