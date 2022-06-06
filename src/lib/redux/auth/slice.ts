@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { UserData, UserRoles } from "../../../types/user"
+import { UserData } from "../../../types/user"
 import { signinThunk, signupThunk } from "./thunks"
 import { Nullable } from "../../../types/infered"
 import { isTokenValid } from "../../utils/jwt"

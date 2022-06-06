@@ -16,5 +16,6 @@ export const isTokenValid = () => {
 		return false
 	} catch (e) {
 		localStorage.removeItem("user")
+		return false
 	}
 }

@@ -7,9 +7,9 @@ import { server } from "./lib/mocks/server"
 
 beforeAll(() => {
 
-	jest.spyOn(window.localStorage.__proto__, "setItem")
-	jest.spyOn(window.localStorage.__proto__, "getItem")
-	jest.spyOn(window.localStorage.__proto__, "removeItem")
+	jest.spyOn(Storage.prototype, "setItem")
+	jest.spyOn(Storage.prototype, "getItem")
+	jest.spyOn(Storage.prototype, "removeItem")
 
   // Enable the mocking in tests.
   server.listen()
