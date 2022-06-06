@@ -12,8 +12,8 @@ import { baseURL } from "../../../lib/api"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
-    default: jest.fn(() => (
-        <div data-testid="Input" />
+    default: jest.fn(({onChange}) => (
+        <input data-testid="Input" onChange={onChange} />
     ))
 }))
 jest.mock("../../components/Button", () => ({
@@ -44,7 +44,7 @@ describe("Signin component", () => {
 
 		render(<Signin />)
 
-		screen.queryAllByTestId("Input").forEach(el => {
+		screen.getAllByTestId("Input").forEach(el => {
 			expect(screen.queryByTestId("AuthTemplate")).toContainElement(el)
 		})
 
@@ -119,4 +119,28 @@ describe("Signin component", () => {
 		)
 
 	})
+
+	it("onChange handlers works well", () => {
+
+		render(<Signin />)
+
+		const inputs = screen.getAllByTestId("Input")
+		userEvent.type(inputs[0], "mail")
+		userEvent.type(inputs[1], "pass")
+
+		expect(Input).toHaveBeenCalledWith(
+			expect.objectContaining({
+				value: "mail"
+			}),
+			expect.anything()
+		)
+		expect(Input).toHaveBeenCalledWith(
+			expect.objectContaining({
+				value: "pass"
+			}),
+			expect.anything()
+		)
+
+	})
+
 })

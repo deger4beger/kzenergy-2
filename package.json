@@ -31,6 +31,7 @@
   "scripts": {
     "dev": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts start",
     "test": "react-scripts test",
+    "test:coverage": "yarn test --coverage .",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },

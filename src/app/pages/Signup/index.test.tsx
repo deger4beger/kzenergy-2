@@ -11,8 +11,8 @@ import Signup from "."
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
-    default: jest.fn(() => (
-        <div data-testid="Input" />
+    default: jest.fn(({onChange}) => (
+        <input data-testid="Input" onChange={onChange} />
     ))
 }))
 jest.mock("../../components/Button", () => ({
@@ -23,8 +23,8 @@ jest.mock("../../components/Button", () => ({
 }))
 jest.mock("../../components/Dropdown", () => ({
     __esModule: true,
-    default: jest.fn(() => (
-        <div data-testid="Dropdown"></div>
+    default: jest.fn(({setSelected}) => (
+        <div data-testid="Dropdown" onClick={() => setSelected("some value")}></div>
     ))
 }))
 jest.mock("../../components/AuthTemplate", () => ({
@@ -80,7 +80,7 @@ describe("Signup component", () => {
 
 		userEvent.click(screen.getByTestId("Button"))
 
-		expect(await Button).toHaveBeenCalledWith(
+		expect(Button).toHaveBeenCalledWith(
 			expect.objectContaining({
 				loading: true
 			}),
@@ -111,7 +111,7 @@ describe("Signup component", () => {
 
 		userEvent.click(screen.getByTestId("Button"))
 
-		expect(await Button).toHaveBeenCalledWith(
+		expect(Button).toHaveBeenCalledWith(
 			expect.objectContaining({
 				loading: true
 			}),
@@ -125,4 +125,49 @@ describe("Signup component", () => {
 		)
 
 	})
+
+	it("onChange handlers works well, and local error is shown", () => {
+
+		render(<Signup />)
+
+		const inputs = screen.getAllByTestId("Input")
+
+		const formData = ["name", "mail", "phone", "pass1", "pass2"]
+		formData.forEach((value, index) => {
+			userEvent.type(inputs[index], value)
+		})
+
+		formData.forEach(value => {
+			expect(Input).toHaveBeenCalledWith(
+				expect.objectContaining({
+					value
+				}),
+				expect.anything()
+			)
+		})
+
+		userEvent.click(screen.getByTestId("Button"))
+		expect(AuthTemplate).toHaveBeenCalledWith(
+			expect.objectContaining({
+				error: "Passwords are not the same"
+			}),
+			expect.anything()
+		)
+
+	})
+
+	it("Role handler works well", () => {
+
+		render(<Signup />)
+
+		userEvent.click(screen.getByTestId("Dropdown"))
+		expect(Dropdown).toHaveBeenCalledWith(
+			expect.objectContaining({
+				selected: "some value"
+			}),
+			expect.anything()
+		)
+
+	})
+
 })
