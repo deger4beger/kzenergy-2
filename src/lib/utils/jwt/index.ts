@@ -1,5 +1,5 @@
 import decode, { JwtPayload } from "jwt-decode"
-import { UserData } from "../../types/user"
+import { UserData } from "../../../types/user"
 
 export const isTokenValid = () => {
 	try {

@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import { isTokenValid } from "../../app/validators/token"
 import { logout } from "../redux/auth/slice"
 import { AppDispatch } from "../redux"
 import { mainInstance } from "."
+import { isTokenValid } from "../utils/jwt"
 
 const interceptor = (dispatch: AppDispatch) => {
     mainInstance.interceptors.request.use((config) => {

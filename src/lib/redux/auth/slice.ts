@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { UserData, UserRoles } from "../../../types/user"
-import { Nullable } from "../../../types/infered"
-import { isTokenValid } from "../../../app/validators/token"
 import { signinThunk, signupThunk } from "./thunks"
+import { Nullable } from "../../../types/infered"
+import { isTokenValid } from "../../utils/jwt"
 
 interface IUserState {
   userData: Nullable<UserData>
@@ -43,7 +43,8 @@ export const userSlice = createSlice({
       state.error = null
     },
     logout(state) {
-      state = initialState
+      state.userData = initialState.userData
+      state.isAuth = false
       localStorage.removeItem("user")
     }
   },
