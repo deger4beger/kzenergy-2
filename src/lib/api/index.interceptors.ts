@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import Axios from "axios"
 import { logout } from "../redux/auth/slice"
 import { AppDispatch } from "../redux"
 import { mainInstance } from "."
