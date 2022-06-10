@@ -69,13 +69,13 @@ const Signup = () => {
 			isSigninForm={false}
 			error={localError || error}
 		>
-			<Input
+			{/*<Input
 				name="Fullname"
 				onChange={(e) => setFormFieldValue(e, "fullname")}
 				placeholder="Full name"
 				type="text"
 				value={formData.fullname}
-			/>
+			/>*/}
 			<Input
 				name="Email"
 				onChange={(e) => setFormFieldValue(e, "email")}
