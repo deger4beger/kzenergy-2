@@ -1,6 +1,4 @@
-import { setupServer } from "msw/node"
 import { rest } from "msw"
-import axios from "axios"
 import Signin from "."
 import userEvent from "@testing-library/user-event"
 import AuthTemplate from "../../components/AuthTemplate"

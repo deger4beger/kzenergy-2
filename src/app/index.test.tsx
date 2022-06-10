@@ -1,7 +1,3 @@
-import Header from "./parts/Header"
-import Footer from "./parts/Footer"
-import AppRouter from "./components/AppRouter"
-import Preloader from "./components/Preloader"
 import { render, screen } from "../lib/utils/test/redux"
 import * as ReduxHooks from "./hooks/redux"
 import App from "."

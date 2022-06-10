@@ -13,9 +13,7 @@ describe("isTokenValid function", () => {
 	it("Invalid if token has expired", () => {
 
 		const userData = {
-			token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\
-				eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZXhwIjoxNTE2MjM5MDIyfQ.\
-				uABcDgaLYZTcO8PbD317GCngfBBYmxwg1DKDZU3YBZ4",
+			token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZXhwIjoxNTE2MjM5MDIyfQ.uABcDgaLYZTcO8PbD317GCngfBBYmxwg1DKDZU3YBZ4",
 			fullname: "John Doe"
 		}
 		Storage.prototype.getItem = jest.fn(() => JSON.stringify(userData))
@@ -41,9 +39,7 @@ describe("isTokenValid function", () => {
 	it("Valid if token has not expired", () => {
 
 		const userData = {
-			token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\
-				eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZXhwIjo5NTE2MjM5MDIyfQ.\
-				uABcDgaLYZTcO8PbD317GCngfBBYmxwg1DKDZU3YBZ4",
+			token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZXhwIjo5NTE2MjM5MDIyfQ.uABcDgaLYZTcO8PbD317GCngfBBYmxwg1DKDZU3YBZ4",
 			fullname: "John Doe"
 		}
 		Storage.prototype.getItem = jest.fn(() => JSON.stringify(userData))

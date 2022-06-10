@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import cn from "classnames"
 import s from "./index.module.scss"
-import { UserRoles } from "../../../types/user"
 
 interface DropdownProps {
 	options: string[],

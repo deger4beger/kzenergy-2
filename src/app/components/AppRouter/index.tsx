@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from "react"
-import { Redirect, Route, Switch } from "react-router-dom"
 import { useAppSelector } from "../../hooks/redux"
 import { UserRoles } from "../../../types/user"
 

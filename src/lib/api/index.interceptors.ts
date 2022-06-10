@@ -4,11 +4,10 @@ import { AppDispatch } from "../redux"
 import { mainInstance } from "."
 import { isTokenValid } from "../utils/jwt"
 
-const interceptor = (dispatch: AppDispatch) => {
+export const interceptor = (dispatch: AppDispatch) => {
     mainInstance.interceptors.request.use((config) => {
         const userData = isTokenValid()
         if (userData) {
-            // (config.headers ??= {}).Authorization = `Bearer ${userData.token}` not working
             !config.headers && (config.headers = {})
             config.headers.Authorization = `Bearer ${userData.token}`
         }
@@ -18,7 +17,4 @@ const interceptor = (dispatch: AppDispatch) => {
         }
         return config
     })
-}
-export default {
-    interceptor,
 }

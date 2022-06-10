@@ -1,8 +1,3 @@
-import Unauthorized from "./routes/Unauthorized"
-import Facility from "./routes/Facility"
-import Ecology from "./routes/Ecology"
-import Admin from "./routes/Admin"
-import Preloader from "../Preloader"
 import AppRouter from "."
 import * as ReduxHooks from "../../hooks/redux"
 import { render, screen } from "../../../lib/utils/test/redux"
