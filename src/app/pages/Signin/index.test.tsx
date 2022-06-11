@@ -119,6 +119,30 @@ describe("Signin component", () => {
 
 	})
 
+	it("Signin is happening with non-custom server error", async () => {
+
+		server.use(
+			rest.post(url("/user/login/"), (req, res, ctx) => {
+    		return res.once(
+    			ctx.status(502),
+    			ctx.delay(150)
+    		)
+  		})
+		)
+
+		render(<Signin />)
+
+		userEvent.click(screen.getByTestId("Button"))
+
+		await waitFor(() => expect(AuthTemplate).toHaveBeenCalledWith(
+			expect.objectContaining({
+				error: "Authorization failed",
+			}),
+			expect.anything())
+		)
+
+	})
+
 	it("onChange handlers works well", () => {
 
 		render(<Signin />)

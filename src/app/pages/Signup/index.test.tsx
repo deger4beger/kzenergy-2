@@ -62,7 +62,7 @@ describe("Signup component", () => {
 			expect.anything()
 		)
 	})
-	it("Correct props passed to  Button", () => {
+	it("Correct props passed to Button", () => {
 
 		render(<Signup />)
 
@@ -96,7 +96,7 @@ describe("Signup component", () => {
 
 	})
 
-	it("Signin is happening with error", async () => {
+	it("Signup is happening with error", async () => {
 
 		server.use(
 			rest.post(url("/user/register/"), (req, res, ctx) => {
@@ -121,6 +121,30 @@ describe("Signup component", () => {
 		await waitFor(() => expect(AuthTemplate).toHaveBeenCalledWith(
 			expect.objectContaining({
 				error: "Signup error",
+			}),
+			expect.anything())
+		)
+
+	})
+
+	it("Signup is happening with non-custom server error", async () => {
+
+		server.use(
+			rest.post(url("/user/register/"), (req, res, ctx) => {
+    		return res.once(
+    			ctx.status(502),
+    			ctx.delay(150)
+    		)
+  		})
+		)
+
+		render(<Signup />)
+
+		userEvent.click(screen.getByTestId("Button"))
+
+		await waitFor(() => expect(AuthTemplate).toHaveBeenCalledWith(
+			expect.objectContaining({
+				error: "Registration failed",
 			}),
 			expect.anything())
 		)
