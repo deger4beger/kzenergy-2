@@ -7,6 +7,7 @@ import Input from "../../components/Input"
 import { render, screen, waitFor } from "../../../lib/utils/test/redux"
 import { server } from "../../../lib/mocks/server"
 import { baseURL } from "../../../lib/api"
+import { url } from "../../../lib/mocks/server/handlers"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
@@ -90,7 +91,7 @@ describe("Signin component", () => {
 	it("Signin is happening with error", async () => {
 
 		server.use(
-			rest.post(`${baseURL}/user/login/`, (req, res, ctx) => {
+			rest.post(url("/user/login/"), (req, res, ctx) => {
     		return res.once(
     			ctx.status(402),
     			ctx.json({ detail: "Signin error" }),

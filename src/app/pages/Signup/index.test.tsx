@@ -8,6 +8,7 @@ import Input from "../../components/Input"
 import Dropdown from "../../components/Dropdown"
 import userEvent from "@testing-library/user-event"
 import Signup from "."
+import { url } from "../../../lib/mocks/server/handlers"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
@@ -98,7 +99,7 @@ describe("Signup component", () => {
 	it("Signin is happening with error", async () => {
 
 		server.use(
-			rest.post(`${baseURL}/user/register/`, (req, res, ctx) => {
+			rest.post(url("/user/register/"), (req, res, ctx) => {
     		return res.once(
     			ctx.status(402),
     			ctx.json({ detail: "Signup error" }),
