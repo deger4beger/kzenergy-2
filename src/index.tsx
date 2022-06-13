@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client"
-import App from "./app"
 import AppProvider from "./app/providers/AppProvider"
+import App from "./app"
 
 const container = document.getElementById("root")
 const root = createRoot(container as Element)

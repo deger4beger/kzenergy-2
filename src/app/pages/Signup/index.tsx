@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
-import AuthTemplate from "../../components/AuthTemplate"
-import Button from "../../components/Button"
-import Input from "../../components/Input"
-import Dropdown from "../../components/Dropdown"
-import { UserRoles } from "../../../types/user"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { signupThunk } from "../../../lib/redux/auth/thunks"
 import { resetError } from "../../../lib/redux/auth/slice"
+import { UserRoles } from "../../../types/user"
+import AuthTemplate from "../../components/AuthTemplate"
+import Dropdown from "../../components/Dropdown"
+import Button from "../../components/Button"
+import Input from "../../components/Input"
 
 const Signup = () => {
 
