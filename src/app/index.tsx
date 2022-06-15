@@ -7,7 +7,7 @@ import Footer from "./parts/Footer"
 import AppRouter from "./components/AppRouter"
 import Preloader from "./components/Preloader"
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.REACT_APP_ENVIRONMENT === "development") {
   const { worker } = require("../lib/mocks/api/worker")
   worker.start()
 }

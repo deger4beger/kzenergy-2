@@ -30,12 +30,12 @@
   },
   "scripts": {
     "dev": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts start",
-    "dev:env": "react-scripts start",
+    "dev:mocked": "set \"REACT_APP_ENVIRONMENT=development\" && yarn dev",
     "cypress": "cypress open --config-file cypress/cypress.config.ts",
     "cypress:headless": "cypress run --browser chrome --headless --config-file cypress/cypress.config.ts",
     "test": "react-scripts test",
-    "test:e2e": "start-server-and-test 'yarn dev' 3000 'yarn cypress'",
-    "test:e2e:ci": "start-server-and-test 'yarn dev' 3000 'yarn cypress:headless'",
+    "test:e2e": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress'",
+    "test:e2e:ci": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress:headless'",
     "test:coverage": "yarn test --coverage .",
     "lint": "eslint src",
     "build": "react-scripts build",
@@ -66,5 +66,8 @@
     "history": "^5.3.0",
     "node-sass": "7.0.1",
     "start-server-and-test": "^1.14.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

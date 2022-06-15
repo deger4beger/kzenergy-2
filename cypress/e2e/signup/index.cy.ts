@@ -24,7 +24,7 @@ describe("Signup page", () => {
 		cy.findAllByText(/signup/i).spread((_, secondBtn) => {
 			secondBtn.click()
 		})
-		cy.findByText(/signup form/i).should("not.be.visible")
+		cy.findByText(/signup form/i).should("not.exist")
 
 	})
 
