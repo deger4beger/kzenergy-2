@@ -1,5 +1,6 @@
 import { rest } from "msw"
-import { server } from "../../../lib/mocks/server"
+import { server } from "../../../lib/mocks/api/server"
+import { url } from "../../../lib/mocks/api/handlers"
 import { baseURL } from "../../../lib/api"
 import { render, screen, waitFor } from "../../../lib/utils/test/redux"
 import AuthTemplate from "../../components/AuthTemplate"
@@ -8,7 +9,6 @@ import Input from "../../components/Input"
 import Dropdown from "../../components/Dropdown"
 import userEvent from "@testing-library/user-event"
 import Signup from "."
-import { url } from "../../../lib/mocks/server/handlers"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,

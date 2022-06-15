@@ -30,6 +30,7 @@
   },
   "scripts": {
     "dev": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts start",
+    "dev:env": "react-scripts start",
     "cypress": "cypress open --config-file cypress/cypress.config.ts",
     "cypress:headless": "cypress run --browser chrome --headless --config-file cypress/cypress.config.ts",
     "test": "react-scripts test",

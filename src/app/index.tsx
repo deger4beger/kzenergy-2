@@ -7,6 +7,11 @@ import Footer from "./parts/Footer"
 import AppRouter from "./components/AppRouter"
 import Preloader from "./components/Preloader"
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("../lib/mocks/api/worker")
+  worker.start()
+}
+
 function App() {
 
   const dispatch = useAppDispatch()

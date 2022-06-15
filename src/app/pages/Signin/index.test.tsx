@@ -5,9 +5,9 @@ import AuthTemplate from "../../components/AuthTemplate"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
 import { render, screen, waitFor } from "../../../lib/utils/test/redux"
-import { server } from "../../../lib/mocks/server"
+import { server } from "../../../lib/mocks/api/server"
+import { url } from "../../../lib/mocks/api/handlers"
 import { baseURL } from "../../../lib/api"
-import { url } from "../../../lib/mocks/server/handlers"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
