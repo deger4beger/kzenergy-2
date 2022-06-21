@@ -1,6 +1,6 @@
+import { useState } from "react"
 import React from "./index.module.scss"
 import s from "./index.module.scss"
-import { useState } from "react"
 
 interface InputProps {
 	name: string
