@@ -1,59 +1,16 @@
-import React, { useEffect, useState } from "react"
-import { useAppDispatch, useAppSelector } from "../../hooks/redux"
-import { signupThunk } from "../../../lib/redux/auth/thunks"
-import { resetError } from "../../../lib/redux/auth/slice"
-import { UserRoles } from "../../../types/user"
+import React from "react"
 import AuthTemplate from "../../components/AuthTemplate"
 import Dropdown from "../../components/Dropdown"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
+import { useSignupLogic } from "./index.logic"
 
 const Signup = () => {
 
-	const [formData, setFormData] = useState({
-		fullname: "",
-		email: "",
-		phone: "",
-		role: "" as UserRoles,
-		password: "",
-		repeatPassword: ""
-	})
-	const [localError, setLocalError] = useState("")
-
-	const dispatch = useAppDispatch()
-	const { isLoading, error } = useAppSelector(state => state.userReducer)
-
-	useEffect(() => {
-		dispatch(resetError())
-	})
-
-	const isBtnDisabled = Object.values(formData).some(el => !el)
-
-	const setFormFieldValue = (
-		e: React.ChangeEvent<HTMLInputElement>,
-		fieldName: keyof typeof formData
-	) => {
-		setFormData(prev => ({
-			...prev,
-			[fieldName]: e.target.value
-		}))
-	}
-	const setRole = (role: string) => {
-		setFormData(prev => ({
-			...prev,
-			role: role as UserRoles
-		}))
-	}
-
-	const onFormConfirm = () => {
-		const { repeatPassword, ...payload } = formData
-		if (formData.password !== repeatPassword) {
-			setLocalError("Passwords are not the same")
-			return
-		}
-		setLocalError("")
-		dispatch(signupThunk(payload))
-	}
+	const {
+		isBtnDisabled, isLoading, onFormConfirm, localError,
+		error, setFormFieldValue, formData, setRole, UserRoles
+	} = useSignupLogic()
 
 	return (
 		<AuthTemplate
