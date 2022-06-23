@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom"
 import { server } from "./lib/mocks/api/server"
+import { worker } from "./lib/mocks/api/worker"
 
 beforeAll(() => {
 
@@ -18,6 +19,7 @@ beforeAll(() => {
 afterEach(() => {
   // Reset any runtime handlers tests may use.
   server.resetHandlers()
+  worker.resetHandlers()
 })
 
 afterAll(() => {
