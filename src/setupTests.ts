@@ -19,7 +19,6 @@ beforeAll(() => {
 afterEach(() => {
   // Reset any runtime handlers tests may use.
   server.resetHandlers()
-  worker.resetHandlers()
 })
 
 afterAll(() => {
