@@ -9,6 +9,7 @@ import Input from "../../components/Input"
 import Dropdown from "../../components/Dropdown"
 import userEvent from "@testing-library/user-event"
 import Signup from "."
+import { defaultErrorHandlers } from "../../../lib/mocks/api/defaultHandlers"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
@@ -100,11 +101,7 @@ describe("Signup component", () => {
 
 		server.use(
 			rest.post(url("/user/register/"), (req, res, ctx) => {
-    		return res.once(
-    			ctx.status(402),
-    			ctx.json({ detail: "Signup error" }),
-    			ctx.delay(150)
-    		)
+    		return res.once( ctx.status(402), ctx.json({ detail: "Signup error" }) )
   		})
 		)
 
@@ -129,14 +126,7 @@ describe("Signup component", () => {
 
 	it("Signup is happening with non-custom server error", async () => {
 
-		server.use(
-			rest.post(url("/user/register/"), (req, res, ctx) => {
-    		return res.once(
-    			ctx.status(502),
-    			ctx.delay(150)
-    		)
-  		})
-		)
+		server.use(...defaultErrorHandlers)
 
 		render(<Signup />)
 

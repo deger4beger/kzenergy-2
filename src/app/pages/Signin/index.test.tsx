@@ -8,6 +8,7 @@ import { render, screen, waitFor } from "../../../lib/utils/test/redux"
 import { server } from "../../../lib/mocks/api/server"
 import { url } from "../../../lib/mocks/api/handlers"
 import { baseURL } from "../../../lib/api"
+import { defaultErrorHandlers } from "../../../lib/mocks/api/defaultHandlers"
 
 jest.mock("../../components/Input", () => ({
     __esModule: true,
@@ -88,15 +89,11 @@ describe("Signin component", () => {
 
 	})
 
-	it("Signin is happening with error", async () => {
+	it("Signin is happening with server error", async () => {
 
 		server.use(
 			rest.post(url("/user/login/"), (req, res, ctx) => {
-    		return res.once(
-    			ctx.status(402),
-    			ctx.json({ detail: "Signin error" }),
-    			ctx.delay(150)
-    		)
+    		return res.once( ctx.status(402), ctx.json({ detail: "Signin error" }) )
   		})
 		)
 
@@ -121,14 +118,7 @@ describe("Signin component", () => {
 
 	it("Signin is happening with non-custom server error", async () => {
 
-		server.use(
-			rest.post(url("/user/login/"), (req, res, ctx) => {
-    		return res.once(
-    			ctx.status(502),
-    			ctx.delay(150)
-    		)
-  		})
-		)
+		server.use(...defaultErrorHandlers)
 
 		render(<Signin />)
 
