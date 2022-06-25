@@ -21,4 +21,4 @@ jobs:
       - name: integration & unit tests
         run: yarn test
       - name: e2e tests
-        run: yarn test:e2e:ci
+        run: yarn test:e2e:chrome
