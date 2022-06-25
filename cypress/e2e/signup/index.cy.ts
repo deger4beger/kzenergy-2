@@ -23,6 +23,7 @@ describe("Signup page", () => {
 
 		cy.findByPlaceholderText(/name/i).type("name")
 		cy.findByPlaceholderText(/email/i).type("email")
+		cy.findByPlaceholderText(/phone/i).type("phone")
 		cy.findByText(/select/i).click()
 		cy.findByText(/ecologist/i).click()
 		cy.findByPlaceholderText("Password").type("password")
