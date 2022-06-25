@@ -7,6 +7,7 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     strategy:
       matrix:
         node-varsion: [ 14.x ]
@@ -22,3 +23,5 @@ jobs:
         run: yarn test
       - name: e2e tests
         run: yarn test:e2e:chrome
+        env:
+          REACT_APP_ENVIRONMENT: development
