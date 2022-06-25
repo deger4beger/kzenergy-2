@@ -6,7 +6,7 @@ import { UserRoles } from "../../../types/user"
 
 export const useSignupLogic = () => {
 
-		const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState({
 		fullname: "",
 		email: "",
 		phone: "",

@@ -32,7 +32,7 @@
     "dev": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts start",
     "dev:mocked": "set \"REACT_APP_ENVIRONMENT=development\" && yarn dev",
     "cypress": "cypress open --config-file cypress/cypress.config.ts",
-    "cypress:headless": "cypress run --browser chrome --headless --config-file cypress/cypress.config.ts",
+    "cypress:headless": "cypress run --browser edge --headless --config-file cypress/cypress.config.ts",
     "test": "react-scripts test",
     "test:e2e": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress'",
     "test:e2e:ci": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress:headless'",
