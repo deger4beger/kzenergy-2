@@ -36,7 +36,7 @@
     "cypress:headless:chrome": "cypress run --browser chrome --headless --config-file cypress/cypress.config.ts",
     "test": "react-scripts test",
     "test:e2e": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress'",
-    "test:e2e:edge": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress:headless'",
+    "test:e2e:edge": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress:headless:edge'",
     "test:e2e:chrome": "start-server-and-test 'yarn dev:mocked' 3000 'yarn cypress:headless:chrome'",
     "test:coverage": "yarn test --coverage .",
     "lint": "eslint src",

@@ -21,6 +21,9 @@ describe("Signin page", () => {
 
 	it("Signin and redirect right after is working", () => {
 
+		cy.findByPlaceholderText(/email/i).type("email")
+		cy.findByPlaceholderText(/password/i).type("password")
+
 		cy.findAllByText(/signin/i).spread((_, secondBtn) => {
 			secondBtn.click()
 		})
