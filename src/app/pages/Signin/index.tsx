@@ -10,7 +10,6 @@ const Signin = () => {
 		isBtnDisabled, isLoading, onFormConfirm, error,
 		setFormFieldValue, formData
 	} = useSigninLogic()
-	console.log(error)
 
 	return (
 		<AuthTemplate
@@ -28,14 +27,14 @@ const Signin = () => {
 		>
 			<Input
 				name="Email"
-				onChange={(e) => setFormFieldValue(e, "email")}
+				onChange={setFormFieldValue("email")}
 				placeholder="Email"
 				type="text"
 				value={formData.email}
 			/>
 			<Input
 				name="Password"
-				onChange={(e) => setFormFieldValue(e, "password")}
+				onChange={setFormFieldValue("password")}
 				placeholder="Password"
 				type="password"
 				value={formData.password}

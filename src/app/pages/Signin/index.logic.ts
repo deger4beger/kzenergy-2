@@ -5,14 +5,12 @@ import { resetError } from "../../../lib/redux/auth/slice"
 
 export const useSigninLogic = () => {
 
-	const dispatch = useAppDispatch()
-	const { isLoading, error } = useAppSelector(state => state.userReducer)
-
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 	})
-	const isBtnDisabled = Object.values(formData).some(el => !el)
+	const dispatch = useAppDispatch()
+	const { isLoading, error } = useAppSelector(state => state.userReducer)
 
 	useEffect(() => {
 		dispatch(resetError())
@@ -21,9 +19,12 @@ export const useSigninLogic = () => {
 		}
 	}, [])
 
+	const isBtnDisabled = Object.values(formData).some(el => !el)
+
 	const setFormFieldValue = (
-		e: React.ChangeEvent<HTMLInputElement>,
 		fieldName: keyof typeof formData
+	) => (
+		e: React.ChangeEvent<HTMLInputElement>,
 	) => {
 		setFormData(prev => ({
 			...prev,

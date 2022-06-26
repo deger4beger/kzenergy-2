@@ -28,21 +28,21 @@ const Signup = () => {
 		>
 			<Input
 				name="Fullname"
-				onChange={(e) => setFormFieldValue(e, "fullname")}
+				onChange={setFormFieldValue("fullname")}
 				placeholder="Full name"
 				type="text"
 				value={formData.fullname}
 			/>
 			<Input
 				name="Email"
-				onChange={(e) => setFormFieldValue(e, "email")}
+				onChange={setFormFieldValue("email")}
 				placeholder="Email"
 				type="text"
 				value={formData.email}
 			/>
 			<Input
 				name="Phone number"
-				onChange={(e) => setFormFieldValue(e, "phone")}
+				onChange={setFormFieldValue("phone")}
 				placeholder="Phone number"
 				type="tel"
 				value={formData.phone}
@@ -55,14 +55,14 @@ const Signup = () => {
 			/>
 			<Input
 				name="Password"
-				onChange={(e) => setFormFieldValue(e, "password")}
+				onChange={setFormFieldValue("password")}
 				placeholder="Password"
 				type="password"
 				value={formData.password}
 			/>
 			<Input
 				name="Repeat password"
-				onChange={(e) => setFormFieldValue(e, "repeatPassword")}
+				onChange={setFormFieldValue("repeatPassword")}
 				placeholder="Repeat password"
 				type="password"
 				value={formData.repeatPassword}

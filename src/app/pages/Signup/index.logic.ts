@@ -15,7 +15,6 @@ export const useSignupLogic = () => {
 		repeatPassword: ""
 	})
 	const [localError, setLocalError] = useState("")
-
 	const dispatch = useAppDispatch()
 	const { isLoading, error } = useAppSelector(state => state.userReducer)
 
@@ -29,8 +28,9 @@ export const useSignupLogic = () => {
 	const isBtnDisabled = Object.values(formData).some(el => !el)
 
 	const setFormFieldValue = (
-		e: React.ChangeEvent<HTMLInputElement>,
 		fieldName: keyof typeof formData
+	) => (
+		e: React.ChangeEvent<HTMLInputElement>,
 	) => {
 		setFormData(prev => ({
 			...prev,
