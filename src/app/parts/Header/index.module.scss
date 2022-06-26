@@ -22,32 +22,20 @@
 			position: relative;
 			user-select: none;
 			.logoIcon {
+				font-size: 16px;
 				font-weight: 600;
-				color: var(--main2);
 				position: relative;
+				color: var(--bg2);
 				top: 2px;
 				margin: 0px 2px;
 				text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
 					1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
-				// position: relative;
-				// top: 2px;
+				position: relative;
+				top: 2px;
 			}
-			// .tickX {
-			// 	width: 100px;
-			// 	height: 2px;
-			// 	background-color: black;
-			// 	position: absolute;
-			// 	left: -10px;
-			// 	bottom: 2px;
-			// }
-			// .tickY {
-			// 	width: 2px;
-			// 	height: 4px;
-			// 	background-color: black;
-			// 	position: absolute;
-			// 	top: 24px;
-			// 	right: 47px;
-			// }
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }

@@ -6,9 +6,8 @@ const Header = () => {
 		<div className={s.wrapper}>
 			<div className={s.container}>
 				<div className={s.logo}>
-					sh
-					<span className={s.logoIcon}>⛭</span>
-					qan
+					shoqan-inc.
+					{/*<span className={s.logoIcon}>⛭</span>*/}
 					{/*<img src={"assets/icons/logo.png"} alt="#" className={s.logoIcon} draggable={false} />*/}
 					{/*<div className={s.tickX} />
 					<div className={s.tickY} />*/}
