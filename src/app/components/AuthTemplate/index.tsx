@@ -2,7 +2,7 @@ import React from "react"
 import s from "./index.module.scss"
 import { Link } from "react-router-dom"
 
-interface IAuthTemplateProps {
+interface Props {
 	title: string
 	error?: string | null
 	children: React.ReactNode[] | React.ReactNode
@@ -10,7 +10,7 @@ interface IAuthTemplateProps {
 	isSigninForm: boolean
 }
 
-const AuthTemplate: React.FC<IAuthTemplateProps> = ({
+const AuthTemplate: React.FC<Props> = ({
 	title,
 	error,
 	children,

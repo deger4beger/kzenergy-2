@@ -2,7 +2,7 @@ import React from "react"
 import cn from "classnames"
 import s from "./index.module.scss"
 
-interface IButtonProps {
+interface Props {
 	content: string
 	onClick: () => void
 	disabled: boolean
@@ -10,7 +10,7 @@ interface IButtonProps {
 	styles?: object
 }
 
-const Button: React.FC<IButtonProps> = ({content, onClick, disabled, loading}) => {
+const Button: React.FC<Props> = ({content, onClick, disabled, loading}) => {
 	return <div onClick={onClick} className={cn(s.button, {
 			[s.disabled]: disabled,
 			[s.loading]: loading

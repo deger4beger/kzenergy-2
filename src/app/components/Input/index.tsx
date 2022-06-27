@@ -2,7 +2,7 @@ import { useState } from "react"
 import React from "./index.module.scss"
 import s from "./index.module.scss"
 
-interface InputProps {
+interface Props {
 	name: string
 	placeholder: string
 	type: string
@@ -10,7 +10,7 @@ interface InputProps {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Input: React.FC<InputProps> = ({ type, ...inputProps }) => {
+const Input: React.FC<Props> = ({ type, ...inputProps }) => {
 
 	const [inputType, setInputType] = useState(type)
 

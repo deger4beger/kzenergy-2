@@ -4,7 +4,7 @@ import { signinThunk, signupThunk } from "./thunks"
 import { Nullable } from "../../../types/infered"
 import { isTokenValid } from "../../utils/jwt"
 
-interface IUserState {
+interface State {
   userData: Nullable<UserData>
   isInitialized: boolean
   isAuth: boolean
@@ -12,7 +12,7 @@ interface IUserState {
   error: string | null
 }
 
-export const initialState: IUserState = {
+export const initialState: State = {
   userData: {
     id: null,
     fullname: null,

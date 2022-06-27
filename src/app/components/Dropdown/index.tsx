@@ -2,14 +2,14 @@ import React, { useState } from "react"
 import cn from "classnames"
 import s from "./index.module.scss"
 
-interface DropdownProps {
+interface Props {
 	options: string[],
 	title: string,
 	selected: string,
 	setSelected: (option: string) => void
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown: React.FC<Props> = ({
 	options,
 	title,
 	selected,
