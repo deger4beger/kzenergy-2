@@ -5,6 +5,16 @@
 	}
 }
 
+.upper, .lower {
+	.container {
+		width: 60%;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+}
+
 .upper {
 	width: 100%;
 	color: var(--additional);
@@ -19,16 +29,6 @@
 	border-bottom: 1px solid var(--additional);
 	top: 0;
 	left: 0;
-}
-
-.upper, .lower {
-	.container {
-		width: 60%;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		height: 100%;
-	}
 }
 
 .upper {
@@ -60,6 +60,7 @@
 				cursor: pointer;
 				text-decoration: underline;
 				text-decoration-color: var(--forLinks);
+				color: var(--forLinks)
 			}
 			color: var(--color1);
 			padding: 0 10px;
