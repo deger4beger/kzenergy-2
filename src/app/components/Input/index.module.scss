@@ -8,7 +8,7 @@
 			font-size: 16px;
 			padding: 6px 12px;
 			background-color: var(--bg1);
-			border: 2px solid var(--additional);
+			border-bottom: 2px solid var(--additional);
 			color: var(--color1);
 			&:last-child {
 				margin-bottom: 0px;
@@ -21,11 +21,22 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			border: 2px solid var(--additional);
+			border-bottom: 2px solid var(--additional);
 			user-select: none;
 			color: var(--forText);
 			padding: 0 9.5px;
 			margin-left: 10px;
+			position: relative;
+			.showPasswordContent.crossed:before {
+				border-bottom: 1px solid var(--color2);
+		    position: absolute;
+		    top: 3px;
+		    left: -2px;
+		    content: "";
+		    width: 70%;
+		    height: 50%;
+		    transform: rotate(-45deg);
+			}
 			&:hover {
 				border-color: var(--color2);
 				color: var(--color1);

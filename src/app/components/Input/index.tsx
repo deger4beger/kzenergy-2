@@ -1,5 +1,6 @@
 import { useState } from "react"
 import React from "./index.module.scss"
+import cn from "classnames"
 import s from "./index.module.scss"
 
 interface Props {
@@ -25,8 +26,13 @@ const Input: React.FC<Props> = ({ type, ...inputProps }) => {
 		</div>
 		<div className={s.inputBlock}>
 			<input {...inputProps} type={inputType} className={s.input} />
-			{ type === "password" && <div className={s.showPassword} onClick={onShowPassClick}>
-				👁
+			{ type === "password" && <div
+				className={s.showPassword}
+				onClick={onShowPassClick}
+				>
+				<div className={cn(s.showPasswordContent, {[s.crossed]: inputType === "password"})}>
+					👁
+				</div>
 			</div> }
 		</div>
 	</div>

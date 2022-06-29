@@ -6,7 +6,7 @@
 	.dropdown {
 		position: relative;
 		.upper {
-			border: 2px solid var(--additional);
+			border-bottom: 2px solid var(--additional);
 			padding: 6px 12px;
 			cursor: pointer;
 			color: var(--additional);
@@ -37,7 +37,7 @@
 		}
 		.lower {
 			position: absolute;
-			top: 48px;
+			top: 44px;
 			left: 0;
 			border: 2px solid var(--additional);
 			background-color: var(--bg1);
