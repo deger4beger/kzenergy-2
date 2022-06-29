@@ -24,12 +24,10 @@ const AuthTemplate: React.FC<Props> = ({
 					{title}
 				</div>
 				<div className={s.subtitle}>
-					{ isSigninForm ? <div>
-						Don't have an account ?&nbsp;
-						<Link to={"/signup"} className={s.link}>
-							Signup
+					{ isSigninForm ? <Link to={"/signup"} className={s.link}>
+							Don't have an account ? Create new one
 						</Link>
-					</div> : <Link to={"/signin"} className={s.link}>
+					: <Link to={"/signin"} className={s.link}>
 						← Back to login
 					</Link> }
 				</div>

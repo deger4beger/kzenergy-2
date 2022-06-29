@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: calc(100vh - 30px - 60px);
+	height: calc(100vh - 72px);
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -18,8 +18,10 @@
 		margin-bottom: 30px;
 		padding: 4px 1px;
 		.link {
+			color: var(--color1);
 			&:hover {
 				text-decoration: underline;
+				text-decoration-color: var(--forLinks);
 			}
 		}
 	}
