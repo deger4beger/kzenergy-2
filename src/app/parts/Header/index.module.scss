@@ -16,6 +16,7 @@
 }
 
 .upper {
+	user-select: none;
 	width: 100%;
 	color: var(--additional);
 	background-color: var(--color1);
@@ -47,7 +48,6 @@
 		}
 	}
 }
-
 .lower {
 	.container {
 		align-items: flex-start;
