@@ -8,7 +8,7 @@ const Ecology = () => {
       {ecologyRoutes.map(route =>
         <Route { ...route } key={route.path} />
       )}
-      <Redirect to={RouteNames.SIGNIN} />
+      <Redirect to={RouteNames.REPORT_MANAGEMENT} />
     </Switch>
 	)
 }

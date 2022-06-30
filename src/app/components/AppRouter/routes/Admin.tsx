@@ -8,7 +8,7 @@ const Admin = () => {
       {adminRoutes.map(route =>
         <Route { ...route } key={route.path} />
       )}
-      <Redirect to={RouteNames.SIGNIN} />
+      <Redirect to={RouteNames.ADMIN_MANAGEMENT} />
     </Switch>
 	)
 }

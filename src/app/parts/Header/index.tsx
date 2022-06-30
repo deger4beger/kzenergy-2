@@ -1,12 +1,18 @@
 import s from "./index.module.scss"
-import { Link } from "react-router-dom"
+import cn from "classnames"
+import { Link, useLocation } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "app/hooks/redux"
 import { logout } from "lib/redux/auth/slice"
+import { RouteNames } from "app/router"
+import { UserRoles } from "types/user"
+
+const Divider = () => <div>|</div>
 
 const Header = () => {
 
-	const isAuth = useAppSelector(state => state.userReducer.isAuth)
+	const { isAuth, userData: { role } } = useAppSelector(state => state.userReducer)
 	const dispatch = useAppDispatch()
+	const location = useLocation().pathname
 
 	const onLogout = () => {
 		dispatch(logout())
@@ -25,14 +31,13 @@ const Header = () => {
 								<div className={s.btn} onClick={onLogout}>
 									<div className={s.logoutIcon}>⎆</div> Logout
 								</div>
-							</> : <>
-								<Link className={s.btn} to="signin">
+							</>
+							: <>
+								<Link className={s.btn} to={RouteNames.SIGNIN}>
 									Signin
 								</Link>
-								<div className={s.divider}>
-									|
-								</div>
-								<Link className={s.btn} to="signup">
+								<Divider />
+								<Link className={s.btn} to={RouteNames.SIGNUP}>
 									Signup
 								</Link>
 							</>
@@ -42,17 +47,52 @@ const Header = () => {
 			</div>
 			<div className={s.lower}>
 				<div className={s.container}>
-					<Link className={s.link} to="/">
-						Work page
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role !== UserRoles.FacilityWorker,
+							[s.active]: location === RouteNames.WASTE_MANAGEMENT
+						})}
+						to={RouteNames.WASTE_MANAGEMENT}
+					>
+						Waste management
 					</Link>
-					<Link className={s.link} to="/">
+					<Divider />
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role !== UserRoles.Ecologist,
+							[s.active]: location === RouteNames.REPORT_MANAGEMENT
+						})}
+						to={RouteNames.REPORT_MANAGEMENT}
+					>
+						Report management
+					</Link>
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role !== UserRoles.Ecologist,
+							[s.active]: location === RouteNames.COMPANY_OVERVIEW
+						})}
+						to={RouteNames.COMPANY_OVERVIEW}
+					>
 						Company overview
 					</Link>
-					<Link className={s.link} to="/">
-						Personal statistics
+					<Divider />
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role !== UserRoles.Admin,
+							[s.active]: location === RouteNames.OBJECT_CONTROL
+						})}
+						to={RouteNames.OBJECT_CONTROL}
+					>
+						Object control
 					</Link>
-					<Link className={s.link} to="/">
-						Get help
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role !== UserRoles.Admin,
+							[s.active]: location === RouteNames.ADMIN_MANAGEMENT
+						})}
+						to={RouteNames.ADMIN_MANAGEMENT}
+					>
+						Admin management
 					</Link>
 				</div>
 			</div>

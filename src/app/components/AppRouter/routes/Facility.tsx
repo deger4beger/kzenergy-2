@@ -8,7 +8,7 @@ const Facility = () => {
       {facilityRoutes.map(route =>
         <Route { ...route } key={route.path} />
       )}
-      <Redirect to={RouteNames.SIGNIN} />
+      <Redirect to={RouteNames.WASTE_MANAGEMENT} />
     </Switch>
 	)
 }
