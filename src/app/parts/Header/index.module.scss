@@ -43,7 +43,15 @@
 			display: flex;
 			.btn {
 				@include upper-hover;
+				color: var(--additional);
+				display: flex;
 				padding: 0 4px;
+				.logoutIcon {
+					margin-right: 4px;
+					transform: rotate(180deg);
+					position: relative;
+					top: 1px;
+				}
 			}
 		}
 	}

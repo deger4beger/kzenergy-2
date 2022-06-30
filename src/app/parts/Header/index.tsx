@@ -1,7 +1,17 @@
 import s from "./index.module.scss"
 import { Link } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "app/hooks/redux"
+import { logout } from "lib/redux/auth/slice"
 
 const Header = () => {
+
+	const isAuth = useAppSelector(state => state.userReducer.isAuth)
+	const dispatch = useAppDispatch()
+
+	const onLogout = () => {
+		dispatch(logout())
+	}
+
 	return (
 		<>
 			<div className={s.upper}>
@@ -10,15 +20,23 @@ const Header = () => {
 						Shoqan
 					</div>
 					<div className={s.routes}>
-						<div className={s.btn}>
-							Signin
-						</div>
-						<div className={s.divider}>
-							|
-						</div>
-						<div className={s.btn}>
-							Signup
-						</div>
+						{ isAuth ?
+							<>
+								<div className={s.btn} onClick={onLogout}>
+									<div className={s.logoutIcon}>⎆</div> Logout
+								</div>
+							</> : <>
+								<Link className={s.btn} to="signin">
+									Signin
+								</Link>
+								<div className={s.divider}>
+									|
+								</div>
+								<Link className={s.btn} to="signup">
+									Signup
+								</Link>
+							</>
+						}
 					</div>
 				</div>
 			</div>
