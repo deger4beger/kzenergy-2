@@ -1,8 +1,6 @@
 export enum UserRoles {
   Ecologist = "Ecologist",
-  FacilityOne = "Facility worker 1",
-  FacilityTwo = "Facility worker 2",
-  FacilityThree = "Facility worker 3",
+  FacilityWorker = "Facility worker",
   Admin = "Admin"
 }
 

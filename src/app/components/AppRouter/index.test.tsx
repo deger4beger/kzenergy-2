@@ -44,29 +44,9 @@ describe("AppRouter component", () => {
 
 	})
 
-	it("Facility rendered when role is FacilityOne", async () => {
+	it("Facility rendered when role is FacilityWorker", async () => {
 
-		jest.spyOn(ReduxHooks, "useAppSelector").mockReturnValue(UserRoles.FacilityOne)
-
-		render(<AppRouter />)
-
-		expect(await screen.findByTestId("Facility")).toBeInTheDocument()
-
-	})
-
-	it("Facility rendered when role is FacilityTwo", async () => {
-
-		jest.spyOn(ReduxHooks, "useAppSelector").mockReturnValue(UserRoles.FacilityTwo)
-
-		render(<AppRouter />)
-
-		expect(await screen.findByTestId("Facility")).toBeInTheDocument()
-
-	})
-
-	it("Facility rendered when role is FacilityThree", async () => {
-
-		jest.spyOn(ReduxHooks, "useAppSelector").mockReturnValue(UserRoles.FacilityThree)
+		jest.spyOn(ReduxHooks, "useAppSelector").mockReturnValue(UserRoles.FacilityWorker)
 
 		render(<AppRouter />)
 

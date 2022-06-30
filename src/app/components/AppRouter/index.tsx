@@ -16,9 +16,7 @@ const AppRouter = () => {
     switch (role) {
       case null:
         return <Unauthorized />
-      case UserRoles.FacilityOne:
-      case UserRoles.FacilityTwo:
-      case UserRoles.FacilityThree:
+      case UserRoles.FacilityWorker:
         return <Facility />
       case UserRoles.Ecologist:
         return <Ecology />
