@@ -1,0 +1,22 @@
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 2px solid var(--additional);
+	font-weight: 500;
+	padding-bottom: 4px;
+	.title {
+		font-size: var(--fsz20);
+	}
+	.addBtn {
+		margin-right: 10px;
+		border: 1px solid var(--color1);
+		padding: 0 9px;
+		border-radius: 20px;
+		user-select: none;
+		&:hover {
+			background-color: var(--color2);
+			color: var(--bg1);
+			cursor: pointer;
+		}
+	}
+}

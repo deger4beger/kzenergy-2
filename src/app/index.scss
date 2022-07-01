@@ -11,10 +11,11 @@ body {
 }
 
 .root {
-	min-height: calc(100vh - 106px);
+	min-height: calc(100vh - 106px - 40px);
   position: relative;
   width: 60%;
   margin: 0 auto;
+  margin-top: 40px;
 }
 
 // .root:before {

@@ -29,7 +29,7 @@ const Header = () => {
 						{ isAuth ?
 							<>
 								<div className={s.btn} onClick={onLogout}>
-									<div className={s.logoutIcon}>⎆</div> Logout
+									<div className={s.logoutIcon}>⎆</div> Выйти
 								</div>
 							</>
 							: <>
