@@ -1,0 +1,18 @@
+.wrapper {
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	.object {
+		margin: 10px 14px;
+		padding: 10px 30px;
+		border: 2px solid var(--additional);
+		flex-grow: 1;
+		user-select: none;
+		border-radius: 30px;
+		flex-basis: 40%;
+		&:hover {
+			cursor: pointer;
+			border-color: var(--color2);
+		}
+	}
+}
