@@ -12,6 +12,9 @@
 		display: flex;
 		align-items: center;
 		height: 100%;
+		@media(max-width: 1400px) {
+			width: 75%;
+		}
 	}
 }
 
@@ -27,6 +30,7 @@
 	height: 40px;
 	background-color: rgba(var(--bg2), .4);
 	position: sticky;
+	z-index: 5;
 	border-bottom: 1px solid var(--additional);
 	top: 0;
 	left: 0;
