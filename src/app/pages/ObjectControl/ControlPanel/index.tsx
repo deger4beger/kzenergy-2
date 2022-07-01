@@ -46,7 +46,7 @@ const ControlPanel = () => {
 				Список объектов компании
 			</div>
 			<div className={s.addBtn} onClick={() => setModalActive(true)}>
-				Добавить новый +
+				Создать новый +
 			</div>
 			<Modal
 				active={modalActive}

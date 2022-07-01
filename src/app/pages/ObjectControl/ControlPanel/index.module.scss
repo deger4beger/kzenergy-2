@@ -1,6 +1,7 @@
 .wrapper {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	border-bottom: 2px solid var(--additional);
 	padding-bottom: 4px;
 	.title {
@@ -9,13 +10,12 @@
 	}
 	.addBtn {
 		margin-right: 10px;
-		border: 2px solid var(--additional);
 		padding: 0 9px;
 		border-radius: 20px;
 		user-select: none;
 		&:hover {
-			border-color: var(--color2);
 			cursor: pointer;
+			color: var(--forLinks)
 		}
 	}
 	.modal {
@@ -32,10 +32,7 @@
 				&.active {
 					color: var(--bg1);
 					background-color: var(--color2);
-					border-color: var(--color1);
-					&:hover {
-						border-color: var(--color1)
-					}
+					border-color: var(--color2);
 				}
 				&:hover {
 					border-color: var(--color2);
