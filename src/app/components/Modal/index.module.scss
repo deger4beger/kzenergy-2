@@ -21,7 +21,7 @@
   }
 
   .modal__content {
-    padding: 40px 60px;
+    padding: 60px 60px 40px;
     border-radius: 12px;
     background-color: var(--bg2);
     color: var(--color1);
@@ -39,6 +39,14 @@
 
     @media (max-width: 1400px) {
       width: 70vh;
+    }
+
+    .title {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      color: var(--forText);
+      user-select: none;
     }
 
     .close {

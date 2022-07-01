@@ -2,9 +2,9 @@
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 2px solid var(--additional);
-	font-weight: 500;
 	padding-bottom: 4px;
 	.title {
+		font-weight: 500;
 		font-size: var(--fsz20);
 	}
 	.addBtn {
@@ -18,5 +18,8 @@
 			color: var(--bg1);
 			cursor: pointer;
 		}
+	}
+	.modal {
+
 	}
 }
