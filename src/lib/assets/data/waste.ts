@@ -1,5 +1,4 @@
 export const wastes = [
-	"Отработанные фильтры",
 	"Металлолом",
 	"Строительные отходы",
 	"Отработанные масла",
@@ -20,4 +19,4 @@ export const wastes = [
 	"Никель-кадмиевые аккумуляторы"
 ] as const
 
-type Waste = typeof wastes[number]
+export type Waste = typeof wastes[number]

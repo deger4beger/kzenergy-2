@@ -47,6 +47,8 @@
       left: 18px;
       color: var(--forText);
       user-select: none;
+      border-bottom: 1px solid var(--additional);
+      padding-right: 20px;
     }
 
     .close {
