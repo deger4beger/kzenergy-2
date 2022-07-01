@@ -13,6 +13,8 @@ body {
 .root {
 	min-height: calc(100vh - 106px);
   position: relative;
+  width: 60%;
+  margin: 0 auto;
 }
 
 // .root:before {

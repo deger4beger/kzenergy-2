@@ -15,13 +15,13 @@ const Signin = () => {
 		<AuthTemplate
 			button={
 				<Button
-					content="Signin 🗝"
+					content="Войти 🗝"
 					disabled={isBtnDisabled}
 					loading={isLoading}
 					onClick={onFormConfirm}
 				/>
 			}
-			title="Signin form"
+			title="Заполните форму"
 			error={error}
 			isSigninForm
 		>
@@ -33,9 +33,9 @@ const Signin = () => {
 				value={formData.email}
 			/>
 			<Input
-				name="Password"
+				name="Пароль"
 				onChange={setFormFieldValue("password")}
-				placeholder="Password"
+				placeholder="Пароль"
 				type="password"
 				value={formData.password}
 			/>

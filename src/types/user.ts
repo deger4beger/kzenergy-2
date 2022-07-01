@@ -1,7 +1,7 @@
 export enum UserRoles {
-  Ecologist = "Ecologist",
-  FacilityWorker = "Facility worker",
-  Admin = "Admin"
+  Ecologist = "Эколог",
+  FacilityWorker = "Работник объекта",
+  Admin = "Админ"
 }
 
 export interface UserData {

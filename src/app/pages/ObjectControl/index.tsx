@@ -1,10 +1,12 @@
-
+import ControlPanel from "./ControlPanel"
+import ListObjects from "./ListObjects"
 
 const ObjectControl = () => {
 	return (
-		<div>
-			ObjectControl
-		</div>
+		<>
+			<ControlPanel />
+			<ListObjects />
+		</>
 	)
 }
 

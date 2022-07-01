@@ -34,11 +34,11 @@ const Header = () => {
 							</>
 							: <>
 								<Link className={s.btn} to={RouteNames.SIGNIN}>
-									Signin
+									Войти
 								</Link>
 								<Divider />
 								<Link className={s.btn} to={RouteNames.SIGNUP}>
-									Signup
+									Зарегистрироваться
 								</Link>
 							</>
 						}
@@ -54,7 +54,7 @@ const Header = () => {
 						})}
 						to={RouteNames.WASTE_MANAGEMENT}
 					>
-						Waste management
+						Управление отходами
 					</Link>
 					<Divider />
 					<Link
@@ -64,7 +64,7 @@ const Header = () => {
 						})}
 						to={RouteNames.REPORT_MANAGEMENT}
 					>
-						Report management
+						Управление отчетами
 					</Link>
 					<Link
 						className={cn(s.link, {
@@ -73,7 +73,7 @@ const Header = () => {
 						})}
 						to={RouteNames.COMPANY_OVERVIEW}
 					>
-						Company overview
+						Статистика по отходам
 					</Link>
 					<Divider />
 					<Link
@@ -83,7 +83,7 @@ const Header = () => {
 						})}
 						to={RouteNames.OBJECT_CONTROL}
 					>
-						Object control
+						Управление объектами
 					</Link>
 					<Link
 						className={cn(s.link, {
@@ -92,7 +92,7 @@ const Header = () => {
 						})}
 						to={RouteNames.ADMIN_MANAGEMENT}
 					>
-						Admin management
+						Панель админа
 					</Link>
 				</div>
 			</div>

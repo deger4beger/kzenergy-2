@@ -25,10 +25,10 @@ const AuthTemplate: React.FC<Props> = ({
 				</div>
 				<div className={s.subtitle}>
 					{ isSigninForm ? <Link to={"/signup"} className={s.link}>
-							Don't have an account ? Create new one
+							Нет аккаунта ? Зарегистрируйтесь
 						</Link>
 					: <Link to={"/signin"} className={s.link}>
-						← Back to login
+						← Назад ко входу
 					</Link> }
 				</div>
 				<div className={s.inputs}>

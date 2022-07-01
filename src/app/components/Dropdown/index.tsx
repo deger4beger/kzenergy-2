@@ -27,7 +27,7 @@ const Dropdown: React.FC<Props> = ({
 					className={cn(s.upper, {[s.selected]: !!selected})}
 					onClick={() => setIsActive(prev => !prev)}
 				>
-				{ selected ? selected : "Click to select..."}
+				{ selected ? selected : "Нажмите чтобы выбрать..."}
 				<div className={cn(s.arrow, {[s.active]: isActive})}>
 					›
 				</div>

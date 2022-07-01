@@ -16,20 +16,20 @@ const Signup = () => {
 		<AuthTemplate
 			button={
 				<Button
-					content="Signup 🗝"
+					content="Зарегистрироваться 🗝"
 					disabled={isBtnDisabled}
 					loading={isLoading}
 					onClick={onFormConfirm}
 				/>
 			}
-			title="Signup form"
+			title="Заполните форму"
 			isSigninForm={false}
 			error={localError || error}
 		>
 			<Input
-				name="Fullname"
+				name="ФИО"
 				onChange={setFormFieldValue("fullname")}
-				placeholder="Full name"
+				placeholder="ФИО"
 				type="text"
 				value={formData.fullname}
 			/>
@@ -41,29 +41,29 @@ const Signup = () => {
 				value={formData.email}
 			/>
 			<Input
-				name="Phone number"
+				name="Номер телефона"
 				onChange={setFormFieldValue("phone")}
-				placeholder="Phone number"
+				placeholder="Номер телефона"
 				type="tel"
 				value={formData.phone}
 			/>
 			<Dropdown
-				title="Your role in company"
+				title="Ваша должность"
 				selected={formData.role}
 				setSelected={setRole}
 				options={Object.values(UserRoles)}
 			/>
 			<Input
-				name="Password"
+				name="Пароль"
 				onChange={setFormFieldValue("password")}
-				placeholder="Password"
+				placeholder="Пароль"
 				type="password"
 				value={formData.password}
 			/>
 			<Input
-				name="Repeat password"
+				name="Повторите пароль"
 				onChange={setFormFieldValue("repeatPassword")}
-				placeholder="Repeat password"
+				placeholder="Повторите пароль"
 				type="password"
 				value={formData.repeatPassword}
 			/>
