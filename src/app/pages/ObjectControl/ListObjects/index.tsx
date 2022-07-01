@@ -24,8 +24,17 @@ const ListObjects = () => {
 	return (
 		<div className={s.wrapper}>
 			{ objects.map(object =>
-				<div className={s.object}>
-					{ object.name }
+				<div className={s.object} key={object.name}>
+					<div className={s.name}>
+						{ object.name }
+					</div>
+					<div className={s.wastes}>
+						{ object.wastes.map(waste =>
+							<div className={s.waste} key={waste}>
+								{ waste }
+							</div>
+						) }
+					</div>
 				</div>
 			) }
 		</div>

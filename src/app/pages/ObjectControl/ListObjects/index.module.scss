@@ -9,9 +9,18 @@
 		flex-grow: 1;
 		user-select: none;
 		border-radius: 30px;
-		flex-basis: 40%;
+		.name {
+			font-weight: 500;
+			border-bottom: 1px solid var(--additional);
+			display: inline-block;
+			padding-right: 20px;
+			margin-bottom: 10px;
+		}
+		.wastes {
+			display: flex;
+			flex-direction: column;
+		}
 		&:hover {
-			cursor: pointer;
 			border-color: var(--color2);
 		}
 	}
