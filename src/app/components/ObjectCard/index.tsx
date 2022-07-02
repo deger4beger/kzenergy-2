@@ -8,6 +8,7 @@ interface Props {
 	name: string
 	wastes: WasteInfo[]
 	onRemoveBtnClick?: () => void
+	onRemoveLoading?: boolean
 	onObjClick?: () => void
 }
 
@@ -15,6 +16,7 @@ const ObjectCard: React.FC<Props> = ({
 	name,
 	wastes,
 	onRemoveBtnClick,
+	onRemoveLoading,
 	onObjClick
 }) => {
 
@@ -35,7 +37,9 @@ const ObjectCard: React.FC<Props> = ({
 					</div>
 				) }
 			</div>
-			{ onRemoveBtnClick && <CrossBtn onClick={onRemoveBtnClickWrapper} className={s.removeBtn} /> }
+			{ onRemoveBtnClick && <CrossBtn onClick={onRemoveBtnClickWrapper} className={cn(s.removeBtn, {
+				[s.loading]: onRemoveLoading
+			})} /> }
 		</div>
 	)
 }

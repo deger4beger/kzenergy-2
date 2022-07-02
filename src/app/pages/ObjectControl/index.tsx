@@ -5,11 +5,13 @@ import ObjectCard from "app/components/ObjectCard"
 import CreateObject from "./CreateObject"
 import { useGetAllDialogsQuery } from "lib/api/object/index.query"
 import Preloader from "app/components/Preloader"
+import { useDeleteObjectMutation } from "lib/api/object/index.mutation"
 
 const ObjectControl = () => {
 
 	const [modalActive, setModalActive] = useState<boolean>(false)
-	const { data, isLoading } = useGetAllDialogsQuery()
+	const [deleteObject, { isLoading: deleteObjLoading }] = useDeleteObjectMutation()
+	const { data, isLoading: getObjLoading } = useGetAllDialogsQuery()
 
 	return (
 		<>
@@ -25,11 +27,11 @@ const ObjectControl = () => {
 					{ data?.map(object =>
 						<ObjectCard
 							key={object.name}
-							onRemoveBtnClick={() => console.log(object.name)}
+							onRemoveBtnClick={() => deleteObject(object.id)}
 							{...object}
 						/>
 					) }
-					{ isLoading && <Preloader /> }
+					{ getObjLoading && <Preloader /> }
 				</div>
 			</GroupLayout>
 			<CreateObject

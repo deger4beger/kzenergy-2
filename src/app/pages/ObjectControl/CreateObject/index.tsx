@@ -47,9 +47,10 @@ const CreateObject: React.FC<Props> = ({
 		}
 	}
 
-	const onCreateObject = (): void => {
-		createObject(objectData)
+	const onCreateObject = async () => {
+		await createObject(objectData)
 		setObjectData({ ...initialObjectData })
+		setActive(false)
 	}
 
 	return (

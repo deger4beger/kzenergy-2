@@ -7,11 +7,18 @@ const extendedObjectApi = objectApi.injectEndpoints({
 			query: (body) => ({
 				url: "/facility/",
 				method: "post",
-				body
+				data: body
+			}),
+			invalidatesTags: result => ["Object"]
+		}),
+		deleteObject: build.mutation<void, string>({
+			query: (id) => ({
+				url: `/facility/${id}`,
+				method: "delete",
 			}),
 			invalidatesTags: result => ["Object"]
 		})
 	})
 })
 
-export const { useCreateObjectMutation } = extendedObjectApi
+export const { useCreateObjectMutation, useDeleteObjectMutation } = extendedObjectApi
