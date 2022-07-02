@@ -1,0 +1,23 @@
+.wrapper {
+	user-select: none;
+	.menu {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 2px solid var(--additional);
+		padding-bottom: 4px;
+		.title {
+			display: flex;
+			margin-left: 14px;
+			font-weight: 500;
+			font-size: var(--fsz20);
+			.icon {
+				transform: rotate(90deg);
+				margin-right: 10px;
+			}
+		}
+	}
+	.content {
+		padding: 40px 14px;
+	}
+}

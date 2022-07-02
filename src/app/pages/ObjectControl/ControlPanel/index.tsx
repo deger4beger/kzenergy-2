@@ -6,6 +6,7 @@ import { ObjectData } from "types/object"
 import Input from "app/components/Input"
 import Modal from "app/components/Modal"
 import Button from "app/components/Button"
+import GroupLayout from "app/components/GroupLayout"
 
 const ControlPanel = () => {
 
@@ -41,13 +42,15 @@ const ControlPanel = () => {
 	}
 
 	return (
-		<div className={s.wrapper}>
-			<div className={s.title}>
-				Список объектов компании
-			</div>
-			<div className={s.addBtn} onClick={() => setModalActive(true)}>
-				Создать новый +
-			</div>
+		<>
+			<GroupLayout
+				title="Список объектов компании"
+				btns={
+					<div className={s.addBtn} onClick={() => setModalActive(true)}>
+						Создать новый +
+					</div>
+				}
+			/>
 			<Modal
 				active={modalActive}
 				setActive={setModalActive}
@@ -86,7 +89,7 @@ const ControlPanel = () => {
 					/>
 				</div>
 			</Modal>
-		</div>
+		</>
 	)
 }
 
