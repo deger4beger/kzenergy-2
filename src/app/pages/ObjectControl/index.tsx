@@ -41,6 +41,7 @@ const ObjectControl = () => {
 					{ objects.map(object =>
 						<ObjectCard
 							key={object.name}
+							onRemoveBtnClick={() => console.log(object.name)}
 							{...object}
 						/>
 					) }

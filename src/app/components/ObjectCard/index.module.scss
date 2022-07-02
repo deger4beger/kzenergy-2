@@ -5,6 +5,7 @@
 	flex-grow: 1;
 	user-select: none;
 	border-radius: 30px;
+	position: relative;
 	.name {
 		font-weight: 500;
 		border-bottom: 1px solid var(--additional);
@@ -18,5 +19,10 @@
 	}
 	&:hover {
 		border-color: var(--color2);
+	}
+	.removeBtn {
+		position: absolute;
+		top: 12px;
+		right: 14px;
 	}
 }

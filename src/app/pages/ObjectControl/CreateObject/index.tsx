@@ -43,7 +43,7 @@ const CreateObject: React.FC<Props> = ({
 		}
 	}
 
-	const onCreateObject = () => {
+	const onCreateObject = (): void => {
 		console.log(objectData)
 	}
 

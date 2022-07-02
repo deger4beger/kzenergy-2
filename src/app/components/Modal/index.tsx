@@ -1,3 +1,4 @@
+import CrossBtn from "../CrossBtn"
 import s from "./index.module.scss"
 
 interface Props {
@@ -19,7 +20,7 @@ const Modal: React.FC<Props> = ({
         className={active ? s.modal__content + " " + s.active : s.modal__content}
         onClick={e => e.stopPropagation()}
       >
-        <span className={s.close} onClick={() => setActive(false)} />
+        <CrossBtn onClick={() => setActive(false)} className={s.close} />
         { title && <div className={s.title}>{ title }</div> }
         {children}
       </div>
