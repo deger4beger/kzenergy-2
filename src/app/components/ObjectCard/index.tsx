@@ -1,28 +1,31 @@
 import cn from "classnames"
+import { useDeleteObjectMutation } from "lib/api/object/index.mutation"
 import React from "react"
 import { WasteInfo } from "types/object"
 import CrossBtn from "../CrossBtn"
 import s from "./index.module.scss"
 
 interface Props {
+	id: string
 	name: string
 	wastes: WasteInfo[]
-	onRemoveBtnClick?: () => void
-	onRemoveLoading?: boolean
+	removable?: boolean
 	onObjClick?: () => void
 }
 
 const ObjectCard: React.FC<Props> = ({
+	id,
 	name,
 	wastes,
-	onRemoveBtnClick,
-	onRemoveLoading,
+	removable=false,
 	onObjClick
 }) => {
 
+	const [deleteObject, { isLoading }] = useDeleteObjectMutation()
+
 	const onRemoveBtnClickWrapper = (e: React.MouseEvent<HTMLDivElement>) => {
 		e.stopPropagation()
-		onRemoveBtnClick!()
+		deleteObject(id)
 	}
 
 	return (
@@ -37,8 +40,8 @@ const ObjectCard: React.FC<Props> = ({
 					</div>
 				) }
 			</div>
-			{ onRemoveBtnClick && <CrossBtn onClick={onRemoveBtnClickWrapper} className={cn(s.removeBtn, {
-				[s.loading]: onRemoveLoading
+			{ removable && <CrossBtn onClick={onRemoveBtnClickWrapper} className={cn(s.removeBtn, {
+				[s.loading]: isLoading
 			})} /> }
 		</div>
 	)

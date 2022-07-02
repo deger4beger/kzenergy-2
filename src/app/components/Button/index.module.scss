@@ -6,9 +6,7 @@
 	position: relative;
 	border: 2px solid var(--additional);
 	&.dark {
-		border-color: var(--color1);
-		background-color: var(--color1);
-		color: var(--bg1);
+		border-color: var(--color2);
 		&:hover {
 			border-color: var(--color1);
 		}
