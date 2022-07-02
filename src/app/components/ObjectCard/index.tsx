@@ -1,17 +1,20 @@
 import React from "react"
 import CrossBtn from "../CrossBtn"
 import s from "./index.module.scss"
+import cn from "classnames"
 
 interface Props {
 	name: string
 	wastes: string[]
 	onRemoveBtnClick?: () => void
+	onObjClick?: () => void
 }
 
 const ObjectCard: React.FC<Props> = ({
 	name,
 	wastes,
-	onRemoveBtnClick
+	onRemoveBtnClick,
+	onObjClick
 }) => {
 
 	const onRemoveBtnClickWrapper = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -20,7 +23,7 @@ const ObjectCard: React.FC<Props> = ({
 	}
 
 	return (
-		<div className={s.object}>
+		<div className={cn(s.object, {[s.clickable]: !!onObjClick})} onClick={onObjClick}>
 			<div className={s.name}>
 				{ name }
 			</div>
