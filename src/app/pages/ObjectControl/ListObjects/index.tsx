@@ -1,3 +1,4 @@
+import ObjectCard from "app/components/ObjectCard"
 import s from "./index.module.scss"
 
 const ListObjects = () => {
@@ -24,18 +25,10 @@ const ListObjects = () => {
 	return (
 		<div className={s.wrapper}>
 			{ objects.map(object =>
-				<div className={s.object} key={object.name}>
-					<div className={s.name}>
-						{ object.name }
-					</div>
-					<div className={s.wastes}>
-						{ object.wastes.map(waste =>
-							<div className={s.waste} key={waste}>
-								{ waste }
-							</div>
-						) }
-					</div>
-				</div>
+				<ObjectCard
+					key={object.name}
+					{...object}
+				/>
 			) }
 		</div>
 	)

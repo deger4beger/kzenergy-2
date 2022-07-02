@@ -2,26 +2,4 @@
 	margin-top: 30px;
 	display: flex;
 	flex-wrap: wrap;
-	.object {
-		margin: 10px 14px;
-		padding: 10px 30px;
-		border: 2px solid var(--additional);
-		flex-grow: 1;
-		user-select: none;
-		border-radius: 30px;
-		.name {
-			font-weight: 500;
-			border-bottom: 1px solid var(--additional);
-			display: inline-block;
-			padding-right: 20px;
-			margin-bottom: 10px;
-		}
-		.wastes {
-			display: flex;
-			flex-direction: column;
-		}
-		&:hover {
-			border-color: var(--color2);
-		}
-	}
 }
