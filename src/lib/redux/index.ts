@@ -1,9 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit"
+import { objectApi } from "lib/api/object"
 import userReducer from "./auth/slice"
 
 const rootReducer = combineReducers({
     userReducer,
-    // [dialogApi.reducerPath]: dialogApi.reducer
+    [objectApi.reducerPath]: objectApi.reducer
 })
 
 export const setupStore = () => {
@@ -11,9 +12,9 @@ export const setupStore = () => {
     {
         reducer: rootReducer,
         devTools: true,
-        // middleware: (getDefaultMiddleware) =>
-        //     getDefaultMiddleware()
-        //         .concat(dialogApi.middleware)
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware()
+                .concat(objectApi.middleware)
     })
 }
 

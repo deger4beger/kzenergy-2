@@ -6,18 +6,22 @@ import { ObjectDataPayload } from "types/object"
 import Input from "app/components/Input"
 import Modal from "app/components/Modal"
 import Button from "app/components/Button"
+import { useCreateObjectMutation } from "lib/api/object/index.mutation"
 
 interface Props {
 	active: boolean
 	setActive: (active: boolean) => void
 }
 
+const initialObjectData = {name: "", wastes: []}
+
 const CreateObject: React.FC<Props> = ({
 	active,
 	setActive
 }) => {
 
-	const [objectData, setObjectData] = useState<ObjectDataPayload>({name: "", wastes: []})
+	const [objectData, setObjectData] = useState<ObjectDataPayload>(initialObjectData)
+	const [createObject, { isLoading }] = useCreateObjectMutation()
 
 	const onSetObjectInfo = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setObjectData(prev => ({
@@ -44,7 +48,8 @@ const CreateObject: React.FC<Props> = ({
 	}
 
 	const onCreateObject = (): void => {
-		console.log(objectData)
+		createObject(objectData)
+		setObjectData({ ...initialObjectData })
 	}
 
 	return (
@@ -78,6 +83,8 @@ const CreateObject: React.FC<Props> = ({
 				<Button
 					content="Создать объект"
 					onClick={onCreateObject}
+					disabled={!objectData.name || objectData.wastes.length === 0}
+					loading={isLoading}
 					type="dark"
 					styles={{
 						borderRadius: "20px",

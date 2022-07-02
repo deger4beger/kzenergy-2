@@ -3,29 +3,13 @@ import { useState } from "react"
 import GroupLayout from "app/components/GroupLayout"
 import ObjectCard from "app/components/ObjectCard"
 import CreateObject from "./CreateObject"
+import { useGetAllDialogsQuery } from "lib/api/object/index.query"
+import Preloader from "app/components/Preloader"
 
 const ObjectControl = () => {
 
 	const [modalActive, setModalActive] = useState<boolean>(false)
-
-	const objects = [
-		{
-			name: "КПК",
-			wastes: ["Отход номер один", "Отход номер два", "Отход номер три"]
-		},
-		{
-			name: "УКПГ-1",
-			wastes: ["Отход номер один", "Отход номер два", "Отход номер три"]
-		},
-		{
-			name: "УКПГ-2",
-			wastes: ["Отход номер один", "Отход номер два", "Отход номер три"]
-		},
-		{
-			name: "Скважины",
-			wastes: ["Отход номер один", "Отход номер два", "Отход номер три"]
-		}
-	]
+	const { data, isLoading } = useGetAllDialogsQuery()
 
 	return (
 		<>
@@ -38,13 +22,14 @@ const ObjectControl = () => {
 				}
 			>
 				<div className={s.content}>
-					{ objects.map(object =>
+					{ data?.map(object =>
 						<ObjectCard
 							key={object.name}
 							onRemoveBtnClick={() => console.log(object.name)}
 							{...object}
 						/>
 					) }
+					{ isLoading && <Preloader /> }
 				</div>
 			</GroupLayout>
 			<CreateObject

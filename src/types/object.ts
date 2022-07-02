@@ -1,6 +1,6 @@
 import { Waste } from "lib/assets/data/waste"
 
-interface WasteInfo {
+export interface WasteInfo {
 	id: string
 	name: Waste
 }

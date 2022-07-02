@@ -1,11 +1,12 @@
+import cn from "classnames"
 import React from "react"
+import { WasteInfo } from "types/object"
 import CrossBtn from "../CrossBtn"
 import s from "./index.module.scss"
-import cn from "classnames"
 
 interface Props {
 	name: string
-	wastes: string[]
+	wastes: WasteInfo[]
 	onRemoveBtnClick?: () => void
 	onObjClick?: () => void
 }
@@ -29,8 +30,8 @@ const ObjectCard: React.FC<Props> = ({
 			</div>
 			<div className={s.wastes}>
 				{ wastes.map(waste =>
-					<div className={s.waste} key={waste}>
-						{ waste }
+					<div className={s.waste} key={waste.id}>
+						{ waste.name }
 					</div>
 				) }
 			</div>
