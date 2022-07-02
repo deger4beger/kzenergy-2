@@ -2,7 +2,7 @@ import s from "./index.module.scss"
 import cn from "classnames"
 import React, { useState } from "react"
 import { wastes } from "lib/assets/data/waste"
-import { ObjectData } from "types/object"
+import { ObjectDataPayload } from "types/object"
 import Input from "app/components/Input"
 import Modal from "app/components/Modal"
 import Button from "app/components/Button"
@@ -17,7 +17,7 @@ const CreateObject: React.FC<Props> = ({
 	setActive
 }) => {
 
-	const [objectData, setObjectData] = useState<ObjectData>({name: "", wastes: []})
+	const [objectData, setObjectData] = useState<ObjectDataPayload>({name: "", wastes: []})
 
 	const onSetObjectInfo = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setObjectData(prev => ({
