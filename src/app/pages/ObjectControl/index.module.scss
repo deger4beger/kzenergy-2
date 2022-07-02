@@ -1,0 +1,14 @@
+.content {
+	display: flex;
+	flex-wrap: wrap;
+}
+.addBtn {
+	margin-right: 10px;
+	padding: 0 9px;
+	border-radius: 20px;
+	user-select: none;
+	&:hover {
+		cursor: pointer;
+		color: var(--forLinks)
+	}
+}
