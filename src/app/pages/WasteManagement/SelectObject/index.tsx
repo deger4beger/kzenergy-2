@@ -5,11 +5,13 @@ import { ObjectData } from "types/object"
 
 interface Props {
 	objects: undefined | ObjectData[]
+	onObjectClick: (object: ObjectData) => void
 	loading: boolean
 }
 
 const SelectObject: React.FC<Props> = ({
 	objects,
+	onObjectClick,
 	loading
 }) => {
 
@@ -20,7 +22,7 @@ const SelectObject: React.FC<Props> = ({
 					<ObjectCard
 						key={object.name}
 						{...object}
-						onObjClick={() => console.log(object.id)}
+						onObjClick={() => onObjectClick(object)}
 					/>
 				) }
 				{ loading && <Preloader /> }
