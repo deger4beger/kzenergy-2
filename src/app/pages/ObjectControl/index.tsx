@@ -5,6 +5,7 @@ import ObjectCard from "app/components/ObjectCard"
 import CreateObject from "./CreateObject"
 import { useGetAllDialogsQuery } from "lib/api/object/index.query"
 import Preloader from "app/components/Preloader"
+import SimpleButton from "app/components/SimpleButton"
 
 const ObjectControl = () => {
 
@@ -15,13 +16,12 @@ const ObjectControl = () => {
 		<>
 			<GroupLayout
 				title="Список объектов компании"
-				btns={
-					<div className={s.addBtn} onClick={() => setModalActive(true)}>
-						Создать новый +
-					</div>
-				}
+				btns={ <SimpleButton
+					onClick={() => setModalActive(true)}
+					text="Создать новый +"
+				/> }
 			>
-				<div className={s.content}>
+				<div style={{display: "flex", flexWrap: "wrap"}}>
 					{ data?.map(object =>
 						<ObjectCard
 							key={object.name}

@@ -9,6 +9,10 @@ const WasteManagement = () => {
 	const [selectedObject, setSelectedObject] = useState<null | ObjectData>(null)
 	const { data: objects, isLoading: getObjectsLoading } = useGetAllDialogsQuery()
 
+	const onComeBackClick = () => {
+		setSelectedObject(null)
+	}
+
 	return (
 		<>
 			{ !selectedObject && <SelectObject
@@ -16,7 +20,10 @@ const WasteManagement = () => {
 				onObjectClick={setSelectedObject}
 				loading={getObjectsLoading}
 			/> }
-			{ selectedObject && <ObjectMenu object={selectedObject} /> }
+			{ selectedObject && <ObjectMenu
+				object={selectedObject}
+				onComeBackClick={onComeBackClick}
+			/> }
 		</>
 	)
 }
