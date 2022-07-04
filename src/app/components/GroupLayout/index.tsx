@@ -3,7 +3,7 @@ import s from "./index.module.scss"
 
 interface Props {
 	title: string
-	btns: React.ReactNode
+	btns?: React.ReactNode
 	children?: React.ReactNode
 }
 
@@ -21,9 +21,9 @@ const GroupLayout: React.FC<Props> = ({
 						›
 					</div>{ title }
 				</div>
-				<div className={s.btns}>
+				{ btns && <div className={s.btns}>
 					{ btns }
-				</div>
+				</div> }
 			</div>
 			{ children && <div className={s.content}>
 				{ children }

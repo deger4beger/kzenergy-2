@@ -18,6 +18,7 @@
 		flex-direction: column;
 	}
 	&.clickable:hover {
+		cursor: pointer;
 		border-color: var(--color2);
 	}
 	.removeBtn {
