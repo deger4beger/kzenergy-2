@@ -1,24 +1,27 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
+import { useState } from "react"
+import TalonForm from "../TalonForm"
 import s from "./index.module.scss"
 
 const Talons: React.FC = () => {
 
-	const createTalon = () => {
-		console.log("1")
-	}
+	const [createTalonActive, setCreateTalonActive] = useState(false)
 
 	return (
 		<GroupLayout
 			title="Список талонов"
 			btns={ <SimpleButton
-				onClick={createTalon}
+				onClick={() => setCreateTalonActive(true)}
 				text="Создать новый +"
 			/> }
 			subLayout
 		>
 			<div style={{ display: "flex" }}>
-
+				<TalonForm
+					active={createTalonActive}
+					setActive={setCreateTalonActive}
+				/>
 			</div>
 		</GroupLayout>
 	)
