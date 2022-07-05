@@ -29,7 +29,7 @@ const Input: React.FC<Props> = ({ type, ...inputProps }) => {
 				{...inputProps}
 				type={inputType}
 				className={s.input}
-				step={type === "number" ? "0.01" : undefined}
+				step={type === "number" ? "any" : undefined}
 			/>
 			{ type === "password" && <div
 				className={s.showPassword}

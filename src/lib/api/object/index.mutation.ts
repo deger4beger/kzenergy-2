@@ -19,7 +19,7 @@ const extendedObjectApi = objectApi.injectEndpoints({
 			}),
 			invalidatesTags: result => ["Object"]
 		}),
-		createTicket: build.mutation<void, TicketPayload & { facilityId: string }>({
+		createTalon: build.mutation<void, TicketPayload & { facilityId: string }>({
 			query: (body) => ({
 				url: "/ticket/",
 				method: "post",
@@ -32,5 +32,5 @@ const extendedObjectApi = objectApi.injectEndpoints({
 
 export const {
 	useCreateObjectMutation, useDeleteObjectMutation,
-	useCreateTicketMutation
+	useCreateTalonMutation
 } = extendedObjectApi

@@ -11,6 +11,7 @@ interface Props {
 	setActive: (active: boolean) => void
 	btnContent: string
 	btnOnClick: (TicketPayload) => void
+	btnLoading: boolean
 	initialState?: TicketPayload,
 	error?: string
 }
@@ -20,6 +21,7 @@ const TalonForm: React.FC<Props> = ({
 	setActive,
 	btnContent,
 	btnOnClick,
+	btnLoading,
 	initialState,
 	error
 }) => {
@@ -31,6 +33,7 @@ const TalonForm: React.FC<Props> = ({
 			measureSystem: "" as MeasureSystem,
 			quantity: 0
 	})
+	const isBtnDisabled = Object.values(ticketPayload).some(el => !el)
 
 	const setQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setTicketPayload(prev => ({
@@ -99,8 +102,8 @@ const TalonForm: React.FC<Props> = ({
 				<Button
 					content={btnContent}
 					onClick={() => btnOnClick(ticketPayload)}
-					disabled={false}
-					loading={false}
+					disabled={isBtnDisabled}
+					loading={btnLoading}
 					type="dark"
 					styles={{
 						borderRadius: "20px",

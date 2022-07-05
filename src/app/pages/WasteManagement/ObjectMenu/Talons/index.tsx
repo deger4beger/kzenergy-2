@@ -1,5 +1,6 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
+import { useCreateTalonMutation } from "lib/api/object/index.mutation"
 import { useState } from "react"
 import { Talon, TicketPayload } from "types/talon"
 import TalonForm from "../TalonForm"
@@ -7,14 +8,20 @@ import s from "./index.module.scss"
 
 interface Props {
 	talons: Talon[]
+	objectId: string
 }
 
-const Talons: React.FC<Props> = ({ talons }) => {
-	console.log(talons)
-	const [createTalonActive, setCreateTalonActive] = useState(false)
+const Talons: React.FC<Props> = ({ talons, objectId }) => {
 
-	const createTalon = (payload: TicketPayload) => {
-		console.log(payload)
+	const [createTalonActive, setCreateTalonActive] = useState(false)
+	const [createTalon, { isLoading }] = useCreateTalonMutation()
+
+	const onCreateTalon = async (payload: TicketPayload) => {
+		await createTalon({
+			...payload,
+			facilityId: objectId
+		})
+		setCreateTalonActive(false)
 	}
 
 	return (
@@ -29,7 +36,8 @@ const Talons: React.FC<Props> = ({ talons }) => {
 			<div style={{ display: "flex", flexWrap: "wrap" }}>
 				<TalonForm
 					btnContent="Создать талон"
-					btnOnClick={createTalon}
+					btnOnClick={onCreateTalon}
+					btnLoading={isLoading}
 					active={createTalonActive}
 					setActive={setCreateTalonActive}
 				/>
