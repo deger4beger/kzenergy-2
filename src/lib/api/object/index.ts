@@ -4,6 +4,6 @@ import { baseQuerySettings } from ".."
 export const objectApi = createApi({
     ...baseQuerySettings("/facility"),
     reducerPath: "object/api",
-    tagTypes: ["Object"],
+    tagTypes: ["Object", "ObjectInfo"],
     endpoints: () => ({})
 })

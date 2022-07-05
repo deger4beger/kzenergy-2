@@ -17,25 +17,25 @@ export enum WasteDestinationType {
   E = "Повторное использование"
 }
 
-export enum TicketStatus {
+export enum TalonStatus {
   ACCEPTED = "Принят",
   REJECTED = "Отклонён",
   PENDING = "В ожидании"
 }
 
-export interface Ticket {
+export interface Talon {
   id: string
   date: string
   wasteDestinationType: WasteDestinationType
   aggregateState: AggregateState
   measureSystem: MeasureSystem
   quantity: number
-  status: TicketStatus
+  status: TalonStatus
   excel: string | null
   message: string | null
 }
 
 export interface TicketPayload extends Pick<
-  Ticket,
+  Talon,
   "wasteDestinationType" | "aggregateState" | "measureSystem" | "quantity"
 > {}

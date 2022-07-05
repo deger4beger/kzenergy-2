@@ -1,12 +1,16 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
 import { useState } from "react"
-import { TicketPayload } from "types/ticket"
+import { Talon, TicketPayload } from "types/talon"
 import TalonForm from "../TalonForm"
 import s from "./index.module.scss"
 
-const Talons: React.FC = () => {
+interface Props {
+	talons: Talon[]
+}
 
+const Talons: React.FC<Props> = ({ talons }) => {
+	console.log(talons)
 	const [createTalonActive, setCreateTalonActive] = useState(false)
 
 	const createTalon = (payload: TicketPayload) => {

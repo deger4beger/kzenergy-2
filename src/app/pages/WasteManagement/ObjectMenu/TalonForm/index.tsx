@@ -1,7 +1,7 @@
 import cn from "classnames"
 import Modal from "app/components/Modal"
 import { useState } from "react"
-import { AggregateState, MeasureSystem, TicketPayload, WasteDestinationType } from "types/ticket"
+import { AggregateState, MeasureSystem, TicketPayload, WasteDestinationType } from "types/talon"
 import Dropdown from "app/components/Dropdown"
 import Input from "app/components/Input"
 import Button from "app/components/Button"
