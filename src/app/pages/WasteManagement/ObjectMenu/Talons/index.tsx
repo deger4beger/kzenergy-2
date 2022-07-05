@@ -22,7 +22,7 @@ const Talons: React.FC = () => {
 			/> }
 			subLayout
 		>
-			<div style={{ display: "flex" }}>
+			<div style={{ display: "flex", flexWrap: "wrap" }}>
 				<TalonForm
 					btnContent="Создать талон"
 					btnOnClick={createTalon}

@@ -3,9 +3,9 @@ import { objectApi } from "."
 
 const extendedObjectApi = objectApi.injectEndpoints({
 	endpoints: (build) => ({
-		getAllDialogs: build.query<ObjectData[], void>({
+		getAllObjects: build.query<ObjectData[], void>({
 			query: () => ({
-				url: "/facility/",
+				url: "/",
 				method: "get"
 			}),
 			providesTags: result => ["Object"]
@@ -13,4 +13,4 @@ const extendedObjectApi = objectApi.injectEndpoints({
 	})
 })
 
-export const { useGetAllDialogsQuery } = extendedObjectApi
+export const { useGetAllObjectsQuery } = extendedObjectApi

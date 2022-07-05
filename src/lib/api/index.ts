@@ -7,8 +7,8 @@ export const mainInstance = Axios.create({
     baseURL
 })
 
-export const baseQuerySettings = {
-    baseQuery: axiosBaseQuery({baseUrl: baseURL}),
-}
+export const baseQuerySettings = (subUrl: string) => ({
+    baseQuery: axiosBaseQuery({baseUrl: baseURL + subUrl}),
+})
 
 export * from "./auth"

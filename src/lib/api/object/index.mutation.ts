@@ -5,7 +5,7 @@ const extendedObjectApi = objectApi.injectEndpoints({
 	endpoints: (build) => ({
 		createObject: build.mutation<void, ObjectDataPayload>({
 			query: (body) => ({
-				url: "/facility/",
+				url: "/",
 				method: "post",
 				data: body
 			}),
@@ -13,7 +13,7 @@ const extendedObjectApi = objectApi.injectEndpoints({
 		}),
 		deleteObject: build.mutation<void, string>({
 			query: (id) => ({
-				url: `/facility/${id}`,
+				url: `/${id}`,
 				method: "delete",
 			}),
 			invalidatesTags: result => ["Object"]

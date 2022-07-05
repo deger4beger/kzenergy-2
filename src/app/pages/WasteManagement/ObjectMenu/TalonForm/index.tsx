@@ -1,4 +1,3 @@
-import s from "./index.module.scss"
 import cn from "classnames"
 import Modal from "app/components/Modal"
 import { useState } from "react"
@@ -57,7 +56,21 @@ const TalonForm: React.FC<Props> = ({
 			setActive={setActive}
 			title="Форма для заполнения данных объекта"
 		>
-			<div className={s.modal}>
+			<div>
+				{ error && <div>
+					<div style={{
+						textAlign: "center",
+						textDecoration: "underline"
+					}}>
+						Талон отклонен:
+					</div>
+					<div style={{
+						marginBottom: "20px",
+						marginTop: "6px"
+					}}>
+						{ error }
+					</div>
+				</div> }
 				<Dropdown
 					title="Агрегатное состояние"
 					selected={ticketPayload.aggregateState}

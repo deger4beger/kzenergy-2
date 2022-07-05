@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/dist/query/react"
 import { baseQuerySettings } from ".."
 
 export const objectApi = createApi({
-    ...baseQuerySettings,
+    ...baseQuerySettings("/facility"),
     reducerPath: "object/api",
     tagTypes: ["Object"],
     endpoints: () => ({})

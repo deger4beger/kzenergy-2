@@ -3,14 +3,14 @@ import { useState } from "react"
 import GroupLayout from "app/components/GroupLayout"
 import ObjectCard from "app/components/ObjectCard"
 import CreateObject from "./CreateObject"
-import { useGetAllDialogsQuery } from "lib/api/object/index.query"
+import { useGetAllObjectsQuery } from "lib/api/object/index.query"
 import Preloader from "app/components/Preloader"
 import SimpleButton from "app/components/SimpleButton"
 
 const ObjectControl = () => {
 
 	const [modalActive, setModalActive] = useState<boolean>(false)
-	const { data, isLoading: getObjLoading } = useGetAllDialogsQuery()
+	const { data, isLoading: getObjLoading } = useGetAllObjectsQuery()
 
 	return (
 		<>
