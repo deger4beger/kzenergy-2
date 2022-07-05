@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
 import { ObjectData } from "types/object"
-import SelectDocumentType from "./SelectDocumentType"
+import Talons from "./Talons"
+import Reports from "./Reports"
 
 
 interface Props {
@@ -16,8 +17,6 @@ const ObjectMenu: React.FC<Props> = ({
 	onComeBackClick
 }) => {
 
-	const [documentType, setDocumentType] = useState<DocumentType>(null)
-
 	return (
 		<GroupLayout
 			title={name}
@@ -25,12 +24,10 @@ const ObjectMenu: React.FC<Props> = ({
 				onClick={onComeBackClick}
 				text="← Вернуться к выбору объекта"
 			/> }>
-			<div style={{ display: "flex" }}>
+			<div style={{ marginTop: "16px" }}>
 				{/*{ loading && <Preloader /> }*/}
-				<SelectDocumentType
-					setDocumentType={setDocumentType}
-					documentType={documentType}
-				/>
+				<Talons />
+				<Reports />
 			</div>
 		</GroupLayout>
 	)
