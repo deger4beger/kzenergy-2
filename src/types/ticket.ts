@@ -23,9 +23,19 @@ export enum TicketStatus {
   PENDING = "В ожидании"
 }
 
-export interface TicketPayload {
+export interface Ticket {
+  id: string
+  date: string
   wasteDestinationType: WasteDestinationType
   aggregateState: AggregateState
   measureSystem: MeasureSystem
   quantity: number
+  status: TicketStatus
+  excel: string | null
+  message: string | null
 }
+
+export interface TicketPayload extends Pick<
+  Ticket,
+  "wasteDestinationType" | "aggregateState" | "measureSystem" | "quantity"
+> {}

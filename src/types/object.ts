@@ -1,4 +1,6 @@
 import { Waste } from "lib/assets/data/waste"
+import { Report } from "./report"
+import { Ticket } from "./ticket"
 
 export interface WasteInfo {
 	id: string
@@ -13,4 +15,9 @@ export interface ObjectData {
 
 export interface ObjectDataPayload extends Pick<ObjectData, "name"> {
 	wastes: Waste[]
+}
+
+export interface ObjectTotalInfo {
+	report: Report | null
+	tickets: Ticket[]
 }

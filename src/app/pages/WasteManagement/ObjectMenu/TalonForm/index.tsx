@@ -10,18 +10,27 @@ import Button from "app/components/Button"
 interface Props {
 	active: boolean
 	setActive: (active: boolean) => void
+	btnContent: string
+	btnOnClick: (TicketPayload) => void
+	initialState?: TicketPayload,
+	error?: string
 }
 
 const TalonForm: React.FC<Props> = ({
 	active,
-	setActive
+	setActive,
+	btnContent,
+	btnOnClick,
+	initialState,
+	error
 }) => {
 
-	const [ticketPayload, setTicketPayload] = useState<TicketPayload>({
-		aggregateState: "" as AggregateState,
-		wasteDestinationType: "" as WasteDestinationType,
-		measureSystem: "" as MeasureSystem,
-		quantity: 0
+	const [ticketPayload, setTicketPayload] = useState<TicketPayload>(
+		initialState ? initialState : {
+			aggregateState: "" as AggregateState,
+			wasteDestinationType: "" as WasteDestinationType,
+			measureSystem: "" as MeasureSystem,
+			quantity: 0
 	})
 
 	const setQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,14 +84,14 @@ const TalonForm: React.FC<Props> = ({
 					value={ticketPayload.quantity}
 				/>
 				<Button
-					content="Создать объект"
-					onClick={() => console.log(1)}
+					content={btnContent}
+					onClick={() => btnOnClick(ticketPayload)}
 					disabled={false}
 					loading={false}
 					type="dark"
 					styles={{
 						borderRadius: "20px",
-						marginTop: "20px"
+						marginTop: "30px"
 					}}
 				/>
 			</div>
