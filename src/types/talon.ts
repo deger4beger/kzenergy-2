@@ -1,3 +1,5 @@
+import { Waste } from "lib/assets/data/waste"
+
 export enum AggregateState {
   SOLID = "Твёрдое",
   LIQUID = "Жидкое"
@@ -26,6 +28,7 @@ export enum TalonStatus {
 export interface Talon {
   id: string
   date: string
+  wasteName: Waste
   wasteDestinationType: WasteDestinationType
   aggregateState: AggregateState
   measureSystem: MeasureSystem
@@ -37,5 +40,5 @@ export interface Talon {
 
 export interface TicketPayload extends Pick<
   Talon,
-  "wasteDestinationType" | "aggregateState" | "measureSystem" | "quantity"
+  "wasteDestinationType" | "aggregateState" | "measureSystem" | "quantity" | "wasteName"
 > {}

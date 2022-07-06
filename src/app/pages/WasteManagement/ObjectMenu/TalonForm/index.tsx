@@ -5,9 +5,12 @@ import { AggregateState, MeasureSystem, TicketPayload, WasteDestinationType } fr
 import Dropdown from "app/components/Dropdown"
 import Input from "app/components/Input"
 import Button from "app/components/Button"
+import { WasteInfo } from "types/object"
+import { Waste } from "lib/assets/data/waste"
 
 interface Props {
 	active: boolean
+	wastes: WasteInfo[]
 	setActive: (active: boolean) => void
 	btnContent: string
 	btnOnClick: (TicketPayload) => void
@@ -23,11 +26,13 @@ const TalonForm: React.FC<Props> = ({
 	btnOnClick,
 	btnLoading,
 	initialState,
+	wastes,
 	error
 }) => {
 
 	const [ticketPayload, setTicketPayload] = useState<TicketPayload>(
 		initialState ? initialState : {
+			wasteName: "" as Waste,
 			aggregateState: "" as AggregateState,
 			wasteDestinationType: "" as WasteDestinationType,
 			measureSystem: "" as MeasureSystem,
@@ -74,6 +79,12 @@ const TalonForm: React.FC<Props> = ({
 						{ error }
 					</div>
 				</div> }
+				<Dropdown
+					title="Выберите отход"
+					selected={ticketPayload.wasteName}
+					setSelected={setFormSelectValue("wasteName")}
+					options={wastes.map(wasteInfo => wasteInfo.name)}
+				/>
 				<Dropdown
 					title="Агрегатное состояние"
 					selected={ticketPayload.aggregateState}
