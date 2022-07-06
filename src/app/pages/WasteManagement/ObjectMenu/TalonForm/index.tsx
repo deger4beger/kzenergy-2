@@ -1,6 +1,6 @@
 import cn from "classnames"
 import Modal from "app/components/Modal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AggregateState, MeasureSystem, TalonPayload, WasteDestinationType } from "types/talon"
 import Dropdown from "app/components/Dropdown"
 import Input from "app/components/Input"
@@ -16,7 +16,7 @@ interface Props {
 	btnOnClick: (payload: TalonPayload) => void
 	btnLoading: boolean
 	initialState?: TalonPayload,
-	error?: string
+	error?: string | null
 }
 
 const TalonForm: React.FC<Props> = ({
@@ -31,7 +31,7 @@ const TalonForm: React.FC<Props> = ({
 }) => {
 
 	const [ticketPayload, setTicketPayload] = useState<TalonPayload>(
-		initialState ? initialState : {
+		initialState ? { ...initialState } : {
 			wasteName: "" as Waste,
 			aggregateState: "" as AggregateState,
 			wasteDestinationType: "" as WasteDestinationType,
@@ -39,6 +39,12 @@ const TalonForm: React.FC<Props> = ({
 			quantity: 0
 	})
 	const isBtnDisabled = Object.values(ticketPayload).some(el => !el)
+
+	useEffect(() => {
+		initialState && setTicketPayload({
+			...initialState
+		})
+	}, [initialState])
 
 	const setQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setTicketPayload(prev => ({
@@ -70,11 +76,14 @@ const TalonForm: React.FC<Props> = ({
 						textAlign: "center",
 						textDecoration: "underline"
 					}}>
-						Талон отклонен:
+						Талон отклонен с сообщением:
 					</div>
 					<div style={{
+						padding: "4px 10px",
 						marginBottom: "20px",
-						marginTop: "6px"
+						marginTop: "14px",
+						border: "2px solid var(--additional)",
+						borderRadius: "20px"
 					}}>
 						{ error }
 					</div>
