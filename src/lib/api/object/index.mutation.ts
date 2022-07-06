@@ -1,5 +1,5 @@
 import { ObjectDataPayload } from "types/object"
-import { TalonPayload } from "types/talon"
+import { Talon, TalonPayload } from "types/talon"
 import { objectApi } from "."
 
 const extendedObjectApi = objectApi.injectEndpoints({
@@ -27,10 +27,18 @@ const extendedObjectApi = objectApi.injectEndpoints({
 			}),
 			invalidatesTags: result => ["ObjectInfo"]
 		}),
+		patchTalon: build.mutation<void, Partial<Talon> & { ticketId: string }>({
+			query: ({ ticketId, ...body }) => ({
+				url: `/ticket/${ticketId}`,
+				method: "patch",
+				data: body
+			}),
+			invalidatesTags: result => ["ObjectInfo", "ObjectsInfo"]
+		}),
 	})
 })
 
 export const {
 	useCreateObjectMutation, useDeleteObjectMutation,
-	useCreateTalonMutation
+	useCreateTalonMutation, usePatchTalonMutation
 } = extendedObjectApi

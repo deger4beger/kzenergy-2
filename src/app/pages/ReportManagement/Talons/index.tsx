@@ -1,6 +1,7 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
 import TalonCard from "app/components/TalonCard"
+import { usePatchTalonMutation } from "lib/api/object/index.mutation"
 import { useState } from "react"
 import { ObjectsTotalInfo } from "types/object"
 import { PatchTalonStatusPayload, Talon, TalonStatus } from "types/talon"
@@ -12,9 +13,14 @@ const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = ({
 
 	const [selectedTalonId, setSelectedTalonId] = useState<string>("")
 	const [changeStatusActive, setChangeStatusActive] = useState(false)
+	const [ patchTalon, { isLoading } ] = usePatchTalonMutation()
 
-	const onChangeStatus = (payload: PatchTalonStatusPayload) => {
-		console.log(payload, selectedTalonId)
+	const onChangeStatus = async (payload: PatchTalonStatusPayload) => {
+		await patchTalon({
+			...payload,
+			ticketId: selectedTalonId
+		})
+		setChangeStatusActive(false)
 	}
 
 	const onChangeStatusClick = (talonId: string) => {
@@ -41,7 +47,7 @@ const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = ({
 			<ChangeStatus
 				active={changeStatusActive}
 				setActive={setChangeStatusActive}
-				btnLoading={false}
+				btnLoading={isLoading}
 				btnOnClick={onChangeStatus}
 			/>
 		</>

@@ -9,7 +9,6 @@ const ReportManagement = () => {
 
 	const { data, isLoading } = useGetObjectsInfoQuery()
 	const loading = isLoading || !data
-	console.log(data)
 
 	return (
 		<>
