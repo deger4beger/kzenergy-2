@@ -1,6 +1,10 @@
 .wrapper {
 	margin-bottom: 16px;
 	width: 100%;
+	&:disabled {
+		pointer-events: none;
+		opacity: 0.8;
+	}
 	.inputBlock {
 		display: flex;
 		.input {

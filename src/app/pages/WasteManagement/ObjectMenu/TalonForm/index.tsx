@@ -1,7 +1,7 @@
 import cn from "classnames"
 import Modal from "app/components/Modal"
 import { useState } from "react"
-import { AggregateState, MeasureSystem, TicketPayload, WasteDestinationType } from "types/talon"
+import { AggregateState, MeasureSystem, TalonPayload, WasteDestinationType } from "types/talon"
 import Dropdown from "app/components/Dropdown"
 import Input from "app/components/Input"
 import Button from "app/components/Button"
@@ -13,9 +13,9 @@ interface Props {
 	wastes: WasteInfo[]
 	setActive: (active: boolean) => void
 	btnContent: string
-	btnOnClick: (TicketPayload) => void
+	btnOnClick: (payload: TalonPayload) => void
 	btnLoading: boolean
-	initialState?: TicketPayload,
+	initialState?: TalonPayload,
 	error?: string
 }
 
@@ -30,7 +30,7 @@ const TalonForm: React.FC<Props> = ({
 	error
 }) => {
 
-	const [ticketPayload, setTicketPayload] = useState<TicketPayload>(
+	const [ticketPayload, setTicketPayload] = useState<TalonPayload>(
 		initialState ? initialState : {
 			wasteName: "" as Waste,
 			aggregateState: "" as AggregateState,

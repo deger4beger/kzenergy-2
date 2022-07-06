@@ -38,7 +38,12 @@ export interface Talon {
   message: string | null
 }
 
-export interface TicketPayload extends Pick<
+export interface TalonPayload extends Pick<
   Talon,
   "wasteDestinationType" | "aggregateState" | "measureSystem" | "quantity" | "wasteName"
+> {}
+
+export interface PatchTalonStatusPayload extends Pick<
+  Talon,
+  "status" | "message"
 > {}

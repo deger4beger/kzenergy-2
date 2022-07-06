@@ -1,13 +1,19 @@
 import React, { useState } from "react"
 import cn from "classnames"
 import fileSaver from "file-saver"
-import { Talon } from "types/talon"
+import { Talon, TalonStatus } from "types/talon"
 import s from "./index.module.scss"
 import Button from "../Button"
 import SimpleButton from "../SimpleButton"
 
+interface Props {
+	talon: Talon
+	children?: React.ReactNode
+}
 
-const TalonCard: React.FC<Talon> = (talon) => {
+const TalonCard: React.FC<Props> = ({
+	talon, children
+}) => {
 
 	const [active, setActive] = useState(true)
 
@@ -27,8 +33,8 @@ const TalonCard: React.FC<Talon> = (talon) => {
 			>
 				<div className={s.left}>
 					<div className={cn(s.statusIcon, {
-							[s.pos]: talon.status === "Принят",
-							[s.neg]: talon.status === "Отклонён"
+							[s.pos]: talon.status === TalonStatus.ACCEPTED,
+							[s.neg]: talon.status === TalonStatus.REJECTED
 						})}>
 						<div className={s.inner} />
 					</div>
@@ -44,6 +50,7 @@ const TalonCard: React.FC<Talon> = (talon) => {
 						text="Скачать файл ⇓"
 						onClick={onDownloadClick}
 					/> }
+					{ children }
 					<div className={cn(s.downIcon, {
 						[s.active]: active
 					})}>›</div>

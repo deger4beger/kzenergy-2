@@ -9,9 +9,10 @@ interface Props {
 	type: string
 	value: string | number
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	disabled?: boolean
 }
 
-const Input: React.FC<Props> = ({ type, ...inputProps }) => {
+const Input: React.FC<Props> = ({ type, disabled=false, ...inputProps }) => {
 
 	const [inputType, setInputType] = useState(type)
 
@@ -20,7 +21,9 @@ const Input: React.FC<Props> = ({ type, ...inputProps }) => {
 		inputType === "password" ? setInputType("text") : setInputType("password")
 	}
 
-	return <div className={s.wrapper}>
+	return <div className={cn(s.wrapper, {
+		[s.disabled]: disabled
+	})}>
 		<div className={s.title}>
 			{ inputProps.name }
 		</div>

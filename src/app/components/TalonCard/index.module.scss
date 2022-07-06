@@ -55,6 +55,8 @@
 			}
 		}
 		.right {
+			display: flex;
+			align-items: center;
 			.downIcon {
 				margin-left: 10px;
 				font-size: var(--fsz20);

@@ -4,7 +4,7 @@ import TalonCard from "app/components/TalonCard"
 import { useCreateTalonMutation } from "lib/api/object/index.mutation"
 import { useState } from "react"
 import { WasteInfo } from "types/object"
-import { Talon, TicketPayload } from "types/talon"
+import { Talon, TalonPayload } from "types/talon"
 import TalonForm from "../TalonForm"
 import s from "./index.module.scss"
 
@@ -19,7 +19,7 @@ const Talons: React.FC<Props> = ({ talons, objectId, wastes }) => {
 	const [createTalonActive, setCreateTalonActive] = useState(false)
 	const [createTalon, { isLoading }] = useCreateTalonMutation()
 
-	const onCreateTalon = async (payload: TicketPayload) => {
+	const onCreateTalon = async (payload: TalonPayload) => {
 		await createTalon({
 			...payload,
 			facilityId: objectId
@@ -46,7 +46,7 @@ const Talons: React.FC<Props> = ({ talons, objectId, wastes }) => {
 					wastes={wastes}
 				/>
 				{ talons.map(talon =>
-					<TalonCard {...talon} key={talon.id} />
+					<TalonCard talon={talon} key={talon.id} />
 				) }
 			</div>
 		</GroupLayout>
