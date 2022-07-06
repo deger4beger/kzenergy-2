@@ -1,0 +1,36 @@
+.content {
+	position: relative;
+	margin: 4px 16px;
+	border: 2px solid var(--additional);
+	border-radius: 10px;
+	padding: 0px 4px;
+	.bubble {
+		opacity: 0;
+		transform: scale(0.7);
+		transition: 0.2s;
+		position: absolute;
+		text-align: center;
+		bottom: 34px;
+		background-color: var(--bg2);
+		padding: 6px 0px;
+		border-radius: 10px;
+		border: 1px solid var(--additional);
+		width: 200px;
+		left: calc(-100px + 14px);
+		z-index: -5;
+	}
+	&:hover .bubble {
+		transform: scale(1);
+		opacity: 1;
+	}
+	&:before {
+		content: "";
+		width: 8px;
+		height: 8px;
+		border-radius: 8px;
+		position: absolute;
+		right: -3px;
+		top: -3px;
+		background-color: var(--success);
+	}
+}
