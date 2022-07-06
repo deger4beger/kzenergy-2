@@ -5,6 +5,7 @@ import { Talon, TalonStatus } from "types/talon"
 import s from "./index.module.scss"
 import Button from "../Button"
 import SimpleButton from "../SimpleButton"
+import Tooltip from "../Tooltip"
 
 interface Props {
 	talon: Talon
@@ -46,11 +47,15 @@ const TalonCard: React.FC<Props> = ({
 					</div>
 				</div>
 				<div className={s.right} onClick={(e) => e.stopPropagation()}>
+					{ talon.message && <Tooltip
+						content="✉"
+						info={ talon.message }
+					/> }
+					{ children }
 					{ talon.excel && <SimpleButton
 						text="Скачать файл ⇓"
 						onClick={onDownloadClick}
 					/> }
-					{ children }
 					<div className={cn(s.downIcon, {
 						[s.active]: active
 					})}>›</div>
