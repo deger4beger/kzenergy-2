@@ -17,7 +17,9 @@ const GroupLayout: React.FC<Props> = ({
 }) => {
 
 	return (
-		<div className={s.wrapper}>
+		<div className={cn(s.wrapper, {
+				[s.sub]: subLayout
+			})}>
 			<div className={s.menu}>
 				<div className={cn(s.title, {
 					[s.sub]: subLayout

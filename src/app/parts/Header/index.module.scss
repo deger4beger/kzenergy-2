@@ -29,6 +29,7 @@
 	width: 100%;
 	height: 40px;
 	background-color: rgba(var(--bg2), .4);
+	backdrop-filter: blur(8px);
 	position: sticky;
 	z-index: 5;
 	border-bottom: 1px solid var(--additional);

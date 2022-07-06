@@ -27,20 +27,20 @@ const TalonCard: React.FC<Talon> = (talon) => {
 			>
 				<div className={s.left}>
 					<div className={cn(s.statusIcon, {
-							[s.pos]: true,
+							[s.pos]: talon.status === "Принят",
 							[s.neg]: talon.status === "Отклонён"
 						})}>
 						<div className={s.inner} />
 					</div>
 					<div className={s.title}>
-						{ talon.date }
+						{ talon.wasteName } - { talon.date }
 					</div>
 					<div className={s.status}>
 						({ talon.status })
 					</div>
 				</div>
 				<div className={s.right} onClick={(e) => e.stopPropagation()}>
-					{ true && <SimpleButton
+					{ talon.excel && <SimpleButton
 						text="Скачать файл ⇓"
 						onClick={onDownloadClick}
 					/> }
@@ -52,11 +52,17 @@ const TalonCard: React.FC<Talon> = (talon) => {
 			<div className={cn(s.content, {
 				[s.active]: active
 			})}>
-				{/*<div className={s.contentTitle}>
+				<div className={s.contentTitle}>
 					Тип назначения отхода
-				</div>*/}
-				<div className={s.contentValue}>
-					{ talon.wasteName }
+				</div>
+				<div className={s.contentTitle}>
+					Агрегатное состояние
+				</div>
+				<div className={s.contentTitle}>
+					Система измерения
+				</div>
+				<div className={s.contentTitle}>
+					Количество
 				</div>
 				<div className={s.contentValue}>
 					{ talon.wasteDestinationType }

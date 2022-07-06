@@ -1,4 +1,4 @@
-import { ObjectData, ObjectTotalInfo } from "types/object"
+import { ObjectData, ObjectsTotalInfo, ObjectTotalInfo } from "types/object"
 import { objectApi } from "."
 
 const extendedObjectApi = objectApi.injectEndpoints({
@@ -16,8 +16,18 @@ const extendedObjectApi = objectApi.injectEndpoints({
 				method: "get"
 			}),
 			providesTags: result => ["ObjectInfo"]
+		}),
+		getObjectsInfo: build.query<ObjectsTotalInfo, void>({
+			query: () => ({
+				url: "/total/",
+				method: "get"
+			}),
+			providesTags: result => ["ObjectsInfo"]
 		})
 	})
 })
 
-export const { useGetAllObjectsQuery, useGetObjectInfoQuery } = extendedObjectApi
+export const {
+	useGetAllObjectsQuery, useGetObjectInfoQuery,
+	useGetObjectsInfoQuery
+} = extendedObjectApi

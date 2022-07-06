@@ -1,7 +1,6 @@
 .wrapper {
 	width: 100%;
 	padding: 10px 20px;
-	padding-bottom: 0;
 	.menu {
 		border-bottom: 2px dashed var(--additional);
 		padding: 6px 6px;
@@ -68,8 +67,24 @@
 		}
 	}
 	.content {
-		padding: 20px 10px;
+		padding: 30px 10px;
 		display: none;
+		flex-wrap: wrap;
+		.contentTitle {
+			border-bottom: 1px solid var(--additional);
+			padding: 4px 10px;
+			font-weight: 500;
+		}
+		.contentValue {
+			padding: 4px 10px;
+		}
+		div {
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-basis: 25%;
+		}
 		&.active {
 			display: flex;
 		}

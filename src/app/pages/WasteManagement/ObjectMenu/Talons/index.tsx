@@ -46,7 +46,7 @@ const Talons: React.FC<Props> = ({ talons, objectId, wastes }) => {
 					wastes={wastes}
 				/>
 				{ talons.map(talon =>
-					<TalonCard {...talon} />
+					<TalonCard {...talon} key={talon.id} />
 				) }
 			</div>
 		</GroupLayout>
