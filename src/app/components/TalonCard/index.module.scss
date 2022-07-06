@@ -55,6 +55,17 @@
 				}
 			}
 		}
+		.right {
+			.downIcon {
+				margin-left: 10px;
+				font-size: var(--fsz20);
+				font-weight: 500;
+				transform: rotate(90deg);
+				&.active {
+					transform: rotate(-90deg);
+				}
+			}
+		}
 	}
 	.content {
 		padding: 20px 10px;

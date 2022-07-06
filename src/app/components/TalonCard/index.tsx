@@ -39,11 +39,14 @@ const TalonCard: React.FC<Talon> = (talon) => {
 						({ talon.status })
 					</div>
 				</div>
-				<div onClick={(e) => e.stopPropagation()}>
-					{ talon.excel && <SimpleButton
+				<div className={s.right} onClick={(e) => e.stopPropagation()}>
+					{ true && <SimpleButton
 						text="Скачать файл ⇓"
 						onClick={onDownloadClick}
 					/> }
+					<div className={cn(s.downIcon, {
+						[s.active]: active
+					})}>›</div>
 				</div>
 			</div>
 			<div className={cn(s.content, {
