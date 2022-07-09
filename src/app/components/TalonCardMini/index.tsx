@@ -1,5 +1,7 @@
 import React from "react"
 import { Talon } from "types/talon"
+import StatusIcon from "../StatusIcon"
+import s from "./index.module.scss"
 
 
 interface Props {
@@ -10,8 +12,13 @@ const TalonCardMini: React.FC<Props> = ({
 	talon
 }) => {
 	return (
-		<div>
-			{ talon.wasteName }
+		<div className={s.wrapper}>
+			<StatusIcon
+				status={talon.status}
+			/>
+			<div className={s.title}>
+				{ talon.wasteName } - { talon.date }
+			</div>
 		</div>
 	)
 }
