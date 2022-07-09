@@ -31,7 +31,7 @@ const ObjectMenu: React.FC<Props> = ({
 			<div style={{ marginTop: "16px" }}>
 				{ (isLoading || !data) ? <Preloader /> : <>
 					<Talons talons={data.tickets} objectId={id} wastes={wastes} />
-					<Reports report={data.report} />
+					<Reports report={data.report} tickets={data.tickets} />
 				</> }
 			</div>
 		</GroupLayout>

@@ -28,31 +28,6 @@
 				margin-left: 6px;
 				font-size: var(--fsz14);
 			}
-			.statusIcon {
-				width: 16px;
-				height: 16px;
-				border-radius: 20px;
-				color: var(--bg1);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-weight: 600;
-				background-color: var(--color2);
-				&.pos {
-					background-color: var(--success);
-					color: var(--bg1);
-				}
-				&.neg {
-					background-color: var(--error);
-					color: var(--bg1);
-				}
-				.inner {
-					width: 6px;
-					height: 6px;
-					background-color: var(--bg1);
-					border-radius: 10px;
-				}
-			}
 		}
 		.right {
 			display: flex;

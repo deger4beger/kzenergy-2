@@ -6,6 +6,7 @@ import s from "./index.module.scss"
 import Button from "../Button"
 import SimpleButton from "../SimpleButton"
 import Tooltip from "../Tooltip"
+import StatusIcon from "../StatusIcon"
 
 interface Props {
 	talon: Talon
@@ -33,12 +34,7 @@ const TalonCard: React.FC<Props> = ({
 			onClick={() => setActive(prev => !prev)}
 			>
 				<div className={s.left}>
-					<div className={cn(s.statusIcon, {
-							[s.pos]: talon.status === TalonStatus.ACCEPTED,
-							[s.neg]: talon.status === TalonStatus.REJECTED
-						})}>
-						<div className={s.inner} />
-					</div>
+					<StatusIcon status={talon.status} />
 					<div className={s.title}>
 						{ talon.wasteName } - { talon.date }
 					</div>
