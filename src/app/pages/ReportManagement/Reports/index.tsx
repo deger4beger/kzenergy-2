@@ -1,7 +1,4 @@
-import GroupLayout from "app/components/GroupLayout"
-import SimpleButton from "app/components/SimpleButton"
 import { Report } from "types/report"
-import s from "./index.module.scss"
 
 interface Props {
 	reports: Report[]

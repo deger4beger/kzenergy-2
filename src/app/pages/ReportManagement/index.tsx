@@ -19,7 +19,7 @@ const ReportManagement = () => {
 			</GroupLayout>
 			<GroupLayout title="Список отчетов">
 				<div style={{ marginTop: "16px" }}>
-					{ ( loading ) ? <Preloader /> : <Reports reports={[]} /> }
+					{ ( loading ) ? <Preloader /> : <Reports reports={ data.reports } /> }
 				</div>
 			</GroupLayout>
 		</>

@@ -23,7 +23,7 @@ export interface ObjectTotalInfo {
 }
 
 export interface ObjectsTotalInfo {
-	report: Report[]
+	reports: Report[]
 	tickets: {
 		[key: string]: Talon[]
 	}

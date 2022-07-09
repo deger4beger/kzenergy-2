@@ -1,4 +1,5 @@
 import GroupLayout from "app/components/GroupLayout"
+import ReportCard from "app/components/ReportCard"
 import SimpleButton from "app/components/SimpleButton"
 import { useCreateReportMutation } from "lib/api/object/index.mutation"
 import { useState } from "react"
@@ -36,7 +37,7 @@ const Reports: React.FC<Props> = ({
 			/> }
 			subLayout
 		>
-			<>
+			<div style={{ marginBottom: "100px" }}>
 				<ReportForm
 					active={createReportActive}
 					setActive={setCreateReportActive}
@@ -44,7 +45,8 @@ const Reports: React.FC<Props> = ({
 					tickets={tickets}
 					loading={isLoading}
 				/>
-			</>
+				{ report && <ReportCard report={report} /> }
+			</div>
 		</GroupLayout>
 	)
 }

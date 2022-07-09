@@ -5,12 +5,12 @@ export enum UserRoles {
 }
 
 export interface UserData {
-    id: string
-    fullname: string
-    email: string
-    phone: string
-    token: string
-    role: UserRoles
+  id: string
+  fullname: string
+  email: string
+  phone: string
+  token: string
+  role: UserRoles
 }
 
 export interface SigninPayload {
