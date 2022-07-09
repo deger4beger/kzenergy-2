@@ -35,10 +35,18 @@ const extendedObjectApi = objectApi.injectEndpoints({
 			}),
 			invalidatesTags: result => ["ObjectInfo", "ObjectsInfo"]
 		}),
+		createReport: build.mutation<void, string>({
+			query: (facilityId) => ({
+				url: `/${facilityId}/report/`,
+				method: "post",
+			}),
+			invalidatesTags: result => ["ObjectInfo", "ObjectsInfo"]
+		}),
 	})
 })
 
 export const {
 	useCreateObjectMutation, useDeleteObjectMutation,
-	useCreateTalonMutation, usePatchTalonMutation
+	useCreateTalonMutation, usePatchTalonMutation,
+	useCreateReportMutation
 } = extendedObjectApi

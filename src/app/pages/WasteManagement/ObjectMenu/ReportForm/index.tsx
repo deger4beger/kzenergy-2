@@ -9,13 +9,15 @@ interface Props {
 	setActive: (active: boolean) => void
 	tickets: Talon[]
 	createReport: () => void
+	loading: boolean
 }
 
 const ReportForm: React.FC<Props> = ({
 	active,
 	setActive,
 	tickets,
-	createReport
+	createReport,
+	loading
 }) => {
 
 	const titleStyles = {
@@ -62,8 +64,7 @@ const ReportForm: React.FC<Props> = ({
 			<Button
 				content="Создать отчет"
 				onClick={createReport}
-				disabled={false}
-				loading={false}
+				loading={loading}
 				styles={{
 					borderRadius: "20px",
 					marginTop: "30px"

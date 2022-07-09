@@ -12,9 +12,15 @@ interface Props {
 	talons: Talon[]
 	wastes: WasteInfo[]
 	objectId: string
+	createNewDisabled: boolean
 }
 
-const Talons: React.FC<Props> = ({ talons, objectId, wastes }) => {
+const Talons: React.FC<Props> = ({
+	talons,
+	objectId,
+	wastes,
+	createNewDisabled
+}) => {
 
 	const [selectedTalon, setSelectedTalon] = useState<Talon>()
 	const [createTalonActive, setCreateTalonActive] = useState(false)
@@ -52,6 +58,7 @@ const Talons: React.FC<Props> = ({ talons, objectId, wastes }) => {
 			title="Список талонов"
 			btns={ <SimpleButton
 				onClick={() => setCreateTalonActive(true)}
+				disabled={createNewDisabled}
 				text="Создать новый +"
 			/> }
 			subLayout
