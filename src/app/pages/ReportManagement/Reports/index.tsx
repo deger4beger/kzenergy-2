@@ -1,3 +1,4 @@
+import ReportCard from "app/components/ReportCard"
 import { Report } from "types/report"
 
 interface Props {
@@ -8,14 +9,12 @@ const Reports: React.FC<Props> = ({
 	reports
 }) => {
 
-	console.log(reports)
-
 	return (
-		<>
+		<div style={{ marginBottom: "100px" }}>
 			{ reports.map(report =>
-				<div>{ report.id }</div>
+				<ReportCard report={report} key={report.id} />
 			) }
-		</>
+		</div>
 	)
 }
 

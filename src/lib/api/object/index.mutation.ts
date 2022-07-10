@@ -25,7 +25,7 @@ const extendedObjectApi = objectApi.injectEndpoints({
 				method: "post",
 				data: body
 			}),
-			invalidatesTags: result => ["ObjectInfo"]
+			invalidatesTags: result => ["ObjectInfo", "ObjectsInfo"]
 		}),
 		patchTalon: build.mutation<void, Partial<Talon> & { ticketId: string }>({
 			query: ({ ticketId, ...body }) => ({

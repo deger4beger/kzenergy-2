@@ -11,7 +11,12 @@ const ReportCard: React.FC<Props> = ({
 
 	return (
 		<div className={s.wrapper}>
-			{ report.id }
+			<div className={s.left}>
+				{ report.facilityName && <div className={s.facility}>
+					{ report.facilityName }:
+				</div> }
+				{ report.date } - { report.user.fullname }
+			</div>
 		</div>
 	)
 

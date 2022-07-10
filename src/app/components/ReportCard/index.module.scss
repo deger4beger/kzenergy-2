@@ -1,0 +1,14 @@
+.wrapper {
+	border: 1px solid var(--additional);
+	font-weight: 500;
+	background-color: var(--bg2);
+	border-radius: 4px;
+	padding: 10px 20px;
+	margin-top: 16px;
+	.left {
+		display: flex;
+		.facility {
+			margin-right: 10px;
+		}
+	}
+}
