@@ -13,7 +13,7 @@ interface Props {
 	children?: React.ReactNode
 }
 
-const TalonCard: React.FC<Props> = ({
+const TalonCard: React.FC<Props> = React.memo(({
 	talon, children
 }) => {
 
@@ -88,6 +88,6 @@ const TalonCard: React.FC<Props> = ({
 		</div>
 	)
 
-}
+})
 
 export default TalonCard

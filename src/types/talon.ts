@@ -38,6 +38,8 @@ export interface Talon {
   message: string | null
 }
 
+export interface TalonMini extends Pick<Talon, "id" | "wasteName" | "status" | "date"> {}
+
 export interface TalonPayload extends Pick<
   Talon,
   "wasteDestinationType" | "aggregateState" | "measureSystem" | "quantity" | "wasteName"

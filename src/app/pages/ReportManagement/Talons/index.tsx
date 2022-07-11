@@ -2,12 +2,12 @@ import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
 import TalonCard from "app/components/TalonCard"
 import { usePatchTalonMutation } from "lib/api/object/index.mutation"
-import { useState } from "react"
+import React, { useState } from "react"
 import { ObjectsTotalInfo } from "types/object"
 import { PatchTalonStatusPayload, Talon, TalonStatus } from "types/talon"
 import ChangeStatus from "./ChangeStatus"
 
-const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = ({
+const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = React.memo(({
 	tickets: talons
 }) => {
 
@@ -32,7 +32,7 @@ const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = ({
 		<>
 			{ Object.keys(talons).map(objectName =>
 				<GroupLayout title={ objectName } key={ objectName } subLayout>
-					<div>
+					<>
 						{ talons[objectName].map(talon =>
 							<TalonCard talon={talon} key={ talon.id }>
 								{ ( talon.status === TalonStatus.PENDING ) && <SimpleButton
@@ -41,7 +41,7 @@ const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = ({
 								/> }
 							</TalonCard>
 						) }
-					</div>
+					</>
 				</GroupLayout>
 			) }
 			<ChangeStatus
@@ -52,6 +52,6 @@ const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = ({
 			/>
 		</>
 	)
-}
+})
 
 export default Talons

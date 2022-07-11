@@ -1,14 +1,22 @@
 .wrapper {
-	border: 1px solid var(--additional);
-	font-weight: 500;
-	background-color: var(--bg2);
-	border-radius: 4px;
+	border: 2px solid var(--additional);
+	// background-color: var(--bg2);
+	border-radius: 20px;
 	padding: 10px 20px;
 	margin-top: 16px;
 	.left {
+		font-weight: 500;
 		display: flex;
 		.facility {
 			margin-right: 10px;
 		}
 	}
+	.right {
+		cursor: pointer;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	display: flex;
+	justify-content: space-between;
 }

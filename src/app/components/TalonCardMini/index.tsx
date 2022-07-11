@@ -1,11 +1,11 @@
 import React from "react"
-import { Talon } from "types/talon"
+import { Talon, TalonMini } from "types/talon"
 import StatusIcon from "../StatusIcon"
 import s from "./index.module.scss"
 
 
 interface Props {
-	talon: Talon
+	talon: Talon | TalonMini
 }
 
 const TalonCardMini: React.FC<Props> = ({

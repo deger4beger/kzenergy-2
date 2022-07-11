@@ -9,7 +9,7 @@ interface Props {
 	subLayout?: boolean
 }
 
-const GroupLayout: React.FC<Props> = ({
+const GroupLayout: React.FC<Props> = React.memo(({
 	title,
 	btns,
 	children,
@@ -39,6 +39,6 @@ const GroupLayout: React.FC<Props> = ({
 			</div> }
 		</div>
 	)
-}
+})
 
 export default GroupLayout
