@@ -4,7 +4,7 @@ import TalonCard from "app/components/TalonCard"
 import { usePatchTalonMutation } from "lib/api/object/index.mutation"
 import React, { useState } from "react"
 import { ObjectsTotalInfo } from "types/object"
-import { PatchTalonStatusPayload, Talon, TalonStatus } from "types/talon"
+import { PatchTalonStatusPayload, TalonStatus } from "types/talon"
 import ChangeStatus from "./ChangeStatus"
 
 const Talons: React.FC<Pick<ObjectsTotalInfo, "tickets">> = React.memo(({
