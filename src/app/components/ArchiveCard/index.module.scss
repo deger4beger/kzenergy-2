@@ -1,0 +1,45 @@
+.wrapper {
+	border: 2px solid var(--additional);
+	display: flex;
+	flex-direction: column;
+	padding: 10px 20px;
+	border-radius: 20px;
+	user-select: none;
+	&:hover {
+		border-color: var(--color2);
+		cursor: pointer;
+	}
+	.title {
+		padding: 0px 10px;
+		font-weight: 500;
+		border-bottom: 1px solid var(--additional);
+	}
+	.info {
+		.infoItem {
+			display: flex;
+			padding: 0px 16px;
+			position: relative;
+			margin: 10px;
+			&:first-child {
+				margin-top: 16px;
+			}
+			&:before {
+				content: "";
+				display: block;
+				width: 5px;
+				height: 5px;
+				position: absolute;
+				top: calc(50% - 3px);
+				border-radius: 10px;
+				left: 4px;
+				background-color: var(--color1);
+			}
+			.infoText {
+				margin-left: 6px;
+			}
+			.infoTitle {
+				text-decoration: underline;
+			}
+		}
+	}
+}
