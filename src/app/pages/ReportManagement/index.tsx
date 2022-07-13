@@ -18,10 +18,10 @@ const ReportManagement = () => {
 	}
 
 	return (
-		<>
+		( !loading ) ? <>
 			<GroupLayout title="Список талонов">
 				<div>
-					{ ( loading ) ? <Preloader /> : <Talons tickets={ data.tickets } /> }
+					<Talons tickets={ data.tickets } />
 				</div>
 			</GroupLayout>
 			<GroupLayout title="Список отчетов" btns={
@@ -32,10 +32,10 @@ const ReportManagement = () => {
 				/>
 			}>
 				<div style={{ marginTop: "16px" }}>
-					{ ( loading ) ? <div /> : <Reports reports={ data.reports } /> }
+					<Reports reports={ data.reports } />
 				</div>
 			</GroupLayout>
-		</>
+		</> : <Preloader />
 	)
 }
 

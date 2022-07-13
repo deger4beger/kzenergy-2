@@ -15,14 +15,14 @@ const ReportCard: React.FC<Props> = ({
 	const [active, setActive] = useState(false)
 
 	return (
-		<div className={s.wrapper}>
+		<div className={s.wrapper} onClick={() => setActive(true)}>
 			<div className={s.left}>
 				{ report.facilityName && <div className={s.facility}>
 					{ report.facilityName }:
 				</div> }
 				{ report.date } - { report.user.fullname }
 			</div>
-			<div className={s.right} onClick={() => setActive(true)}>
+			<div className={s.right}>
 				Талонов: { report.tickets.length }
 			</div>
 			<Modal

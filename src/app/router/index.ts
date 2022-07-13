@@ -1,4 +1,5 @@
 import AdminManagement from "app/pages/AdminManagement"
+import Archive from "app/pages/Archive"
 import CompanyOverview from "app/pages/CompanyOverview"
 import ObjectControl from "app/pages/ObjectControl"
 import ReportManagement from "app/pages/ReportManagement"
@@ -18,6 +19,7 @@ export enum RouteNames {
   REPORT_MANAGEMENT="/reports",
   WASTE_MANAGEMENT="/wastes",
   OBJECT_CONTROL="/objects",
+  ARCHIVE="/archive",
   COMPANY_OVERVIEW="/overview",
   ADMIN_MANAGEMENT="/admin"
 }
@@ -34,6 +36,7 @@ export const facilityRoutes: IRoute[] = [
 export const ecologyRoutes: IRoute[] = [
   {path: RouteNames.REPORT_MANAGEMENT, exact: true, component: ReportManagement},
   {path: RouteNames.COMPANY_OVERVIEW, exact: true, component: CompanyOverview},
+  {path: RouteNames.ARCHIVE, exact: true, component: Archive},
 ]
 
 export const adminRoutes: IRoute[] = [

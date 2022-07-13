@@ -4,17 +4,15 @@
 	border-radius: 20px;
 	padding: 10px 20px;
 	margin-top: 16px;
+	&:hover {
+		cursor: pointer;
+		border-color: var(--color2);
+	}
 	.left {
 		font-weight: 500;
 		display: flex;
 		.facility {
 			margin-right: 10px;
-		}
-	}
-	.right {
-		cursor: pointer;
-		&:hover {
-			text-decoration: underline;
 		}
 	}
 	display: flex;

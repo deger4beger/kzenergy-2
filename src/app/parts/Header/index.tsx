@@ -69,6 +69,15 @@ const Header = () => {
 					<Link
 						className={cn(s.link, {
 							[s.disabled]: role !== UserRoles.Ecologist,
+							[s.active]: location === RouteNames.ARCHIVE
+						})}
+						to={RouteNames.ARCHIVE}
+					>
+						Архив отчетов
+					</Link>
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role !== UserRoles.Ecologist,
 							[s.active]: location === RouteNames.COMPANY_OVERVIEW
 						})}
 						to={RouteNames.COMPANY_OVERVIEW}
