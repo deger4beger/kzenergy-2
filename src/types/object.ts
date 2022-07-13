@@ -17,14 +17,19 @@ export interface ObjectDataPayload extends Pick<ObjectData, "name"> {
 	wastes: Waste[]
 }
 
+export interface TalonForObject extends Talon {
+	usedInReport?: boolean
+}
+
 export interface ObjectTotalInfo {
 	report: Report | null
-	tickets: Talon[]
+	tickets: TalonForObject[]
 }
 
 export interface ObjectsTotalInfo {
 	reports: Report[]
 	tickets: {
-		[key: string]: Talon[]
+		[key: string]: TalonForObject[]
 	}
+	facilityNumber: number
 }

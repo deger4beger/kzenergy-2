@@ -1,15 +1,14 @@
 import React, { useState } from "react"
 import cn from "classnames"
 import fileSaver from "file-saver"
-import { Talon, TalonStatus } from "types/talon"
 import s from "./index.module.scss"
-import Button from "../Button"
 import SimpleButton from "../SimpleButton"
 import Tooltip from "../Tooltip"
 import StatusIcon from "../StatusIcon"
+import { TalonForObject } from "types/object"
 
 interface Props {
-	talon: Talon
+	talon: TalonForObject
 	children?: React.ReactNode
 }
 
@@ -29,7 +28,8 @@ const TalonCard: React.FC<Props> = React.memo(({
 	return (
 		<div className={s.wrapper}>
 			<div className={cn(s.menu, {
-				[s.active]: active
+				[s.active]: active,
+				[s.used]: talon.usedInReport
 			})}
 			onClick={() => setActive(prev => !prev)}
 			>
@@ -39,7 +39,9 @@ const TalonCard: React.FC<Props> = React.memo(({
 						{ talon.wasteName } - { talon.date }
 					</div>
 					<div className={s.status}>
-						({ talon.status })
+						({ talon.usedInReport ? `${talon.status}, используется в текущем отчете` :
+							talon.status
+						})
 					</div>
 				</div>
 				<div className={s.right} onClick={(e) => e.stopPropagation()}>
