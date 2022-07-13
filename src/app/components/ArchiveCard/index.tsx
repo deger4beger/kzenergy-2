@@ -5,13 +5,14 @@ interface Props {
 	id: string | number
 	date: string
 	user: string
+	onClick: () => void
 }
 
 const ArchiveCard: React.FC<Props> = ({
-	id, date, user
+	id, date, user, onClick
 }) => {
 	return (
-		<div className={s.wrapper}>
+		<div className={s.wrapper} onClick={onClick}>
 			<div className={s.title}>
 				Сводный отчет № { id }
 			</div>
