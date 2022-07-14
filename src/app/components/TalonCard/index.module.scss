@@ -1,6 +1,9 @@
 .wrapper {
 	width: 100%;
 	padding: 10px 20px;
+	border: 1px solid var(--additional);
+	border-radius: 20px;
+	margin: 20px 0;
 	.menu {
 		border-bottom: 2px dashed var(--additional);
 		padding: 6px 10px;
