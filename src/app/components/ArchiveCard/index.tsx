@@ -1,4 +1,5 @@
 import React from "react"
+import cn from "classnames"
 import s from "./index.module.scss"
 
 interface Props {
@@ -6,13 +7,16 @@ interface Props {
 	date: string
 	user: string
 	onClick: () => void
+	blink?: boolean
 }
 
 const ArchiveCard: React.FC<Props> = ({
-	id, date, user, onClick
+	id, date, user, onClick, blink
 }) => {
 	return (
-		<div className={s.wrapper} onClick={onClick}>
+		<div className={cn(s.wrapper, {
+			[s.blink]: blink
+		})} onClick={onClick}>
 			<div className={s.title}>
 				Сводный отчет № { id }
 			</div>

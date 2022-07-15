@@ -1,3 +1,9 @@
+@keyframes blink {
+  50% {
+    background-color: var(--bg2);
+  }
+}
+
 .wrapper {
 	border: 2px solid var(--additional);
 	display: flex;
@@ -5,6 +11,9 @@
 	padding: 10px 20px;
 	border-radius: 20px;
 	user-select: none;
+	&.blink {
+		animation: blink 1s linear;
+	}
 	&:hover {
 		border-color: var(--color2);
 		cursor: pointer;

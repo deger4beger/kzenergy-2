@@ -32,9 +32,10 @@ const Archive = () => {
 					<ArchiveCard
 						onClick={ () => setSelected(report) }
 						key={ report.id }
-						id={ ++index }
+						id={ data.length - index }
 						date={ report.date }
 						user={ report.user.fullname }
+						blink={ index === 0 }
 					/>
 				) }
 			</div>

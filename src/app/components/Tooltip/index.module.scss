@@ -18,6 +18,7 @@
 		width: 200px;
 		left: calc(-100px + 14px);
 		pointer-events: none;
+		padding: 6px 10px;
 	}
 	&:hover .bubble {
 		transform: scale(1);

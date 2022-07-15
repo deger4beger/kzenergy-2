@@ -26,10 +26,11 @@ const TalonCard: React.FC<Props> = React.memo(({
 	}
 
 	return (
-		<div className={s.wrapper}>
+		<div className={cn(s.wrapper, {
+			[s.used]: talon.usedInReport
+		})}>
 			<div className={cn(s.menu, {
-				[s.active]: active,
-				[s.used]: talon.usedInReport
+				[s.active]: active
 			})}
 			onClick={() => setActive(prev => !prev)}
 			>

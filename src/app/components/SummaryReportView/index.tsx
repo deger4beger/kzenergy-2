@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { ReactElement, useMemo } from "react"
 import { SummaryReport } from "types/report"
 import s from "./index.module.scss"
 
@@ -52,88 +52,10 @@ const SummaryReportView: React.FC<{
 							<th rowSpan={tickets.length}>
 								{ facility }
 							</th>
-							{ tickets.slice(0, 1).map(ticket =>
-								[
-									<td>
-										{ ticket.wasteName }
-									</td>,
-									<td>
-										{ ticket.aggregateState }
-									</td>,
-									<td>
-										{ ticket.quantityByMeasureSystem.тонна }
-									</td>,
-									<td>
-										{ ticket.quantityByMeasureSystem.м3 }
-									</td>,
-									<td>
-										{ ticket.quantityByMeasureSystem.штука }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType.Захоронение }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType.Утилизация }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType.Переработка }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType["Повторное использование"] }
-									</td>,
-									<td>
-										{ ticket.message }
-									</td>,
-									<td>
-										{ ticket.date }
-									</td>
-								]
-							) }
+							<TicketRow tickets={tickets.slice(0, 1)} />
 						</tr>,
 						<tr>
-							{ tickets.slice(1).map(ticket =>
-								[
-									<td>
-										{ ticket.wasteName }
-									</td>,
-									<td>
-										{ ticket.aggregateState }
-									</td>,
-									<td>
-										{ ticket.quantityByMeasureSystem.тонна }
-									</td>,
-									<td>
-										{ ticket.quantityByMeasureSystem.м3 }
-									</td>,
-									<td>
-										{ ticket.quantityByMeasureSystem.штука }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType.Захоронение }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType.Утилизация }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType.Переработка }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
-									</td>,
-									<td>
-										{ ticket.quantityByDestinationType["Повторное использование"] }
-									</td>,
-									<td>
-										{ ticket.message }
-									</td>,
-									<td>
-										{ ticket.date }
-									</td>
-								]
-							) }
+							<TicketRow tickets={tickets.slice(1)} />
 						</tr>
 					] ) }
 				) }
@@ -141,5 +63,48 @@ const SummaryReportView: React.FC<{
 		</table>
 	)
 }
+
+const TicketRow: React.FC<Pick<SummaryReport, "tickets">> = ({
+	tickets
+}): any => tickets.map(ticket =>
+	[
+		<td>
+			{ ticket.wasteName }
+		</td>,
+		<td>
+			{ ticket.aggregateState }
+		</td>,
+		<td>
+			{ ticket.quantityByMeasureSystem.тонна }
+		</td>,
+		<td>
+			{ ticket.quantityByMeasureSystem.м3 }
+		</td>,
+		<td>
+			{ ticket.quantityByMeasureSystem.штука }
+		</td>,
+		<td>
+			{ ticket.quantityByDestinationType.Захоронение }
+		</td>,
+		<td>
+			{ ticket.quantityByDestinationType.Утилизация }
+		</td>,
+		<td>
+			{ ticket.quantityByDestinationType.Переработка }
+		</td>,
+		<td>
+			{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
+		</td>,
+		<td>
+			{ ticket.quantityByDestinationType["Повторное использование"] }
+		</td>,
+		<td>
+			{ ticket.message }
+		</td>,
+		<td>
+			{ ticket.date }
+		</td>
+	]
+)
 
 export default SummaryReportView
