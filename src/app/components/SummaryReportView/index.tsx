@@ -24,16 +24,121 @@ const SummaryReportView: React.FC<{
  		"Дата"
 	], [])
 
+	const facilities = useMemo(() =>
+		report.tickets.reduce((facilityList, ticket) => {
+			if (!facilityList.includes(ticket.facilityName)) {
+				facilityList.push(ticket.facilityName)
+			}
+			return facilityList
+		}, [] as string[])
+	, [report])
+
 	return (
-		<div className={s.wrapper}>
-			<div className={s.columns}>
-				{ columns.map(column =>
-					<div className={s.column} key={column}>
-						{ column }
-					</div>
+		<table className={s.wrapper}>
+			<thead className={s.columns}>
+				<tr>
+					{ columns.map(column =>
+						<th className={s.column} key={column}>
+							{ column }
+						</th>
+					) }
+				</tr>
+			</thead>
+			<tbody>
+				{ facilities.map(facility => {
+					const tickets = report.tickets.filter(ticket => ticket.facilityName === facility)
+					return ([
+						<tr>
+							<th rowSpan={tickets.length}>
+								{ facility }
+							</th>
+							{ tickets.slice(0, 1).map(ticket =>
+								[
+									<td>
+										{ ticket.wasteName }
+									</td>,
+									<td>
+										{ ticket.aggregateState }
+									</td>,
+									<td>
+										{ ticket.quantityByMeasureSystem.тонна }
+									</td>,
+									<td>
+										{ ticket.quantityByMeasureSystem.м3 }
+									</td>,
+									<td>
+										{ ticket.quantityByMeasureSystem.штука }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType.Захоронение }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType.Утилизация }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType.Переработка }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType["Повторное использование"] }
+									</td>,
+									<td>
+										{ ticket.message }
+									</td>,
+									<td>
+										{ ticket.date }
+									</td>
+								]
+							) }
+						</tr>,
+						<tr>
+							{ tickets.slice(1).map(ticket =>
+								[
+									<td>
+										{ ticket.wasteName }
+									</td>,
+									<td>
+										{ ticket.aggregateState }
+									</td>,
+									<td>
+										{ ticket.quantityByMeasureSystem.тонна }
+									</td>,
+									<td>
+										{ ticket.quantityByMeasureSystem.м3 }
+									</td>,
+									<td>
+										{ ticket.quantityByMeasureSystem.штука }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType.Захоронение }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType.Утилизация }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType.Переработка }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
+									</td>,
+									<td>
+										{ ticket.quantityByDestinationType["Повторное использование"] }
+									</td>,
+									<td>
+										{ ticket.message }
+									</td>,
+									<td>
+										{ ticket.date }
+									</td>
+								]
+							) }
+						</tr>
+					] ) }
 				) }
-			</div>
-		</div>
+			</tbody>
+		</table>
 	)
 }
 

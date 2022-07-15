@@ -1,23 +1,49 @@
 .wrapper {
 	margin-top: 20px;
 	width: 97vw;
-	position: absolute;
-	left: -31%;
-	.columns {
-		width: 100%;
-		display: flex;
-		align-items: stretch;
-		.column {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			margin-right: -2px;
-			flex-basis: 9.1%;
-			// word-break: break-all;
-			padding: 6px 10px;
-			border-right: 2px solid var(--additional);
-			border-bottom: 2px solid var(--additional);
-		}
-	}
+	position: relative;
+	left: -35%;
+	// .columns {
+	// 	width: 100%;
+	// 	display: flex;
+	// 	align-items: stretch;
+	// 	.column {
+	// 		display: flex;
+	// 		align-items: center;
+	// 		justify-content: center;
+	// 		text-align: center;
+	// 		flex-basis: 9%;
+	// 		// word-break: break-all;
+	// 		padding: 6px 10px;
+	// 		border-right: 2px solid var(--additional);
+	// 		border-bottom: 2px solid var(--additional);
+	// 	}
+	// }
+	// .block {
+	// 	display: flex;
+	// 	.firstCol {
+	// 		flex-basis: 8.3%;
+	// 		border-right: 2px solid var(--additional);
+	// 		border-bottom: 2px solid var(--additional);
+	// 		display: flex;
+	// 		align-items: center;
+	// 		justify-content: center;
+	// 	}
+	// 	.items {
+	// 		width: 100%;
+	// 		.item {
+	// 			display: flex;
+	// 			div {
+	// 				display: flex;
+	// 				align-items: center;
+	// 				justify-content: center;
+	// 				text-align: center;
+	// 				padding: 6px 10px;
+	// 				flex-basis: 10%;
+	// 				border-right: 2px solid var(--additional);
+	// 				border-bottom: 2px solid var(--additional);
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
