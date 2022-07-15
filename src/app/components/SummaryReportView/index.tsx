@@ -62,6 +62,21 @@ const SummaryReportView: React.FC<{
 					] ) }
 				) }
 			</tbody>
+			<tfoot>
+				<tr>
+					<th>Общее</th>
+					<td /><td />
+					<td>{ report.total.тонна }</td>
+					<td>{ report.total.м3 }</td>
+					<td>{ report.total.штука }</td>
+					<td>{ report.total.Захоронение }</td>
+					<td>{ report.total.Утилизация }</td>
+					<td>{ report.total.Переработка }</td>
+					<td>{ report.total["Передача подрядческой организации"] }</td>
+					<td>{ report.total["Повторное использование"] }</td>
+					<td /><td />
+				</tr>
+			</tfoot>
 		</table>
 	)
 }
@@ -69,42 +84,18 @@ const SummaryReportView: React.FC<{
 const TicketRow: React.FC<{ ticket: any }> = ({
 	ticket
 }): any => [
-	<td>
-		{ ticket.wasteName }
-	</td>,
-	<td>
-		{ ticket.aggregateState }
-	</td>,
-	<td>
-		{ ticket.quantityByMeasureSystem.тонна }
-	</td>,
-	<td>
-		{ ticket.quantityByMeasureSystem.м3 }
-	</td>,
-	<td>
-		{ ticket.quantityByMeasureSystem.штука }
-	</td>,
-	<td>
-		{ ticket.quantityByDestinationType.Захоронение }
-	</td>,
-	<td>
-		{ ticket.quantityByDestinationType.Утилизация }
-	</td>,
-	<td>
-		{ ticket.quantityByDestinationType.Переработка }
-	</td>,
-	<td>
-		{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
-	</td>,
-	<td>
-		{ ticket.quantityByDestinationType["Повторное использование"] }
-	</td>,
-	<td>
-		{ ticket.message }
-	</td>,
-	<td>
-		{ ticket.date }
-	</td>
+	<td>{ ticket.wasteName }</td>,
+	<td>{ ticket.aggregateState }</td>,
+	<td>{ ticket.quantityByMeasureSystem.тонна }</td>,
+	<td>{ ticket.quantityByMeasureSystem.м3 }</td>,
+	<td>{ ticket.quantityByMeasureSystem.штука }</td>,
+	<td>{ ticket.quantityByDestinationType.Захоронение }</td>,
+	<td>{ ticket.quantityByDestinationType.Утилизация }</td>,
+	<td>{ ticket.quantityByDestinationType.Переработка }</td>,
+	<td>{ ticket.quantityByDestinationType["Передача подрядческой организации"] }</td>,
+	<td>{ ticket.quantityByDestinationType["Повторное использование"] }</td>,
+	<td>{ ticket.message }</td>,
+	<td>{ ticket.date }</td>
 ]
 
 export default SummaryReportView

@@ -13,4 +13,9 @@
 		border-width: 2px;
 		background-color: var(--bg2);
 	}
+	tfoot {
+		tr td {
+			font-weight: 500;
+		}
+	}
 }
