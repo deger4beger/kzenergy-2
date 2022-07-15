@@ -52,11 +52,13 @@ const SummaryReportView: React.FC<{
 							<th rowSpan={tickets.length}>
 								{ facility }
 							</th>
-							<TicketRow tickets={tickets.slice(0, 1)} />
+							<TicketRow ticket={tickets[0]} />
 						</tr>,
-						<tr>
-							<TicketRow tickets={tickets.slice(1)} />
-						</tr>
+						tickets.slice(1).map(ticket =>
+							<tr>
+								<TicketRow ticket={ ticket } key={ ticket.id } />
+							</tr>
+						)
 					] ) }
 				) }
 			</tbody>
@@ -64,47 +66,45 @@ const SummaryReportView: React.FC<{
 	)
 }
 
-const TicketRow: React.FC<Pick<SummaryReport, "tickets">> = ({
-	tickets
-}): any => tickets.map(ticket =>
-	[
-		<td>
-			{ ticket.wasteName }
-		</td>,
-		<td>
-			{ ticket.aggregateState }
-		</td>,
-		<td>
-			{ ticket.quantityByMeasureSystem.тонна }
-		</td>,
-		<td>
-			{ ticket.quantityByMeasureSystem.м3 }
-		</td>,
-		<td>
-			{ ticket.quantityByMeasureSystem.штука }
-		</td>,
-		<td>
-			{ ticket.quantityByDestinationType.Захоронение }
-		</td>,
-		<td>
-			{ ticket.quantityByDestinationType.Утилизация }
-		</td>,
-		<td>
-			{ ticket.quantityByDestinationType.Переработка }
-		</td>,
-		<td>
-			{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
-		</td>,
-		<td>
-			{ ticket.quantityByDestinationType["Повторное использование"] }
-		</td>,
-		<td>
-			{ ticket.message }
-		</td>,
-		<td>
-			{ ticket.date }
-		</td>
-	]
-)
+const TicketRow: React.FC<{ ticket: any }> = ({
+	ticket
+}): any => [
+	<td>
+		{ ticket.wasteName }
+	</td>,
+	<td>
+		{ ticket.aggregateState }
+	</td>,
+	<td>
+		{ ticket.quantityByMeasureSystem.тонна }
+	</td>,
+	<td>
+		{ ticket.quantityByMeasureSystem.м3 }
+	</td>,
+	<td>
+		{ ticket.quantityByMeasureSystem.штука }
+	</td>,
+	<td>
+		{ ticket.quantityByDestinationType.Захоронение }
+	</td>,
+	<td>
+		{ ticket.quantityByDestinationType.Утилизация }
+	</td>,
+	<td>
+		{ ticket.quantityByDestinationType.Переработка }
+	</td>,
+	<td>
+		{ ticket.quantityByDestinationType["Передача подрядческой организации"] }
+	</td>,
+	<td>
+		{ ticket.quantityByDestinationType["Повторное использование"] }
+	</td>,
+	<td>
+		{ ticket.message }
+	</td>,
+	<td>
+		{ ticket.date }
+	</td>
+]
 
 export default SummaryReportView
