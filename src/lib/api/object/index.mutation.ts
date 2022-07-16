@@ -47,7 +47,16 @@ const extendedObjectApi = objectApi.injectEndpoints({
 				url: "/summary/",
 				method: "post",
 			}),
-			invalidatesTags: result => ["ObjectInfo", "ObjectsInfo"]
+			invalidatesTags: result => ["ObjectInfo", "ObjectsInfo"],
+			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+	      try {
+	        const { data } = await queryFulfilled
+	        dispatch({
+					   type: "archive/api/invalidateTags",
+					   payload: ["SummaryReport"]
+					});
+	      } catch {}
+	    },
 		}),
 	})
 })

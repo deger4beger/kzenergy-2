@@ -3,6 +3,7 @@ import Preloader from "app/components/Preloader"
 import SimpleButton from "app/components/SimpleButton"
 import { useCreateSummaryReportMutation } from "lib/api/object/index.mutation"
 import { useGetObjectsInfoQuery } from "lib/api/object/index.query"
+import { useHistory } from "react-router-dom"
 import Reports from "./Reports"
 import Talons from "./Talons"
 
@@ -11,10 +12,12 @@ const ReportManagement = () => {
 
 	const { data, isLoading: getObjectsLoading } = useGetObjectsInfoQuery()
 	const [createSummaryReport, { isLoading: createRepLoading }] = useCreateSummaryReportMutation()
+	const history = useHistory()
 	const loading = getObjectsLoading || !data
 
-	const onCreateSummaryReport = () => {
-		createSummaryReport()
+	const onCreateSummaryReport = async () => {
+		await createSummaryReport()
+		history.push("/archive")
 	}
 
 	return (
