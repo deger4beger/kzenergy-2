@@ -64,7 +64,7 @@ const SummaryReportView: React.FC<{
 			</tbody>
 			<tfoot>
 				<tr>
-					<th>Общее</th>
+					<th>Сумма</th>
 					<td /><td />
 					<td>{ report.total.тонна }</td>
 					<td>{ report.total.м3 }</td>
