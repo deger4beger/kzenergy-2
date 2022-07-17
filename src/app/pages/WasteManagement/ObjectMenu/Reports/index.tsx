@@ -4,7 +4,7 @@ import SimpleButton from "app/components/SimpleButton"
 import { useCreateReportMutation } from "lib/api/object/index.mutation"
 import { useState } from "react"
 import { Report } from "types/report"
-import { Talon } from "types/talon"
+import { Talon, TalonStatus } from "types/talon"
 import ReportForm from "../ReportForm"
 
 interface Props {
@@ -32,7 +32,7 @@ const Reports: React.FC<Props> = ({
 			title="Список отчетов"
 			btns={ <SimpleButton
 				onClick={() => setCreateReportActive(true)}
-				disabled={!!report}
+				disabled={!!report || !tickets.some(ticket => ticket.status === TalonStatus.ACCEPTED)}
 				text="Создать новый +"
 			/> }
 			subLayout
