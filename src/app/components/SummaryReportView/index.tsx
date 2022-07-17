@@ -1,5 +1,6 @@
 import React, { ReactElement, useMemo } from "react"
 import { SummaryReport } from "types/report"
+import cn from "classnames"
 import s from "./index.module.scss"
 
 const SummaryReportView: React.FC<{
@@ -81,19 +82,25 @@ const SummaryReportView: React.FC<{
 	)
 }
 
+const rowTicketData = (ticket: any) => [
+	ticket.wasteName,
+	ticket.aggregateState,
+	ticket.quantityByMeasureSystem.тонна,
+	ticket.quantityByMeasureSystem.м3,
+	ticket.quantityByMeasureSystem.штука,
+	ticket.quantityByDestinationType.Захоронение,
+	ticket.quantityByDestinationType.Утилизация,
+	ticket.quantityByDestinationType.Переработка,
+	ticket.quantityByDestinationType["Передача подрядческой организации"],
+	ticket.quantityByDestinationType["Повторное использование"]
+]
+
 const TicketRow: React.FC<{ ticket: any }> = ({
 	ticket
 }): any => [
-	<td>{ ticket.wasteName }</td>,
-	<td>{ ticket.aggregateState }</td>,
-	<td>{ ticket.quantityByMeasureSystem.тонна }</td>,
-	<td>{ ticket.quantityByMeasureSystem.м3 }</td>,
-	<td>{ ticket.quantityByMeasureSystem.штука }</td>,
-	<td>{ ticket.quantityByDestinationType.Захоронение }</td>,
-	<td>{ ticket.quantityByDestinationType.Утилизация }</td>,
-	<td>{ ticket.quantityByDestinationType.Переработка }</td>,
-	<td>{ ticket.quantityByDestinationType["Передача подрядческой организации"] }</td>,
-	<td>{ ticket.quantityByDestinationType["Повторное использование"] }</td>,
+	...rowTicketData(ticket).map(data =>
+		<td className={cn({ [s.null]: !data })}>{ data }</td>
+	),
 	<td>{ ticket.message }</td>,
 	<td>{ ticket.date }</td>
 ]
