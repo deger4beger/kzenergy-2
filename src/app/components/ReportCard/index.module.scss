@@ -1,17 +1,19 @@
 .wrapper {
 	border: 2px solid var(--additional);
 	// background-color: var(--bg2);
-	border-radius: 20px;
+	border-radius: 6px;
 	padding: 10px 20px;
 	margin-top: 16px;
+	background-color: var(--bg2);
 	&:hover {
 		cursor: pointer;
 		border-color: var(--color2);
 	}
 	.left {
-		font-weight: 500;
 		display: flex;
+		position: relative;
 		.facility {
+			font-weight: 500;
 			margin-right: 10px;
 		}
 	}
