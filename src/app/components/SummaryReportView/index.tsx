@@ -26,27 +26,23 @@ const SummaryReportView: React.FC<{
 	], [])
 
 	const facilities = useMemo(() =>
-		report.tickets.reduce((facilityList, ticket) => {
-			if (!facilityList.includes(ticket.facilityName)) {
-				facilityList.push(ticket.facilityName)
-			}
-			return facilityList
-		}, [] as string[])
+		report.tickets.reduce((facilitySet, ticket) => facilitySet.add(ticket.facilityName),
+			new Set() as Set<string>)
 	, [report])
 
 	return (
 		<table className={s.wrapper}>
-			<thead className={s.columns}>
+			<thead>
 				<tr>
 					{ columns.map(column =>
-						<th className={s.column} key={column}>
+						<th key={column}>
 							{ column }
 						</th>
 					) }
 				</tr>
 			</thead>
 			<tbody>
-				{ facilities.map(facility => {
+				{ Array.from(facilities).map(facility => {
 					const tickets = report.tickets.filter(ticket => ticket.facilityName === facility)
 					return ([
 						<tr>

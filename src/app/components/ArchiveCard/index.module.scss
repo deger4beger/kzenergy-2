@@ -21,7 +21,8 @@
 		cursor: pointer;
 	}
 	.title {
-		padding: 0px 10px;
+		padding: 0px 40px 0px 10px;
+		align-self: flex-start;
 		font-weight: 500;
 		border-bottom: 1px solid var(--additional);
 	}
