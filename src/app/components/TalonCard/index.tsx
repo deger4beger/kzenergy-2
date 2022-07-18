@@ -20,7 +20,7 @@ const TalonCard: React.FC<Props> = React.memo(({
 
 	const onDownloadClick = () => {
 		fileSaver.saveAs(
-  			talon.excel!,
+  			talon.excelUrl!,
   			`Талон от (${talon.date}).xlsx`
 		)
 	}
@@ -51,7 +51,7 @@ const TalonCard: React.FC<Props> = React.memo(({
 						info={ talon.message }
 					/> }
 					{ children }
-					{ talon.excel && <SimpleButton
+					{ talon.excelUrl && <SimpleButton
 						text="Скачать файл ⇓"
 						onClick={onDownloadClick}
 					/> }

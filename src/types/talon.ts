@@ -34,7 +34,7 @@ export interface Talon {
   measureSystem: MeasureSystem
   quantity: number
   status: TalonStatus
-  excel: string | null
+  excelUrl: string | null
   message: string | null
 }
 

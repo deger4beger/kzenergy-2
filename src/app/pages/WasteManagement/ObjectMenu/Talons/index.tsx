@@ -49,7 +49,7 @@ const Talons: React.FC<Props> = ({
 		setPatchTalonActive(true)
 	}
 	const getPatchTalonInitialState= (talon: Talon) => {
-		const { date, id, excel, message, status, ...payload } = talon
+		const { date, id, excelUrl: excel, message, status, ...payload } = talon
 		return payload
 	}
 
