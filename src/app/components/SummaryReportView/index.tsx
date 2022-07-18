@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from "react"
+import React, { useMemo } from "react"
 import { SummaryReport } from "types/report"
 import cn from "classnames"
 import s from "./index.module.scss"
