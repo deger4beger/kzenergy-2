@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import cn from "classnames"
-import fileSaver from "file-saver"
 import s from "./index.module.scss"
 import SimpleButton from "../SimpleButton"
 import Tooltip from "../Tooltip"
 import StatusIcon from "../StatusIcon"
 import { TalonForObject } from "types/object"
+import { downloadFile } from "lib/utils/file"
 
 interface Props {
 	talon: TalonForObject
@@ -18,12 +18,10 @@ const TalonCard: React.FC<Props> = React.memo(({
 
 	const [active, setActive] = useState(true)
 
-	const onDownloadClick = () => {
-		fileSaver.saveAs(
-  			talon.excelUrl!,
-  			`Талон от (${talon.date}).xlsx`
-		)
-	}
+	const onDownloadClick = () => downloadFile(
+		talon.excelUrl!,
+		`Талон от (${talon.date}).xlsx`
+	)
 
 	return (
 		<div className={cn(s.wrapper, {
