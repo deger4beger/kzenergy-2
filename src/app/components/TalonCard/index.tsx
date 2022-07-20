@@ -20,7 +20,7 @@ const TalonCard: React.FC<Props> = React.memo(({
 
 	const onDownloadClick = () => downloadFile(
 		talon.excelUrl!,
-		`Талон от (${talon.date}).xlsx`
+		`Талон от ${talon.date}.xlsx`
 	)
 
 	return (
