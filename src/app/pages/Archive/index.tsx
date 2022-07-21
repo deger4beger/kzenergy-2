@@ -4,7 +4,8 @@ import Preloader from "app/components/Preloader"
 import SimpleButton from "app/components/SimpleButton"
 import SummaryReportView from "app/components/SummaryReportView"
 import { useGetSummaryReportsQuery } from "lib/api/archive/index.query"
-import { useState } from "react"
+import { downloadFile } from "lib/utils/file"
+import { useCallback, useState } from "react"
 import { SummaryReport } from "types/report"
 
 
@@ -13,12 +14,24 @@ const Archive = () => {
 	const { data, isLoading } = useGetSummaryReportsQuery()
 	const [selected, setSelected] = useState<undefined | SummaryReport>()
 
+	const onDownloadClick = useCallback(() => downloadFile(
+		selected?.excel!,
+		`Талон от ${selected?.date}.xlsx`
+	), [selected])
+
 	if ( selected ) return <GroupLayout
 		title={"Сводный отчет от " + selected.date}
-		btns={ <SimpleButton
-			text="← Назад"
-			onClick={ () => setSelected(undefined) }
-		/> }
+		btns={ <div style={{ display: "flex" }}>
+			<SimpleButton
+				text="Скачать файл ⇓"
+				onClick={onDownloadClick}
+			/>
+			<SimpleButton
+				text="← Назад"
+				onClick={ () => setSelected(undefined) }
+			/>
+		</div>
+		}
 	>
 		<SummaryReportView report={ selected } />
 	</GroupLayout>

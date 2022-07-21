@@ -12,6 +12,7 @@ export interface Report {
 export interface SummaryReport {
 	id: string
 	date: string
+	excel: string
 	user: Pick<UserData, "fullname">
 	total: {
 		[key in MeasureSystem | WasteDestinationType]: number
