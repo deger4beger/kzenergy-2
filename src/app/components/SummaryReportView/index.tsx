@@ -88,17 +88,15 @@ const rowTicketData = (ticket: any) => [
 	ticket.quantityByDestinationType.Утилизация,
 	ticket.quantityByDestinationType.Переработка,
 	ticket.quantityByDestinationType["Передача подрядческой организации"],
-	ticket.quantityByDestinationType["Повторное использование"]
+	ticket.quantityByDestinationType["Повторное использование"],
+	ticket.message,
+	ticket.date
 ]
 
 const TicketRow: React.FC<{ ticket: any }> = ({
 	ticket
-}): any => [
-	...rowTicketData(ticket).map(data =>
-		<td className={cn({ [s.null]: !data })}>{ data }</td>
-	),
-	<td>{ ticket.message }</td>,
-	<td>{ ticket.date }</td>
-]
+}): any => rowTicketData(ticket).map(data =>
+	<td className={cn({ [s.null]: !data })}>{ data }</td>
+)
 
 export default SummaryReportView
