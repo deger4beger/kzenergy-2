@@ -1,5 +1,8 @@
-import React from "react"
-import { UserWithPermission } from "types/user"
+import ChangePermission from "app/pages/AdminManagement/ChangePermission"
+import React, { useState } from "react"
+import { PermissionPayload, UserWithPermission } from "types/user"
+import Button from "../Button"
+import Modal from "../Modal"
 import s from "./index.module.scss"
 
 interface Props {
@@ -10,22 +13,64 @@ const UserCard: React.FC<Props> = ({
 	user
 }) => {
 
+	const [menuActive, setMenuActive] = useState(false)
+	const [changePermissionActive, setChangePermissionActive] = useState(false)
+
 	const onDelete = () => {
 
 	}
 
+	const onPatchPermission = (permission: PermissionPayload) => {
+
+	}
+
+	const toPatchPermission = () => {
+		setMenuActive(false)
+		setChangePermissionActive(true)
+	}
+
 	return (
-		<div className={s.wrapper}>
-			<div className={s.role}>{ user.role }</div>
-			<div className={s.items}>
-				<div className={s.item}>Email: { user.email }</div>
-				{ user.permission.temporary && (
-					<div className={s.item}>
-						Пароль: { user.email.split("@")[0] }
-					</div>
-				) }
+		<>
+			<div className={s.wrapper} onClick={() => setMenuActive(true)}>
+				<div className={s.role}>{ user.role }</div>
+				<div className={s.items}>
+					<div className={s.item}><span>Email:</span> { user.email }</div>
+					{ user.permission.temporary && (
+						<div className={s.item}>
+							<span>Пароль:</span> { user.email.split("@")[0] }
+						</div>
+					) }
+				</div>
 			</div>
-		</div>
+			<Modal
+				active={menuActive}
+				setActive={setMenuActive}
+				title={"Выберите опцию для пользователя " + user.email}
+			>
+				<Button
+					content="Изменить уровень доступа"
+					onClick={toPatchPermission}
+					styles={{
+						marginTop: "10px",
+						borderRadius: "6px"
+					}}
+				/>
+				{ user.permission.temporary && <Button
+					content="Удалить аккаунт"
+					onClick={() => void 0}
+					styles={{
+						marginTop: "20px",
+						borderRadius: "6px"
+					}}
+				/> }
+			</Modal>
+			<ChangePermission
+				active={changePermissionActive}
+				setActive={setChangePermissionActive}
+				onSubmit={onPatchPermission}
+				user={user}
+			/>
+		</>
 	)
 }
 

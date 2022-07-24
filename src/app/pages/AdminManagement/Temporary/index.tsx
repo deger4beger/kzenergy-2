@@ -27,7 +27,7 @@ const Temporary: React.FC<{ users: UserWithPermission[] }> = ({
 					onClick={() => setCreateActive(true)}
 					text="Создать новый +"
 				/> }>
-				<div style={{ marginTop: "10px", display: "flex", flexWrap: "wrap" }}>
+				<div style={{ display: "flex", flexWrap: "wrap" }}>
 					{ users.map(user =>
 						<UserCard user={user} key={user.id} />
 					) }

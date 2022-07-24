@@ -29,7 +29,7 @@ const ChangePermission: React.FC<Props> = ({
 		<Modal
 			active={active}
 			setActive={setActive}
-			title={"Уровень доступа пользователя" + user.email}
+			title={"Уровень доступа пользователя " + user.email}
 		>
 			<div>
 				<Checkbox
