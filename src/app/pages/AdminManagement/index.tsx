@@ -12,8 +12,8 @@ const AdminManagement = () => {
 		<>
 			{ ( !data || isLoading ) && <Preloader /> }
 			{ ( !isLoading && data ) && <>
-				<Temporary users={ data.temporary } />
-				<Permanent users={ data.permanent } />
+				<Temporary users={ [ ...data.temporary ].sort() } />
+				<Permanent users={ [ ...data.permanent ].sort() } />
 			</> }
 
 		</>

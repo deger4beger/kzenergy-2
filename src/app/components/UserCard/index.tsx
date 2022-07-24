@@ -6,6 +6,7 @@ import { PermissionPayload, UserWithPermission } from "types/user"
 import Button from "../Button"
 import Modal from "../Modal"
 import s from "./index.module.scss"
+import { useDeleteUserMutation, usePatchPermissionMutation } from "lib/api/user/index.mutation"
 
 interface Props {
 	user: UserWithPermission
@@ -18,13 +19,17 @@ const UserCard: React.FC<Props> = ({
 	const [menuActive, setMenuActive] = useState(false)
 	const [changePermissionActive, setChangePermissionActive] = useState(false)
 	const myId = useAppSelector(state => state.userReducer.userData.id)
+	const [patchPermission, { isLoading: isPatchLoading }] = usePatchPermissionMutation()
+	const [deleteUser, { isLoading: isDeleteLoading }] = useDeleteUserMutation()
 
-	const onDelete = () => {
-
+	const onDelete = async () => {
+		await deleteUser(user.id)
+		setMenuActive(false)
 	}
 
-	const onPatchPermission = (permission: PermissionPayload) => {
-
+	const onPatchPermission = async (permission: PermissionPayload) => {
+		await patchPermission({ ...permission, userId: user.id })
+		setChangePermissionActive(false)
 	}
 
 	const toPatchPermission = () => {
@@ -65,6 +70,7 @@ const UserCard: React.FC<Props> = ({
 				/>
 				{ user.permission.temporary && <Button
 					content="Удалить аккаунт"
+					loading={isDeleteLoading}
 					onClick={() => void 0}
 					styles={{
 						marginTop: "20px",
@@ -76,6 +82,7 @@ const UserCard: React.FC<Props> = ({
 				active={changePermissionActive}
 				setActive={setChangePermissionActive}
 				onSubmit={onPatchPermission}
+				loading={isPatchLoading}
 				user={user}
 			/>
 		</>
