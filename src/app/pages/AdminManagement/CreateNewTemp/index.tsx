@@ -1,4 +1,5 @@
 import Button from "app/components/Button"
+import Checkbox from "app/components/Checkbox"
 import Dropdown from "app/components/Dropdown"
 import Input from "app/components/Input"
 import Modal from "app/components/Modal"
@@ -43,6 +44,11 @@ const CreateNewTemp: React.FC<Props> = ({
 					setSelected={(role) => setFormData(prev => ({ ...prev, role: role as UserRoles }))}
 					options={Object.values(UserRoles)}
 				/>
+				<Checkbox
+					active={formData.write}
+					onToggle={() => setFormData(prev => ({ ...prev, write: !prev.write }))}
+					text="Возможность редактирования данных"
+				/>
 				<Button
 					content="Создать аккаунт"
 					onClick={() => onSubmit(formData)}
@@ -51,7 +57,7 @@ const CreateNewTemp: React.FC<Props> = ({
 					type="dark"
 					styles={{
 						borderRadius: "20px",
-						marginTop: "20px"
+						marginTop: "30px"
 					}}
 				/>
 			</div>
