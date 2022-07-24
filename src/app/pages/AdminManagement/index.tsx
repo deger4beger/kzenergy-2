@@ -1,10 +1,13 @@
+import Permanent from "./Permanent"
+import Temporary from "./Temporary"
 
 
 const AdminManagement = () => {
 	return (
-		<div>
-			AdminManagement
-		</div>
+		<>
+			<Temporary />
+			<Permanent />
+		</>
 	)
 }
 
