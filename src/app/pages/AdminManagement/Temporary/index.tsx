@@ -1,6 +1,7 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
 import UserCard from "app/components/UserCard"
+import { useCreateTemporaryUserMutation } from "lib/api/user/index.mutation"
 import { useState } from "react"
 import { TemporaryUserPayload, UserWithPermission } from "types/user"
 import CreateNewTemp from "../CreateNewTemp"
@@ -11,9 +12,11 @@ const Temporary: React.FC<{ users: UserWithPermission[] }> = ({
 }) => {
 
 	const [createActive, setCreateActive] = useState(false)
+	const [createUser, { isLoading }] = useCreateTemporaryUserMutation()
 
-	const createNew = (payload: TemporaryUserPayload) => {
-		console.log(payload)
+	const createNew = async (payload: TemporaryUserPayload) => {
+		await createUser(payload)
+		setCreateActive(false)
 	}
 
 	return (
@@ -34,6 +37,7 @@ const Temporary: React.FC<{ users: UserWithPermission[] }> = ({
 				active={createActive}
 				setActive={setCreateActive}
 				onSubmit={createNew}
+				loading={isLoading}
 			/>
 		</>
 	)

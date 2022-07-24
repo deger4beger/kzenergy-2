@@ -12,6 +12,7 @@ const UserCard: React.FC<Props> = ({
 	return (
 		<div className={s.wrapper}>
 			{ user.email }
+			{ user.id }
 		</div>
 	)
 }
