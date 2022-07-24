@@ -13,6 +13,12 @@ export interface UserData {
   role: UserRoles
 }
 
+export interface UserPermission {
+  write: boolean
+  read: boolean
+  temporary: boolean
+}
+
 export interface SigninPayload {
   email: string
   password: string
@@ -20,4 +26,10 @@ export interface SigninPayload {
 
 export interface SignupPayload extends Omit<UserData, "id" | "token"> {
   password: string
+}
+
+export interface TemporaryUserPayload extends
+  Pick<UserPermission, "write">,
+  Pick<UserData, "email"> {
+    role: UserRoles,
 }
