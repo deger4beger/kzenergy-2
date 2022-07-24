@@ -1,11 +1,14 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
+import UserCard from "app/components/UserCard"
 import { useState } from "react"
-import { TemporaryUserPayload } from "types/user"
+import { TemporaryUserPayload, UserWithPermission } from "types/user"
 import CreateNewTemp from "../CreateNewTemp"
 
 
-const Temporary = () => {
+const Temporary: React.FC<{ users: UserWithPermission[] }> = ({
+	users
+}) => {
 
 	const [createActive, setCreateActive] = useState(false)
 
@@ -22,7 +25,9 @@ const Temporary = () => {
 					text="Создать новый +"
 				/> }>
 				<div style={{ marginTop: "10px" }}>
-					Accounts
+					{ users.map(user =>
+						<UserCard user={user} key={user.id} />
+					) }
 				</div>
 			</GroupLayout>
 			<CreateNewTemp
