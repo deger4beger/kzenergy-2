@@ -17,7 +17,14 @@ const UserCard: React.FC<Props> = ({
 	return (
 		<div className={s.wrapper}>
 			<div className={s.role}>{ user.role }</div>
-			<div className={s.email}>{ user.email }</div>
+			<div className={s.items}>
+				<div className={s.item}>Email: { user.email }</div>
+				{ user.permission.temporary && (
+					<div className={s.item}>
+						Пароль: { user.email.split("@")[0] }
+					</div>
+				) }
+			</div>
 		</div>
 	)
 }

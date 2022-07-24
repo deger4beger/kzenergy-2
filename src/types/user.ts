@@ -38,7 +38,6 @@ export interface PermissionPayload extends Pick<UserPermission, "write" | "read"
 
 export interface UserWithPermission extends Pick<UserData, "id" | "email" | "role"> {
   permission: UserPermission
-  password?: string
 }
 
 export interface AllUsersList {
