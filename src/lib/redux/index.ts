@@ -1,12 +1,14 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit"
 import { archiveApi } from "lib/api/archive"
 import { objectApi } from "lib/api/object"
+import { userApi } from "lib/api/user"
 import userReducer from "./auth/slice"
 
 const rootReducer = combineReducers({
     userReducer,
     [objectApi.reducerPath]: objectApi.reducer,
-    [archiveApi.reducerPath]: archiveApi.reducer
+    [archiveApi.reducerPath]: archiveApi.reducer,
+    [userApi.reducerPath]: userApi.reducer
 })
 
 export const setupStore = () => {
@@ -16,7 +18,11 @@ export const setupStore = () => {
         devTools: process.env.NODE_ENV === "development" ? true : false,
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware()
-                .concat([objectApi.middleware, archiveApi.middleware])
+                .concat([
+                    objectApi.middleware,
+                    archiveApi.middleware,
+                    userApi.middleware
+                ])
     })
 }
 
