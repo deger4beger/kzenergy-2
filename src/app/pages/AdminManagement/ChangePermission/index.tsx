@@ -1,7 +1,5 @@
 import Button from "app/components/Button"
 import Checkbox from "app/components/Checkbox"
-import Dropdown from "app/components/Dropdown"
-import Input from "app/components/Input"
 import Modal from "app/components/Modal"
 import { useState } from "react"
 import { PermissionPayload, UserWithPermission } from "types/user"

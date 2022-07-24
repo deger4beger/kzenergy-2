@@ -29,7 +29,7 @@ export interface SignupPayload extends Omit<UserData, "id" | "token"> {
 }
 
 export interface TemporaryUserPayload extends
-  Pick<UserPermission, "write">,
+  Pick<UserPermission, "write" | "read">,
   Pick<UserData, "email"> {
     role: UserRoles,
 }

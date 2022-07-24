@@ -23,7 +23,8 @@ const CreateNewTemp: React.FC<Props> = ({
 	const [formData, setFormData] = useState<TemporaryUserPayload>({
 		role: "" as UserRoles,
 		email: "",
-		write: false
+		write: false,
+		read: true
 	})
 
 	return (
@@ -45,6 +46,11 @@ const CreateNewTemp: React.FC<Props> = ({
 					selected={formData.role}
 					setSelected={(role) => setFormData(prev => ({ ...prev, role: role as UserRoles }))}
 					options={Object.values(UserRoles)}
+				/>
+				<Checkbox
+					active={formData.read}
+					onToggle={() => setFormData(prev => ({ ...prev, read: !prev.read }))}
+					text="Возможность чтения данных"
 				/>
 				<Checkbox
 					active={formData.write}
