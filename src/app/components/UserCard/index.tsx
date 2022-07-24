@@ -9,10 +9,15 @@ interface Props {
 const UserCard: React.FC<Props> = ({
 	user
 }) => {
+
+	const onDelete = () => {
+
+	}
+
 	return (
 		<div className={s.wrapper}>
-			{ user.email }
-			{ user.id }
+			<div className={s.role}>{ user.role }</div>
+			<div className={s.email}>{ user.email }</div>
 		</div>
 	)
 }

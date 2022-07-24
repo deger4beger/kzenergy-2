@@ -9,7 +9,7 @@ const Permanent: React.FC<{ users: UserWithPermission[] }> = ({
 	return (
 		<GroupLayout
 			title="Список постоянных аккаунтов">
-			<div style={{ marginTop: "10px" }}>
+			<div style={{ marginTop: "10px", display: "flex", flexWrap: "wrap" }}>
 				{ users.map(user =>
 					<UserCard user={user} key={user.id} />
 				) }
