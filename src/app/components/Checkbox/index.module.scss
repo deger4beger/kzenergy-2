@@ -1,0 +1,38 @@
+.wrapper {
+	margin: 20px 0px;
+	display: flex;
+	align-items: center;
+	user-select: none;
+	cursor: pointer;
+	opacity: 0.9;
+	&:hover {
+		opacity: 1;
+		.icon {
+			border-color: var(--color2);
+		}
+	}
+	.icon {
+		width: 16px;
+		height: 16px;
+		margin-right: 10px;
+		border: 2px solid var(--additional);
+		border-radius: 8px;
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			border-radius: 10px;
+			width: 8px;
+			height: 8px;
+			background-color: var(--additional);
+		}
+		&.active:before {
+			background-color: var(--success);
+		}
+		&.active {
+			border-color: var(--success);
+		}
+	}
+}
