@@ -7,18 +7,20 @@ import { useState } from "react"
 import { TemporaryUserPayload, UserRoles } from "types/user"
 
 interface Props {
-	onSubmit: (data: TemporaryUserPayload) => void,
+	onSubmit: (payload: TemporaryUserPayload) => void,
 	active: boolean,
 	setActive: (active: boolean) => void
+	loading?: boolean
 }
 
 const CreateNewTemp: React.FC<Props> = ({
 	onSubmit,
 	active,
-	setActive
+	setActive,
+	loading
 }) => {
 
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<TemporaryUserPayload>({
 		role: "" as UserRoles,
 		email: "",
 		write: false
@@ -52,8 +54,8 @@ const CreateNewTemp: React.FC<Props> = ({
 				<Button
 					content="Создать аккаунт"
 					onClick={() => onSubmit(formData)}
-					disabled={false}
-					loading={false}
+					disabled={!formData.email || !formData.role}
+					loading={loading}
 					type="dark"
 					styles={{
 						borderRadius: "20px",

@@ -1,6 +1,7 @@
 import GroupLayout from "app/components/GroupLayout"
 import SimpleButton from "app/components/SimpleButton"
 import { useState } from "react"
+import { TemporaryUserPayload } from "types/user"
 import CreateNewTemp from "../CreateNewTemp"
 
 
@@ -8,8 +9,8 @@ const Temporary = () => {
 
 	const [createActive, setCreateActive] = useState(false)
 
-	const createNew = () => {
-		console.log(1)
+	const createNew = (payload: TemporaryUserPayload) => {
+		console.log(payload)
 	}
 
 	return (
