@@ -1,3 +1,5 @@
+import { useAppSelector } from "app/hooks/redux"
+import cn from "classnames"
 import ChangePermission from "app/pages/AdminManagement/ChangePermission"
 import React, { useState } from "react"
 import { PermissionPayload, UserWithPermission } from "types/user"
@@ -15,6 +17,7 @@ const UserCard: React.FC<Props> = ({
 
 	const [menuActive, setMenuActive] = useState(false)
 	const [changePermissionActive, setChangePermissionActive] = useState(false)
+	const myId = useAppSelector(state => state.userReducer.userData.id)
 
 	const onDelete = () => {
 
@@ -31,8 +34,13 @@ const UserCard: React.FC<Props> = ({
 
 	return (
 		<>
-			<div className={s.wrapper} onClick={() => setMenuActive(true)}>
-				<div className={s.role}>{ user.role }</div>
+			<div
+				className={cn(s.wrapper, {
+					[s.disabled]: myId === user.id
+				})}
+				onClick={() => setMenuActive(true)}
+			>
+				<div className={s.role}>{ user.role } { myId === user.id && "(Вы)" }</div>
 				<div className={s.items}>
 					<div className={s.item}><span>Email:</span> { user.email }</div>
 					{ user.permission.temporary && (

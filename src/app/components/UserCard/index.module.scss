@@ -5,6 +5,9 @@
 	margin: 10px 6px;
 	display: flex;
 	flex-direction: column;
+	&.disabled {
+		pointer-events: none;
+	}
 	&:hover {
 		cursor: pointer;
 		border-color: var(--color2);
