@@ -7,6 +7,7 @@ import Footer from "./parts/Footer"
 import AppRouter from "./components/AppRouter"
 import Preloader from "./components/Preloader"
 import { permissionThunk } from "lib/redux/auth/thunks"
+import Restrict from "./components/Restrict"
 
 if (process.env.REACT_APP_ENVIRONMENT === "development") {
   const { worker } = require("../lib/mocks/api/worker")
@@ -29,6 +30,7 @@ function App() {
   }, [isAuth])
 
   if (!isInitialized || ( !permission && isAuth )) return <Preloader />
+  if ( isAuth && !permission?.read ) return <Restrict />
 
   return (
     <Suspense fallback={<Preloader />}>
