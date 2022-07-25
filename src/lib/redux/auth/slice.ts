@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { UserData } from "../../../types/user"
-import { signinThunk, signupThunk } from "./thunks"
+import { PermissionPayload, UserData } from "../../../types/user"
+import { permissionThunk, signinThunk, signupThunk } from "./thunks"
 import { Nullable } from "../../../types/infered"
 import { isTokenValid } from "../../utils/jwt"
 
@@ -10,6 +10,7 @@ interface State {
   isAuth: boolean
   isLoading: boolean
   error: string | null
+  permission: PermissionPayload | null
 }
 
 export const initialState: State = {
@@ -22,9 +23,10 @@ export const initialState: State = {
     role: null
   },
   isInitialized: false,
-  isAuth: false,
   isLoading: false,
-  error: null
+  error: null,
+  isAuth: false,
+  permission: null
 }
 
 export const userSlice = createSlice({
@@ -45,19 +47,20 @@ export const userSlice = createSlice({
     logout(state) {
       state.userData = initialState.userData
       state.isAuth = false
+      state.permission = null
       localStorage.removeItem("user")
     }
   },
   extraReducers: {
     ...[signinThunk, signupThunk].reduce((acc, key) => ({
       ...acc,
-      [key.pending.type]: (state) => {
+      [key.pending.type]: (state: State) => {
         state.isLoading = true
       }
     }), {}),
     ...[signinThunk, signupThunk].reduce((acc, key) => ({
       ...acc,
-      [key.fulfilled.type]: (state, action: PayloadAction<UserData>) => {
+      [key.fulfilled.type]: (state: State, action: PayloadAction<UserData>) => {
         state.isLoading = false
         state.error = ""
         state.isAuth = true
@@ -67,11 +70,20 @@ export const userSlice = createSlice({
     }), {}),
     ...[signinThunk, signupThunk].reduce((acc, key) => ({
       ...acc,
-      [key.rejected.type]: (state,  action: PayloadAction<string>) => {
+      [key.rejected.type]: (state: State,  action: PayloadAction<string>) => {
         state.isLoading = false
         state.error = action.payload
       },
-    }), {})
+    }), {}),
+    [permissionThunk.fulfilled.type]: (
+      state: State,
+      action: PayloadAction<PermissionPayload>
+    ) => {
+      state.permission = action.payload
+    },
+    [permissionThunk.rejected.type]: ( state: State ) => {
+      userSlice.caseReducers.logout(state)
+    }
   }
 })
 

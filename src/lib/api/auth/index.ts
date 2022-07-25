@@ -1,13 +1,17 @@
 import { mainInstance } from ".."
-import { SigninPayload, SignupPayload, UserData } from "../../../types/user"
+import { PermissionPayload, SigninPayload, SignupPayload, UserData } from "../../../types/user"
 
 export const authApi = {
-  signin(payload: SigninPayload): Promise<UserData> {
-    return mainInstance.post<UserData>("user/login/", payload)
-      .then(res => res.data)
+  async signin(payload: SigninPayload): Promise<UserData> {
+    const res = await mainInstance.post<UserData>("user/login/", payload)
+      return res.data
     },
-  signup(payload: SignupPayload): Promise<UserData> {
-    return mainInstance.post<UserData>("user/register/", payload)
-      .then(res => res.data)
+  async signup(payload: SignupPayload): Promise<UserData> {
+    const res = await mainInstance.post<UserData>("user/register/", payload)
+      return res.data
+  },
+  async getPermission(): Promise<PermissionPayload> {
+    const res = await mainInstance.get<PermissionPayload>("user/permission/")
+      return res.data
   }
 }

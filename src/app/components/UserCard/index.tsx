@@ -71,7 +71,7 @@ const UserCard: React.FC<Props> = ({
 				{ user.permission.temporary && <Button
 					content="Удалить аккаунт"
 					loading={isDeleteLoading}
-					onClick={() => void 0}
+					onClick={onDelete}
 					styles={{
 						marginTop: "20px",
 						borderRadius: "6px"

@@ -6,6 +6,7 @@ import Header from "./parts/Header"
 import Footer from "./parts/Footer"
 import AppRouter from "./components/AppRouter"
 import Preloader from "./components/Preloader"
+import { permissionThunk } from "lib/redux/auth/thunks"
 
 if (process.env.REACT_APP_ENVIRONMENT === "development") {
   const { worker } = require("../lib/mocks/api/worker")
@@ -16,12 +17,15 @@ function App() {
 
   const dispatch = useAppDispatch()
   const isInitialized = useAppSelector(state => state.userReducer.isInitialized)
+  const isAuth = useAppSelector(state => state.userReducer.isAuth)
+  const permission = useAppSelector(state => state.userReducer.permission)
 
   useEffect(() => {
     dispatch(initializeUser())
+    isAuth && dispatch(permissionThunk())
   }, [])
 
-  if (!isInitialized) return <Preloader />
+  if (!isInitialized || ( !permission && isAuth )) return <Preloader />
 
   return (
     <Suspense fallback={<Preloader />}>
