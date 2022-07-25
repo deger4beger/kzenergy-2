@@ -22,8 +22,11 @@ function App() {
 
   useEffect(() => {
     dispatch(initializeUser())
-    isAuth && dispatch(permissionThunk())
   }, [])
+
+  useEffect(() => {
+    isAuth && dispatch(permissionThunk())
+  }, [isAuth])
 
   if (!isInitialized || ( !permission && isAuth )) return <Preloader />
 
