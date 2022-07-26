@@ -5,7 +5,7 @@ import { setupStore } from "../../lib/redux"
 import { interceptor } from "../../lib/api/index.interceptors"
 import ErrorBoundary from "../components/ErrorBoundary"
 
-const store = setupStore()
+export const store = setupStore()
 interceptor(store.dispatch)
 
 interface IAppProviderProps {
