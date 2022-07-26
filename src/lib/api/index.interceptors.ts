@@ -1,4 +1,4 @@
-import Axios from "axios"
+import Axios, { AxiosRequestConfig } from "axios"
 import { logout } from "../redux/auth/slice"
 import { AppDispatch } from "../redux"
 import { mainInstance, permissionInstance } from "."
@@ -7,15 +7,17 @@ import { getPermissionToWrite } from "lib/redux/helpers/getPermission"
 
 export const interceptor = (dispatch: AppDispatch) => {
 
-    const permissionInterceptor = config => {
-        const permission = getPermissionToWrite()
-        if (!permission) {
-            throw new Axios.Cancel("Operation canceled due to lack of permissions")
+    const permissionInterceptor = (config: AxiosRequestConfig) => {
+        if (config.method !== "get") {
+            const permission = getPermissionToWrite()
+            if (!permission) {
+                throw new Axios.Cancel("Operation canceled due to lack of permissions")
+            }
         }
         return config
     }
 
-    const authInterceptor = config => {
+    const authInterceptor = (config: AxiosRequestConfig) => {
         const userData = isTokenValid()
         if (userData) {
             !config.headers && (config.headers = {})
