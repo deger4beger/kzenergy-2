@@ -10,7 +10,7 @@ const Divider = () => <div>|</div>
 
 const Header = () => {
 
-	const { isAuth, userData: { role } } = useAppSelector(state => state.userReducer)
+	const { isAuth, userData: { role }, permission } = useAppSelector(state => state.userReducer)
 	const dispatch = useAppDispatch()
 	const location = useLocation().pathname
 
@@ -22,8 +22,13 @@ const Header = () => {
 		<>
 			<div className={s.upper}>
 				<div className={s.container}>
-					<div className={s.logo}>
-						Shoqan
+					<div className={s.titles}>
+						<div className={s.logo}>
+							Shoqan
+						</div>
+						{ ( !permission?.write && isAuth ) && <div className={s.info}>
+							( Режим чтения )
+						</div> }
 					</div>
 					<div className={s.routes}>
 						{ isAuth ?

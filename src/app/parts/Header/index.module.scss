@@ -41,9 +41,16 @@
 .upper {
 	.container {
 		justify-content: space-between;
-		.logo {
-			@include upper-hover;
-			font-weight: 500;
+		.titles {
+			display: flex;
+			.logo {
+				@include upper-hover;
+				font-weight: 500;
+			}
+			.info {
+				margin-left: 16px;
+				font-size: 15px;
+			}
 		}
 		.routes {
 			display: flex;
