@@ -14,8 +14,8 @@ interface Props {
 
 enum PermissionInfo {
 	Blocked = "Заблокирован",
-	OnlyRead = "Только чтение",
-	FullAccess = "Все права"
+	Readonly = "Только чтение",
+	Full = "Все права"
 }
 
 const UserCard: React.FC<Props> = ({
@@ -46,8 +46,8 @@ const UserCard: React.FC<Props> = ({
 	const getPermissionInfo = () => {
 		const perm = user.permission
 		if (perm.read) {
-			if (perm.write) return PermissionInfo.FullAccess
-			if (!perm.write) return PermissionInfo.OnlyRead
+			if (perm.write) return PermissionInfo.Full
+			if (!perm.write) return PermissionInfo.Readonly
 		}
 		return PermissionInfo.Blocked
 	}
