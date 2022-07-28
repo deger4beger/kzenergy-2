@@ -15,7 +15,7 @@ interface Props {
 enum PermissionInfo {
 	Blocked = "Заблокирован",
 	Readonly = "Только чтение",
-	Full = "Все права"
+	Full = "Полный доступ"
 }
 
 const UserCard: React.FC<Props> = ({
@@ -64,7 +64,11 @@ const UserCard: React.FC<Props> = ({
 					<div>
 						{ user.role } { myId === user.id && "(Вы) " }
 					</div>
-					<div className={s.info}>
+					<div className={cn(s.info, {
+						[s.pos]: getPermissionInfo() === PermissionInfo.Full,
+						[s.neg]: getPermissionInfo() === PermissionInfo.Blocked,
+						[s.neut]: getPermissionInfo() === PermissionInfo.Readonly
+					})}>
 						{ getPermissionInfo() }
 					</div>
 				</div>

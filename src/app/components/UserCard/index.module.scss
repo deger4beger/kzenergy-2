@@ -34,8 +34,11 @@
 		}
 		.info {
 			margin-left: 60px;
-			font-weight: 400;
+			// font-weight: 400;
 			font-size: var(--fsz14);
+			&.pos { color: var(--success) }
+			&.neg { color: var(--error) }
+			&.neut { color: var(--warning) }
 		}
 	}
 	.items {
