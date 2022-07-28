@@ -19,6 +19,9 @@
 		font-weight: 500;
 		position: relative;
 		padding-left: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		&:before {
 			content: "";
 			width: 5px;
@@ -28,6 +31,11 @@
 			position: absolute;
 			top: 9px;
 			left: 0;
+		}
+		.info {
+			margin-left: 60px;
+			font-weight: 400;
+			font-size: var(--fsz14);
 		}
 	}
 	.items {

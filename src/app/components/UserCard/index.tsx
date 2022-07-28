@@ -12,6 +12,12 @@ interface Props {
 	user: UserWithPermission
 }
 
+enum PermissionInfo {
+	Blocked = "Заблокирован",
+	OnlyRead = "Только чтение",
+	FullAccess = "Все права"
+}
+
 const UserCard: React.FC<Props> = ({
 	user
 }) => {
@@ -37,6 +43,15 @@ const UserCard: React.FC<Props> = ({
 		setChangePermissionActive(true)
 	}
 
+	const getPermissionInfo = () => {
+		const perm = user.permission
+		if (perm.read) {
+			if (perm.write) return PermissionInfo.FullAccess
+			if (!perm.write) return PermissionInfo.OnlyRead
+		}
+		return PermissionInfo.Blocked
+	}
+
 	return (
 		<>
 			<div
@@ -45,7 +60,14 @@ const UserCard: React.FC<Props> = ({
 				})}
 				onClick={() => setMenuActive(true)}
 			>
-				<div className={s.role}>{ user.role } { myId === user.id && "(Вы)" }</div>
+				<div className={s.role}>
+					<div>
+						{ user.role } { myId === user.id && "(Вы) " }
+					</div>
+					<div className={s.info}>
+						{ getPermissionInfo() }
+					</div>
+				</div>
 				<div className={s.items}>
 					<div className={s.item}><span>Email:</span> { user.email }</div>
 					{ user.permission.temporary && (
