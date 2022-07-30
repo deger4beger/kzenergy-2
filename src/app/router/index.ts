@@ -31,6 +31,7 @@ export const unauthorizedRoutes: IRoute[] = [
 
 export const facilityRoutes: IRoute[] = [
   {path: RouteNames.WASTE_MANAGEMENT, exact: true, component: WasteManagement},
+  {path: RouteNames.COMPANY_OVERVIEW, exact: true, component: CompanyOverview}
 ]
 
 export const ecologyRoutes: IRoute[] = [

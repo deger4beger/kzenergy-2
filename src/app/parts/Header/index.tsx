@@ -6,8 +6,6 @@ import { logout } from "lib/redux/auth/slice"
 import { RouteNames } from "app/router"
 import { UserRoles } from "types/user"
 
-const Divider = () => <div>|</div>
-
 const Header = () => {
 
 	const { isAuth, userData: { role }, permission } = useAppSelector(state => state.userReducer)
@@ -41,7 +39,7 @@ const Header = () => {
 								<Link className={s.btn} to={RouteNames.SIGNIN}>
 									Войти
 								</Link>
-								<Divider />
+								<div> | </div>
 								<Link className={s.btn} to={RouteNames.SIGNUP}>
 									Зарегистрироваться
 								</Link>
@@ -61,7 +59,15 @@ const Header = () => {
 					>
 						Управление отходами
 					</Link>
-					<Divider />
+					<Link
+						className={cn(s.link, {
+							[s.disabled]: role === UserRoles.Admin,
+							[s.active]: location === RouteNames.COMPANY_OVERVIEW
+						})}
+						to={RouteNames.COMPANY_OVERVIEW}
+					>
+						Статистика по отходам
+					</Link>
 					<Link
 						className={cn(s.link, {
 							[s.disabled]: role !== UserRoles.Ecologist,
@@ -80,16 +86,6 @@ const Header = () => {
 					>
 						Архив отчетов
 					</Link>
-					<Link
-						className={cn(s.link, {
-							[s.disabled]: role !== UserRoles.Ecologist,
-							[s.active]: location === RouteNames.COMPANY_OVERVIEW
-						})}
-						to={RouteNames.COMPANY_OVERVIEW}
-					>
-						Статистика по отходам
-					</Link>
-					<Divider />
 					<Link
 						className={cn(s.link, {
 							[s.disabled]: role !== UserRoles.Admin,
