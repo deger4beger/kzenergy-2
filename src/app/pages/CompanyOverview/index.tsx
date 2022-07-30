@@ -1,10 +1,12 @@
+import Waste from "./Waste"
 
 
 const CompanyOverview = () => {
+
 	return (
-		<div>
-			CompanyOverview
-		</div>
+		<>
+			<Waste />
+		</>
 	)
 }
 
