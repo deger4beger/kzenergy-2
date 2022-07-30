@@ -5,7 +5,7 @@ import cn from "classnames"
 
 
 interface Props {
-	status: TalonStatus
+	status?: TalonStatus
 }
 
 const StatusIcon: React.FC<Props> = ({
@@ -14,7 +14,8 @@ const StatusIcon: React.FC<Props> = ({
 	return (
 		<div className={cn(s.statusIcon, {
 				[s.pos]: status === TalonStatus.ACCEPTED,
-				[s.neg]: status === TalonStatus.REJECTED
+				[s.neg]: status === TalonStatus.REJECTED,
+				[s.neut]: !status
 			})}>
 			<div className={s.inner} />
 		</div>

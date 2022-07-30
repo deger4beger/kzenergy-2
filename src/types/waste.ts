@@ -5,7 +5,7 @@ import { MeasureSystem } from "./talon"
 export interface WasteQantity {
 	id: string
 	name: Waste
-	quanitiy: {
+	quantity: {
 		[key in MeasureSystem]: number
 	}
 }

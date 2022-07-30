@@ -16,6 +16,10 @@
 		background-color: var(--error);
 		color: var(--bg1);
 	}
+	&.neut {
+		background-color: var(--color2);
+		color: var(--bg1);
+	}
 	.inner {
 		width: 6px;
 		height: 6px;

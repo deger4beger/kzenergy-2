@@ -1,0 +1,37 @@
+.wrapper {
+	border: 2px solid var(--additional);
+	border-radius: 10px;
+	padding: 8px 16px;
+	margin: 8px 6px;
+	display: flex;
+	flex-direction: column;
+	.title {
+		display: flex;
+		font-weight: 500;
+		border-bottom: 1px solid var(--color2);
+		padding-left: 6px;
+	}
+	.values {
+		padding: 4px 0 0 22px;
+		div {
+			position: relative;
+			display: flex;
+			font-size: var(--fsz14);
+			span:first-child {
+				font-weight: 500;
+				margin-right: 6px;
+			}
+			&:before {
+				content: "";
+				width: 6px;
+				height: 6px;
+				background-color: var(--additional);
+				border: 1px solid var(--color2);
+				border-radius: 10px;
+				position: absolute;
+				top: 10px;
+				left: -12px;
+			}
+		}
+	}
+}

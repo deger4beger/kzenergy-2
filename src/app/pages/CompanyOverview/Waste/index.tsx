@@ -5,7 +5,9 @@ import { useGetWasteStatQuery } from "lib/api/stat/index.query"
 
 const Waste = () => {
 
-	const { data, isLoading } = useGetWasteStatQuery()
+	const { data, isLoading } = useGetWasteStatQuery(undefined, {
+		refetchOnMountOrArgChange: true
+	})
 
 	if (isLoading) return <div />
 
@@ -14,7 +16,7 @@ const Waste = () => {
 			title="Количество текущих отходов">
 			<div style={{ display: "flex", flexWrap: "wrap" }}>
 				{ data?.map(waste =>
-					<WasteCard waste={waste} />
+					<WasteCard waste={waste} key={waste.id} />
 				) }
 			</div>
 		</GroupLayout>
