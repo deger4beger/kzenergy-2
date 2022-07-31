@@ -4,15 +4,16 @@ import cn from "classnames"
 import s from "./index.module.scss"
 
 interface Props {
-	name: string
+	name?: string
 	placeholder: string
 	type: string
 	value: string | number
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	disabled?: boolean
+	styles?: Object
 }
 
-const Input: React.FC<Props> = ({ type, disabled=false, ...inputProps }) => {
+const Input: React.FC<Props> = ({ type, disabled=false, styles, ...inputProps }) => {
 
 	const [inputType, setInputType] = useState(type)
 
@@ -23,10 +24,10 @@ const Input: React.FC<Props> = ({ type, disabled=false, ...inputProps }) => {
 
 	return <div className={cn(s.wrapper, {
 		[s.disabled]: disabled
-	})}>
-		<div className={s.title}>
+	})} style={styles}>
+		{ inputProps.name && <div className={s.title}>
 			{ inputProps.name }
-		</div>
+		</div> }
 		<div className={s.inputBlock}>
 			<input
 				{...inputProps}
