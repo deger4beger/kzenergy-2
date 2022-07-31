@@ -1,5 +1,6 @@
 import { MeasureSystem } from "types/talon"
 import { WasteQantity } from "types/waste"
+import cn from "classnames"
 import s from "./index.module.scss"
 
 
@@ -8,7 +9,9 @@ const WasteCard: React.FC<{
 }> = ({ waste }) => {
 
 	return (
-		<div className={s.wrapper}>
+		<div className={cn(s.wrapper, {
+			[s.pos]: Object.values(waste.quantity).some(el => el)
+		})}>
 			<div className={s.title}>
 				{ waste.name }
 			</div>

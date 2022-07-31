@@ -5,6 +5,10 @@
 	margin: 8px 6px;
 	display: flex;
 	flex-direction: column;
+	&.pos {
+		// border-color: var(--success);
+		background-color: #DBEEE2;
+	}
 	.title {
 		display: flex;
 		font-weight: 500;
