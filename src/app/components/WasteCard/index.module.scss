@@ -7,7 +7,7 @@
 	flex-direction: column;
 	&.pos {
 		// border-color: var(--success);
-		background-color: #DBEEE2;
+		background-color: var(--successLight);
 	}
 	.title {
 		display: flex;
