@@ -1,5 +1,6 @@
 import TotalChart from "./TotalChart"
 import Waste from "./Waste"
+import WasteComparisonChart from "./WasteComparisonChart"
 
 const CompanyOverview = () => {
 
@@ -7,6 +8,7 @@ const CompanyOverview = () => {
 		<>
 			<Waste />
 			<TotalChart />
+			<WasteComparisonChart />
 		</>
 	)
 }

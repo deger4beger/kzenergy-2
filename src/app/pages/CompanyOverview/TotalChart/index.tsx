@@ -12,19 +12,43 @@ const data = [
     штука: 30,
   },
   {
-    name: "Дата 1",
+    name: "Дата 2",
     м3: 150,
     тонна: 230,
     штука: 50,
   },
   {
-    name: "Дата 1",
+    name: "Дата 3",
     м3: 100,
     тонна: 300,
     штука: 40,
   },
   {
-    name: "Дата 1",
+    name: "Дата 4",
+    м3: 130,
+    тонна: 210,
+    штука: 20,
+  },
+  {
+    name: "Дата 5",
+    м3: 120,
+    тонна: 200,
+    штука: 30,
+  },
+  {
+    name: "Дата 6",
+    м3: 150,
+    тонна: 230,
+    штука: 50,
+  },
+  {
+    name: "Дата 7",
+    м3: 100,
+    тонна: 300,
+    штука: 40,
+  },
+  {
+    name: "Дата 8",
     м3: 130,
     тонна: 210,
     штука: 20,
@@ -35,7 +59,7 @@ const TotalChart = () => {
 
 	return (
 		<GroupLayout
-			title="Какой-то график"
+			title="Суммарное количество отходов по месяцам"
 		>
 			<div style={{ margin: "20px 0 60px" }}>
         <ResponsiveContainer width="100%" height={500}>
@@ -51,8 +75,8 @@ const TotalChart = () => {
             <YAxis yAxisId="count" />
             <Tooltip />
             <Legend />
-            <Line yAxisId="tonn" type="monotone" dataKey="м3" stroke="#6B66C5" />
-            <Line yAxisId="m3" type="monotone" dataKey="тонна" stroke="#5AAF7A" />
+            <Line yAxisId="tonn" type="monotone" dataKey="м3" stroke="#4769AD" />
+            <Line yAxisId="m3" type="monotone" dataKey="тонна" stroke="#3AA262" />
             <Line yAxisId="count" type="monotone" dataKey="штука" stroke="#B43131" />
           </LineChart>
         </ResponsiveContainer>
