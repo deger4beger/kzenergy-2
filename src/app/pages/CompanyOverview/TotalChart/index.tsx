@@ -59,7 +59,7 @@ const data = [
 
 const TotalChart = () => {
 
-  const [selectedWaste, setSelectedWaste] = useState("Отход 1")
+  const [selectedWaste, setSelectedWaste] = useState("Отход номер 1")
 
 	return (
 		<GroupLayout
@@ -69,7 +69,7 @@ const TotalChart = () => {
           styles={{ marginBottom: "0", position: "relative", top: "6px" }}
           selected={selectedWaste}
           setSelected={(waste) => setSelectedWaste(waste)}
-          options={["Отход 1", "Отход 2", "Отход 3", "Отход 4", "Отход 5"]}
+          options={["Отход номер 1", "Отход номер 2", "Отход номер 3", "Отход номер 4", "Отход номер 5"]}
         />
       }
 		>
