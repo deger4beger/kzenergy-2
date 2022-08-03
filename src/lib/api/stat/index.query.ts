@@ -1,4 +1,4 @@
-import { WasteQantity } from "types/waste"
+import { WasteQantity, WasteStatByRep } from "types/waste"
 import { statApi } from "."
 
 const extendedStatApi = statApi.injectEndpoints({
@@ -9,10 +9,17 @@ const extendedStatApi = statApi.injectEndpoints({
 				method: "get"
 			}),
 			providesTags: result => ["Waste"]
+		}),
+		getWasteStatByRep: build.query<WasteStatByRep, void>({
+			query: () => ({
+				url: "/lineplot/",
+				method: "get"
+			}),
+			providesTags: result => ["Waste"]
 		})
 	})
 })
 
 export const {
-	useGetWasteStatQuery
+	useGetWasteStatQuery, useGetWasteStatByRepQuery
 } = extendedStatApi

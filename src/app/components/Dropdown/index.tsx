@@ -3,9 +3,9 @@ import cn from "classnames"
 import s from "./index.module.scss"
 
 interface Props {
-	options: string[],
+	options: string[] | readonly string[],
 	title?: string,
-	selected: string,
+	selected: string | undefined,
 	setSelected: (option: string) => void
 	styles?: Object
 }

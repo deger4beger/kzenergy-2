@@ -9,3 +9,12 @@ export interface WasteQantity {
 		[key in MeasureSystem]: number
 	}
 }
+
+export type WasteStatByRep = {
+	[key in Waste]: {
+		limit: number
+		info: ({
+			[key in MeasureSystem]: number
+		} & { date: string })[]
+	}
+}

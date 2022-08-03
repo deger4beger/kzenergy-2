@@ -38,12 +38,15 @@
 		.lower {
 			position: absolute;
 			top: 44px;
-			left: 0;
+			right: 0;
 			border: 2px solid var(--additional);
 			background-color: var(--bg1);
 			z-index: 10;
-			width: 100%;
+			width: max-content;
+			max-height: 300px;
+			overflow-y: auto;
 			.option {
+				margin: 6px;
 				padding: 6px 12px;
 				color: var(--forText);
 				&.active {

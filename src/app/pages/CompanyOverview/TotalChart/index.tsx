@@ -1,65 +1,19 @@
 import Dropdown from "app/components/Dropdown";
 import GroupLayout from "app/components/GroupLayout"
+import { useGetWasteStatByRepQuery } from "lib/api/stat/index.query";
+import { Waste } from "lib/assets/data/waste";
 import { useState } from "react";
 import {
 	LineChart, Line, XAxis, YAxis, CartesianGrid,
 	Tooltip, Legend, ResponsiveContainer, ReferenceLine
 } from "recharts"
 
-const data = [
-  {
-    name: "Дата 1",
-    м3: 120,
-    тонна: 200,
-    штука: 30,
-  },
-  {
-    name: "Дата 2",
-    м3: 150,
-    тонна: 230,
-    штука: 50,
-  },
-  {
-    name: "Дата 3",
-    м3: 100,
-    тонна: 300,
-    штука: 40,
-  },
-  {
-    name: "Дата 4",
-    м3: 130,
-    тонна: 210,
-    штука: 20,
-  },
-  {
-    name: "Дата 5",
-    м3: 120,
-    тонна: 200,
-    штука: 30,
-  },
-  {
-    name: "Дата 6",
-    м3: 150,
-    тонна: 230,
-    штука: 50,
-  },
-  {
-    name: "Дата 7",
-    м3: 100,
-    тонна: 300,
-    штука: 40,
-  },
-  {
-    name: "Дата 8",
-    м3: 130,
-    тонна: 210,
-    штука: 20,
-  },
-];
-
 const TotalChart = () => {
 
-  const [selectedWaste, setSelectedWaste] = useState("Отход номер 1")
+  const { data, isLoading } = useGetWasteStatByRepQuery()
+  const [selectedWaste, setSelectedWaste] = useState<Waste>()
+
+  if (isLoading || !data) return <div />
 
 	return (
 		<GroupLayout
@@ -67,32 +21,36 @@ const TotalChart = () => {
       btns={
         <Dropdown
           styles={{ marginBottom: "0", position: "relative", top: "6px" }}
-          selected={selectedWaste}
-          setSelected={(waste) => setSelectedWaste(waste)}
-          options={["Отход номер 1", "Отход номер 2", "Отход номер 3", "Отход номер 4", "Отход номер 5"]}
+          selected={ selectedWaste }
+          setSelected={(waste) => setSelectedWaste(waste as Waste)}
+          options={ Object.keys(data) }
         />
       }
 		>
-			<div style={{ margin: "20px 0 60px" }}>
-        <ResponsiveContainer width="100%" height={500}>
+			<div style={{ margin: "20px 0 200px" }}>
+        { !!selectedWaste && <ResponsiveContainer width="100%" height={500}>
           <LineChart
             width={500}
             height={300}
-            data={data}
+            data={data[selectedWaste].info}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="date" />
             <YAxis yAxisId="tonn" />
             <YAxis yAxisId="m3" />
             <YAxis yAxisId="count" />
             <Tooltip />
             <Legend />
-            <ReferenceLine y={250} label="Max" stroke="red" yAxisId="m3" />
+            <ReferenceLine y={data[selectedWaste].limit} label="Max" stroke="red" yAxisId="m3" />
             <Line yAxisId="tonn" type="monotone" dataKey="м3" stroke="#4769AD" />
             <Line yAxisId="m3" type="monotone" dataKey="тонна" stroke="#B43131" />
             <Line yAxisId="count" type="monotone" dataKey="штука" stroke="#3AA262" />
           </LineChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> }
+        { !selectedWaste && <div style={{
+          textAlign: "center",
+          fontSize: "var(--fsz18)"
+        }}>Выберите отход</div> }
       </div>
 		</GroupLayout>
 	)
