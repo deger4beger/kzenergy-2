@@ -27,7 +27,7 @@ const TotalChart = () => {
         />
       }
 		>
-			<div style={{ margin: "20px 0 200px" }}>
+			<div style={{ margin: "20px 0 80px" }}>
         { !!selectedWaste && <ResponsiveContainer width="100%" height={500}>
           <LineChart
             width={500}
