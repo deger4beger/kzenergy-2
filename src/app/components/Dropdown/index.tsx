@@ -7,18 +7,20 @@ interface Props {
 	title: string,
 	selected: string,
 	setSelected: (option: string) => void
+	styles?: Object
 }
 
 const Dropdown: React.FC<Props> = ({
 	options,
 	title,
 	selected,
-	setSelected
+	setSelected,
+	styles
 }) => {
 
 	const [isActive, setIsActive] = useState(false)
 
-	return <div className={s.wrapper}>
+	return <div className={s.wrapper} style={styles}>
 		<div className={s.title}>
 			{ title }
 		</div>

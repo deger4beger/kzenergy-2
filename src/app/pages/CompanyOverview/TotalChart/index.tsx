@@ -1,7 +1,9 @@
+import Dropdown from "app/components/Dropdown";
 import GroupLayout from "app/components/GroupLayout"
+import { useState } from "react";
 import {
 	LineChart, Line, XAxis, YAxis, CartesianGrid,
-	Tooltip, Legend, ResponsiveContainer
+	Tooltip, Legend, ResponsiveContainer, ReferenceLine
 } from "recharts"
 
 const data = [
@@ -57,9 +59,19 @@ const data = [
 
 const TotalChart = () => {
 
+  const [selectedWaste, setSelectedWaste] = useState("Отход 1")
+
 	return (
 		<GroupLayout
 			title="Суммарное количество отходов по месяцам"
+      btns={
+        <Dropdown
+          title="Выберите отход"
+          selected={selectedWaste}
+          setSelected={(waste) => setSelectedWaste(waste)}
+          options={["Отход 1", "Отход 2", "Отход 3", "Отход 4", "Отход 5"]}
+        />
+      }
 		>
 			<div style={{ margin: "20px 0 60px" }}>
         <ResponsiveContainer width="100%" height={500}>
@@ -75,9 +87,10 @@ const TotalChart = () => {
             <YAxis yAxisId="count" />
             <Tooltip />
             <Legend />
+            <ReferenceLine y={250} label="Max" stroke="red" yAxisId="m3" />
             <Line yAxisId="tonn" type="monotone" dataKey="м3" stroke="#4769AD" />
-            <Line yAxisId="m3" type="monotone" dataKey="тонна" stroke="#3AA262" />
-            <Line yAxisId="count" type="monotone" dataKey="штука" stroke="#B43131" />
+            <Line yAxisId="m3" type="monotone" dataKey="тонна" stroke="#B43131" />
+            <Line yAxisId="count" type="monotone" dataKey="штука" stroke="#3AA262" />
           </LineChart>
         </ResponsiveContainer>
       </div>
