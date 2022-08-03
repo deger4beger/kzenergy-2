@@ -66,7 +66,7 @@ const TotalChart = () => {
 			title="Суммарное количество отходов по месяцам"
       btns={
         <Dropdown
-          title="Выберите отход"
+          styles={{ marginBottom: "0", position: "relative", top: "6px" }}
           selected={selectedWaste}
           setSelected={(waste) => setSelectedWaste(waste)}
           options={["Отход 1", "Отход 2", "Отход 3", "Отход 4", "Отход 5"]}

@@ -4,7 +4,7 @@ import s from "./index.module.scss"
 
 interface Props {
 	options: string[],
-	title: string,
+	title?: string,
 	selected: string,
 	setSelected: (option: string) => void
 	styles?: Object
@@ -21,9 +21,9 @@ const Dropdown: React.FC<Props> = ({
 	const [isActive, setIsActive] = useState(false)
 
 	return <div className={s.wrapper} style={styles}>
-		<div className={s.title}>
+		{ !!title && <div className={s.title}>
 			{ title }
-		</div>
+		</div> }
 		<div className={s.dropdown}>
 			<div
 					className={cn(s.upper, {[s.selected]: !!selected})}
