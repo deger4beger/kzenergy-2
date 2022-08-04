@@ -8,6 +8,7 @@ import AppRouter from "./components/AppRouter"
 import Preloader from "./components/Preloader"
 import { permissionThunk } from "lib/redux/auth/thunks"
 import Restrict from "./components/Restrict"
+import Scroll from "./parts/Scroll"
 
 if (process.env.REACT_APP_ENVIRONMENT === "development") {
   const { worker } = require("../lib/mocks/api/worker")
@@ -39,6 +40,7 @@ function App() {
         <AppRouter />
       </div>
       <Footer />
+      <Scroll />
     </Suspense>
   )
 }
