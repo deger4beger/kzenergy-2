@@ -83,7 +83,7 @@ const TotalChart = () => {
           <LineChart
             width={500}
             height={300}
-            data={fakeData} // data[selectedWaste].info
+            data={data[selectedWaste].info} // fakeData
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
             <XAxis dataKey="date" stroke="black" tickLine={{ strokeWidth: 0 }} />
@@ -94,14 +94,13 @@ const TotalChart = () => {
             <YAxis yAxisId="m3" tickCount={6} strokeWidth={0.5} tickSize={10} />
             <Tooltip />
             <Legend iconType="rect" />
-            <ReferenceLine y={120} // data[selectedWaste].limit
-              label={ <div>Максимальное допустимое кол-во в месяц</div> }
+            <ReferenceLine y={data[selectedWaste].limit} // 120
               stroke="red"
-              yAxisId="m3"
+              yAxisId="tonn"
               strokeDasharray="3 3"
               strokeWidth={2}
               strokeOpacity={0.6}
-              isFront
+              alwaysShow
             />
             <Line yAxisId="tonn" type="monotone" dataKey="тонна" stroke="#4769AD"
               dot={{ strokeWidth: 3, r: 4 }}
