@@ -25,7 +25,9 @@ const Scroll = React.memo(() => {
 				className={s.scroll}
 				onClick={() => scroll.scrollToTop({duration: 300})}
 				>
-				›
+				<div className={s.icon}>
+					›
+				</div>
 			</div>}
 		</div>
 	)
