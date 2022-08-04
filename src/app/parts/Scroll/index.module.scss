@@ -2,7 +2,7 @@
 	position: fixed;
 	bottom: 30px;
 	right: 40px;
-	color: var(--bg1);
+	color: var(--color1);
 	z-index: 10;
 	.scroll {
 		transform: rotate(-90deg);
@@ -10,7 +10,7 @@
 		width: 40px;
 		height: 40px;
 		line-height: 40px;
-		background-color: var(--success);
+		background-color: var(--successLight);
 		border-radius: 40px;
 		display: flex;
 		justify-content: center;

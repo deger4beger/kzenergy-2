@@ -90,15 +90,18 @@ const TotalChart = () => {
             <YAxis yAxisId="tonn" stroke="black" tickCount={10} tickSize={10}
               tickLine={{ strokeWidth: 0.5 }}
             />
-            <YAxis yAxisId="count" tickCount={6} strokeWidth={0.5} />
-            <YAxis yAxisId="m3" tickCount={6} strokeWidth={0.5} />
+            <YAxis yAxisId="count" tickCount={6} strokeWidth={0.5} tickSize={10} />
+            <YAxis yAxisId="m3" tickCount={6} strokeWidth={0.5} tickSize={10} />
             <Tooltip />
             <Legend iconType="rect" />
             <ReferenceLine y={120} // data[selectedWaste].limit
+              label={ <div>Максимальное допустимое кол-во в месяц</div> }
               stroke="red"
               yAxisId="m3"
               strokeDasharray="3 3"
               strokeWidth={2}
+              strokeOpacity={0.6}
+              isFront
             />
             <Line yAxisId="tonn" type="monotone" dataKey="тонна" stroke="#4769AD"
               dot={{ strokeWidth: 3, r: 4 }}
