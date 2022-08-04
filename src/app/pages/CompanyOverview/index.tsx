@@ -8,7 +8,7 @@ const CompanyOverview = () => {
 		<>
 			<Waste />
 			<TotalChart />
-			{/*<WasteComparisonChart />*/}
+			<WasteComparisonChart />
 		</>
 	)
 }
