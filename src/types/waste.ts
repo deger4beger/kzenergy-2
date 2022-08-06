@@ -5,6 +5,7 @@ import { MeasureSystem } from "./talon"
 export interface WasteQantity {
 	id: string
 	name: Waste
+	limit: number
 	quantity: {
 		[key in MeasureSystem]: number
 	}

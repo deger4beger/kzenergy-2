@@ -10,7 +10,8 @@ const WasteCard: React.FC<{
 
 	return (
 		<div className={cn(s.wrapper, {
-			[s.pos]: Object.values(waste.quantity).some(el => el)
+			[s.pos]: Object.values(waste.quantity).some(el => el),
+			[s.warning]: waste.quantity.тонна > waste.limit
 		})}>
 			<div className={s.title}>
 				{ waste.name }
@@ -19,7 +20,9 @@ const WasteCard: React.FC<{
 				{ Object.entries(waste.quantity).map(([key, value]) =>
 					<div>
 						<span>{ key === MeasureSystem.M3 ? "м³" : key }:</span>
-						<span>{ value }</span>
+						<span>
+							{ value } { key === MeasureSystem.TON && "/ " + waste.limit }
+						</span>
 					</div>
 				) }
 			</div>
