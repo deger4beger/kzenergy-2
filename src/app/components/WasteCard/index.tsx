@@ -45,7 +45,7 @@ const WasteCard: React.FC<{
 						<div>
 							<span>{ key === MeasureSystem.M3 ? "м³" : key }:</span>
 							<span>
-								{ value } { key === MeasureSystem.TON && "/ " + waste.limit }
+								{ value } { key === MeasureSystem.TON && "| " + waste.limit }
 							</span>
 						</div>
 					) }
@@ -54,7 +54,7 @@ const WasteCard: React.FC<{
 			<Modal
 				active={modalActive}
 				setActive={setModalActive}
-				title={"Изменить лимит отхода " + waste.name}
+				title={"Изменить лимит отхода " + `'${waste.name}'`}
 			>
 				<Input
 					value={limit}
