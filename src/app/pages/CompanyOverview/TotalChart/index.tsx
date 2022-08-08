@@ -5,7 +5,7 @@ import { Waste } from "lib/assets/data/waste";
 import { useState } from "react";
 import {
 	LineChart, Line, XAxis, YAxis, CartesianGrid,
-	Tooltip, Legend, ResponsiveContainer, ReferenceLine
+	Tooltip, Legend, ResponsiveContainer, ReferenceLine, Brush
 } from "recharts"
 
 const fakeData = [
@@ -86,12 +86,14 @@ const TotalChart = () => {
             data={fakeData} // data[selectedWaste].info
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
-            <XAxis dataKey="date" stroke="black" tickLine={{ strokeWidth: 0 }} />
+            <XAxis dataKey="date" stroke="black" tickLine={{ strokeWidth: 1 }}
+              padding={{ left: 16, right: 16 }}
+            />
             <YAxis yAxisId="tonn" stroke="black" tickCount={10} tickSize={10}
               tickLine={{ strokeWidth: 0.5 }}
             />
-            <YAxis yAxisId="count" tickCount={6} strokeWidth={0.5} tickSize={10} />
-            <YAxis yAxisId="m3" tickCount={6} strokeWidth={0.5} tickSize={10} />
+            <YAxis yAxisId="count" tickCount={6} strokeWidth={0.5} tickSize={6} />
+            <YAxis yAxisId="m3" tickCount={6} strokeWidth={0.5} tickSize={6} />
             <Tooltip />
             <Legend iconType="rect" />
             <ReferenceLine y={data[selectedWaste].limit} // 120
@@ -117,6 +119,7 @@ const TotalChart = () => {
               strokeWidth={2}
               strokeOpacity={0.2}
             />
+            {/* <Brush dataKey="date" height={30} /> */}
           </LineChart>
         </ResponsiveContainer> }
         { !selectedWaste && <div style={{

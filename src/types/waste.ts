@@ -19,3 +19,12 @@ export type WasteStatByRep = {
 		} & { date: string })[]
 	}
 }
+
+export interface RepStatByWaste {
+	[repDate: string]: ({
+		[key in MeasureSystem]: number
+	} & {
+		name: string
+		limit: number
+	})[]
+}
