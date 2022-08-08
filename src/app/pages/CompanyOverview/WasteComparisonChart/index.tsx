@@ -1,13 +1,13 @@
 import Dropdown from "app/components/Dropdown";
 import GroupLayout from "app/components/GroupLayout"
-import { Waste } from "lib/assets/data/waste";
+import { useGetRepStatByWasteQuery } from "lib/api/stat/index.query";
 import { useState } from "react";
 import {
 	XAxis, YAxis, CartesianGrid,
 	Tooltip, Legend, ResponsiveContainer, Bar, BarChart, Brush, Line, ComposedChart
 } from "recharts"
 
-const data = [
+const fakeData = [
   {
     name: "Отход номер 1",
     м3: 20,
@@ -156,7 +156,10 @@ const data = [
 
 const WasteComparisonChart = () => {
 
+  const { data, isLoading } = useGetRepStatByWasteQuery()
   const [selectedReport, setSelectedReport] = useState<string>()
+
+  if (isLoading || !data) return <div />
 
 	return (
 		<GroupLayout
@@ -175,8 +178,7 @@ const WasteComparisonChart = () => {
           <ComposedChart
             width={500}
             height={300}
-            data={data.sort((a, b) => b.тонна - a.тонна)}
-
+            data={[...data[selectedReport]].sort((a, b) => b.тонна - a.тонна)}
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
             <XAxis dataKey="name" stroke="black" tickLine={{ strokeWidth: 0 }}
