@@ -163,7 +163,7 @@ const WasteComparisonChart = () => {
 
 	return (
 		<GroupLayout
-			title="Какой-то график"
+			title="Гафик сравнения отходов по месяцам"
       btns={
         <Dropdown
           styles={{ marginBottom: "0", position: "relative", top: "6px" }}
