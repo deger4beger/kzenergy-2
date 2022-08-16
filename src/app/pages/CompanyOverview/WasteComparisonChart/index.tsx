@@ -178,7 +178,7 @@ const WasteComparisonChart = () => {
           <ComposedChart
             width={500}
             height={300}
-            data={fakeData.sort((a, b) => b.тонна - a.тонна)} // [...data[selectedReport]].sort((a, b) => b.тонна - a.тонна)
+            data={[...data[selectedReport]].sort((a, b) => b.тонна - a.тонна)} // fakeData
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
             <XAxis dataKey="name" stroke="black" tickLine={{ strokeWidth: 0 }}
