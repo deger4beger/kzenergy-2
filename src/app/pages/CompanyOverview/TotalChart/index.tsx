@@ -83,7 +83,7 @@ const TotalChart = () => {
           <LineChart
             width={500}
             height={300}
-            data={data[selectedWaste].info} // fakeData
+            data={fakeData} // data[selectedWaste].info
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
             <XAxis dataKey="date" stroke="black" tickLine={{ strokeWidth: 1 }}
