@@ -57,7 +57,7 @@ const ChangeStatus: React.FC<Props> = ({
 					options={Object.values(TalonStatus)}
 				/>
 				<Input
-					name="Сообщение для работника (при отклонении)"
+					name="Сообщение для работника"
 					onChange={setMessage}
 					placeholder="Сообщение"
 					type="text"
