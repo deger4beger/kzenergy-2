@@ -1,7 +1,7 @@
 import Axios from "axios"
 import { axiosBaseQuery } from "./index.axiosquery"
 
-export const baseURL = process.env.API_URL || "http://localhost:8000"
+export const baseURL = "https://kz2-railwat-production-cc0b.up.railway.app" // http://localhost:8000
 
 // Full protected
 export const mainInstance = Axios.create({ baseURL })
