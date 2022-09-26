@@ -61,7 +61,7 @@ const Header = () => {
 					</Link>
 					<Link
 						className={cn(s.link, {
-							[s.disabled]: role === UserRoles.Admin,
+							[s.disabled]: (role !== UserRoles.Ecologist) || (role !== UserRoles.FacilityWorker),
 							[s.active]: location === RouteNames.COMPANY_OVERVIEW
 						})}
 						to={RouteNames.COMPANY_OVERVIEW}
