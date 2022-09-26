@@ -62,7 +62,7 @@ const fakeData = [
 const TotalChart = () => {
 
   const { data, isLoading } = useGetWasteStatByRepQuery()
-  const [selectedWaste, setSelectedWaste] = useState<Waste>()
+  const [selectedWaste, setSelectedWaste] = useState<Waste | "Случайные данные">()
 
   if (isLoading || !data) return <div />
 
@@ -73,8 +73,8 @@ const TotalChart = () => {
         <Dropdown
           styles={{ marginBottom: "0", position: "relative", top: "6px" }}
           selected={ selectedWaste }
-          setSelected={(waste) => setSelectedWaste(waste as Waste)}
-          options={ Object.keys(data) }
+          setSelected={(waste) => setSelectedWaste(waste as any)}
+          options={ [ "Случайные данные", ...Object.keys(data) ] }
         />
       }
 		>
@@ -83,7 +83,7 @@ const TotalChart = () => {
           <LineChart
             width={500}
             height={300}
-            data={data[selectedWaste].info} // fakeData
+            data={selectedWaste === "Случайные данные" ? fakeData : data[selectedWaste].info} // fakeData
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
             <XAxis dataKey="date" stroke="black" tickLine={{ strokeWidth: 1 }}
@@ -96,7 +96,7 @@ const TotalChart = () => {
             <YAxis yAxisId="m3" tickCount={6} strokeWidth={0.5} tickSize={6} />
             <Tooltip />
             <Legend iconType="rect" />
-            <ReferenceLine y={data[selectedWaste].limit} // 120
+            <ReferenceLine y={selectedWaste === "Случайные данные" ? 120 : data[selectedWaste].limit} // 120
               stroke="red"
               yAxisId="tonn"
               strokeDasharray="3 3"

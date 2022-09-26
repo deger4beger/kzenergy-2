@@ -169,7 +169,7 @@ const WasteComparisonChart = () => {
           styles={{ marginBottom: "0", position: "relative", top: "6px" }}
           selected={ selectedReport }
           setSelected={(waste) => setSelectedReport(waste)}
-          options={ Object.keys(data) }
+          options={ [ "Случайные данные", ...Object.keys(data) ] }
         />
       }
 		>
@@ -178,7 +178,9 @@ const WasteComparisonChart = () => {
           <ComposedChart
             width={500}
             height={300}
-            data={[...data[selectedReport]].sort((a, b) => b.тонна - a.тонна)} // fakeData
+            data={selectedReport === "Случайные данные" ?
+              fakeData : [...data[selectedReport]].sort((a, b) => b.тонна - a.тонна)
+            } // fakeData
           >
             <CartesianGrid strokeDasharray="0 0" stroke="#CBCBCB" />
             <XAxis dataKey="name" stroke="black" tickLine={{ strokeWidth: 0 }}
