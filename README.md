@@ -1,6 +1,6 @@
 # STUDENTDIGITALFEST (SDF) - 2022
 
-## First place at the republican competition on the topic "Waste accounting system" by KPO (sp. by Kzenergy)
+## Victory at the republican competition on the topic "Waste accounting system" by KPO (sp. by Kzenergy)
 
 ### Client side of the app
 
